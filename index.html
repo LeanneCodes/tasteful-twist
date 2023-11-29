@@ -7,18 +7,76 @@
   <!-- ................. Bootstrap CSS ................. -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="style.css" rel="stylesheet" />
+  <link href="style.css" href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet" />
   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <title>Tasteful Twist</title>
-
-</head>
-
-<body>
-
-
+  </head>
+  <body class="p-3 m-0 border-0 bd-example m-0 border-0">
   <!-- ................. Start Navbar Section ................. -->
-
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href='#'><img src="/Images/Design1-LM.png" width= 130px height=120px alt="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Popular</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Recipes
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Make it in 15mins</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="#">Make it in 30mins</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Make it by Cuisine</a>
+              </li>
+              <hr class="dropdown-divider" />
+              <li>
+                <a class="dropdown-item" href="#">Make it with what you've got</a>
+              </li>
+              <hr class="dropdown-divider" />
+              <li>
+                <a class="dropdown-item" href="#">Make it Vegan</a>
+              </li>
+              <hr class="dropdown-divider" />
+              <li>
+                <a class="dropdown-item" href="#">Make it Gluten Free</a>
+              </li>
+              <li class="nav-item dropdown"></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-outline-success" type="submit" fdprocessedid="y5alsi">
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+  </nav>
   <!-- ................. End Navbar Section ................. -->
 
 
@@ -31,7 +89,7 @@
 
   <!-- ................. Start Recipe Card Section ................. -->
 
-    <!-- ................. Explore Quick and Easy Recipes Card Section ................. -->
+  <!-- ................. Explore Quick and Easy Recipes Card Section ................. -->
   <section id="projects" class="p-5">
     <div class="container">
       <h2 class="fs-1 text-center text-warning"><strong>Explore Quick and Easy Recipes </strong></h2>
@@ -94,7 +152,7 @@
     </div>
   </section>
 
-<!-- ................. Continental Culinary Classics Card Section ................. -->
+  <!-- ................. Continental Culinary Classics Card Section ................. -->
   <section id="projects" class="p-5 bg-danger">
     <div class="container">
       <h2 class="fs-1 text-center text-warning"><strong>Continental Culinary Classics</strong></h2>
