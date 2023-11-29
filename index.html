@@ -16,32 +16,43 @@
 
 <body>
   <!-- ................. Start Navbar Section ................. -->
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-      aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="./Images/logo.png" width="100" height="100" alt="Brand-Logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li>
+        </ul>
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
     </div>
   </nav>
   <!-- ................. End Navbar Section ................. -->
@@ -60,63 +71,64 @@
   <section id="projects" class="p-5">
     <div class="container">
       <h2 class="fs-1 text-center text-warning"><strong>Explore Quick and Easy Recipes </strong></h2>
-      <p class="text-center""> Browse through our handpicked assortment of recipes, thoughtfully crafted to suit your hectic timetable</p>
+      <p class="text-center"> Browse through our handpicked assortment of recipes, thoughtfully crafted to suit your
+        hectic timetable</p>
       <div class=" row text-center g-4">
-      <div class="col-md">
-        <div class="card bg-dark text-light">
-          <div class="card-body text-center">
-            <div class="h1 mb-3">
-              <img src="./Images/15min.png" class="img-fluid img-2" alt="">
+        <div class="col-md">
+          <div class="card bg-dark text-light">
+            <div class="card-body text-center">
+              <div class="h1 mb-3">
+                <img src="./Images/15min.png" class="img-fluid img-2" alt="">
+              </div>
+              <h3 class="card-title mb-3">
+                15 Minute Recipes
+              </h3>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium aut eligendi odio delectus sed
+                sequi! Dolorem.
+              </p>
+              <a href="#">
+                <button class="btn btn-primary">View Recipes</button></a>
             </div>
-            <h3 class="card-title mb-3">
-              15 Minute Recipes
-            </h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium aut eligendi odio delectus sed
-              sequi! Dolorem.
-            </p>
-            <a href="#">
-              <button class="btn btn-primary">View Recipes</button></a>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="card bg-dark text-light">
+            <div class="card-body text-center">
+              <div class="h1 mb-3">
+                <img src="./Images/30min.png" class="img-fluid img-2" alt="">
+              </div>
+              <h3 class="card-title mb-3">
+                30 Minute Recipes
+              </h3>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium aut eligendi odio delectus sed
+                sequi! Dolorem.
+              </p>
+              <a href="#">
+                <button class="btn btn-primary">View Recipes</button></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="card bg-dark text-light">
+            <div class="card-body text-center">
+              <div class="h1 mb-3">
+                <img src="./Images/60min.png" class="img-fluid img-2" alt="">
+              </div>
+              <h3 class="card-title mb-3">
+                60 Minute Recipes
+              </h3>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium aut eligendi odio delectus sed
+                sequi! Dolorem.
+              </p>
+              <a href="#">
+                <button class="btn btn-primary">View Recipes</button></a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md">
-        <div class="card bg-dark text-light">
-          <div class="card-body text-center">
-            <div class="h1 mb-3">
-              <img src="./Images/30min.png" class="img-fluid img-2" alt="">
-            </div>
-            <h3 class="card-title mb-3">
-              30 Minute Recipes
-            </h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium aut eligendi odio delectus sed
-              sequi! Dolorem.
-            </p>
-            <a href="#">
-              <button class="btn btn-primary">View Recipes</button></a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md">
-        <div class="card bg-dark text-light">
-          <div class="card-body text-center">
-            <div class="h1 mb-3">
-              <img src="./Images/60min.png" class="img-fluid img-2" alt="">
-            </div>
-            <h3 class="card-title mb-3">
-              60 Minute Recipes
-            </h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium aut eligendi odio delectus sed
-              sequi! Dolorem.
-            </p>
-            <a href="#">
-              <button class="btn btn-primary">View Recipes</button></a>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- ................. Continental Culinary Classics Card Section ................. -->
@@ -217,20 +229,6 @@
 
       <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
         <p>© 2023 Company, Inc. All rights reserved.</p>
-        <ul class="list-unstyled d-flex">
-          <li class="ms-3"><a class="link-body-emphasis" href="#">
-              <svg class="bi" width="24" height="24">
-                <use xlink:href="#twitter"></use>
-              </svg></a></li>
-          <li class="ms-3"><a class="link-body-emphasis" href="#">
-              <svg class="bi" width="24" height="24">
-                <use xlink:href="#instagram"></use>
-              </svg></a></li>
-          <li class="ms-3"><a class="link-body-emphasis" href="#">
-              <svg class="bi" width="24" height="24">
-                <use xlink:href="#facebook"></use>
-              </svg></a></li>
-        </ul>
       </div>
     </footer>
   </div>
