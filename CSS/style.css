@@ -1,38 +1,38 @@
-/* Variables */
-:root {
-  --dark-grey: #404146;
-  --light-grey: #bfc3c6;
-  --off-White: #fffaf4;
-  --gold: #c0ac7a;
-  --cream: #fef2e0;
+@media (min-width: 768px) {
+  .news-input {
+    width: 50%;
+  }
 }
 
-/* .... Start Body Section .... */
-body {
-  background-color: black !important;
-  font-family: 'Mona Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+/* Hex colours */
+
+.bg-grey {
+  background-color: #404146; 
+} 
+
+.bg-gold {
+  background-color: #C0AC7A; 
+} 
+
+
+.bg-light-grey {
+  background-color: #BFC3C6; 
+} 
+
+.bg-off-white {
+  background-color: #FFFAF4; 
+} 
+
+.bg-cream {
+  background-color: #fdefdc; 
+} 
+ 
+
+.text-cream {
+  color: #f9e6cb; 
+} 
+
+.text-gold {
+  color: #C0AC7A;
 }
-/* .... End Body Section .... */
-/* .... Start Navbar Section .... */
-.navbar-nav {
-  margin-left: auto;
-  margin-right: 0 !important;
-}
-/* .... End Navbar Section .... */
-
-/* .... Start Hero Section .... */
-/* .... End Hero Section .... */
-
-/* .... Start Recipe Card Section ..... */
-
-/* .... Explore Quick and Easy Recipes Card Section .... */
-
-/* .... Continental Culinary Classics Card Section .... */
-
-/* .... End Recipe Card Section .... */
-
-/* .... Start Footer Section .... */
-footer {
-  margin-top: 100px;
-}
-/* .... End Footer Section .... */
