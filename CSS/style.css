@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+#navbar-brand{
+    width: 50px;
+    height: 50px;
+
+};
+=======
 /* Variables */
 :root {
   --dark-grey: #404146;
@@ -33,3 +40,4 @@ footer {
   margin-top: 50px;
 }
 /* .... End Footer Section .... */
+>>>>>>> 304cb6f783310280e93a6a57f1112f11472f2a9d
