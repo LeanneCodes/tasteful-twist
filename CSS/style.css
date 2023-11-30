@@ -12,12 +12,22 @@ body {
   background-color: black !important;
   font-family: 'Mona Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+
 /* .... End Body Section .... */
 /* .... Start Navbar Section .... */
 .navbar-nav {
   margin-left: auto;
   margin-right: 0 !important;
 }
+
+
+/* Contact Section */
+.formContact {
+  /* background-color: linear-gradient(--light-grey; ) max-width: 500px;
+  width: 100%;
+  padding: 30px; */
+}
+
 /* .... End Navbar Section .... */
 
 /* .... Start Hero Section .... */
@@ -35,4 +45,5 @@ body {
 footer {
   margin-top: 100px;
 }
+
 /* .... End Footer Section .... */
