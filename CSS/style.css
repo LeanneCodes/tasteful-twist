@@ -9,15 +9,12 @@
 
 /* .... Start Body Section .... */
 body {
-  background-color: black !important;
   font-family: 'Mona Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 /* .... End Body Section .... */
+
 /* .... Start Navbar Section .... */
-.navbar-nav {
-  margin-left: auto;
-  margin-right: 0 !important;
-}
+
 /* .... End Navbar Section .... */
 
 /* .... Start Hero Section .... */
@@ -33,6 +30,6 @@ body {
 
 /* .... Start Footer Section .... */
 footer {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 /* .... End Footer Section .... */
