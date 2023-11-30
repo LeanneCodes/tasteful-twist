@@ -1,23 +1,3 @@
-// // function convertAmount() {
-// //     var ingredient = "sugar";
-// //     var amount = 2.5;
-// //     var imperial = "cups";
-// //     var metric = 'grams';
-// //     var subAPI = "8b1cea18610f4b56a5703c3300b944fe";
-// //     var convertURL = `https://api.spoonacular.com/recipes/convert?ingredientName=${ingredient}&sourceAmount=${amount}&sourceUnit=${imperial}&targetUnit=${metric}&apiKey=${subAPI}`;
-
-// //     fetch(convertURL)
-// //         .then(function(response) {
-// //             return response.json();
-// //         }).then(function(data) {
-// //             console.log(data);
-// //         });
-// // }
-
-// // convertAmount();
-
-
-
 // function getMexicanFood() {
 //     const mexicanURL = 'https://food-recipes-with-images.p.rapidapi.com/?q=mexican';
 //     const options = {
@@ -192,3 +172,44 @@
 // }
 
 // getMoroccanFood();
+
+
+// function convertAmount() {
+//     var ingredient = "sugar";
+//     var amount = 2.5;
+//     var imperial = "cups";
+//     var metric = 'grams';
+//     var subAPI = "8b1cea18610f4b56a5703c3300b944fe";
+//     var convertURL = `https://api.spoonacular.com/recipes/convert?ingredientName=${ingredient}&sourceAmount=${amount}&sourceUnit=${imperial}&targetUnit=${metric}&apiKey=${subAPI}`;
+
+//     fetch(convertURL)
+//         .then(function(response) {
+//             return response.json();
+//         }).then(function(data) {
+//             console.log(data);
+//         });
+// }
+
+// convertAmount();
+
+
+function getNutrition() {
+    const recipeName = "Greek Salad";
+    const nutritionURL = `https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition?query=${recipeName}`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'c7965e32a1mshbe160fd7fa536fap1de1ccjsn06ed08451b4a',
+            'X-RapidAPI-Host': 'nutrition-by-api-ninjas.p.rapidapi.com'
+        }
+    };
+
+    fetch(nutritionURL, options)
+        .then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            console.log(data);
+        });
+};
+
+getNutrition();
