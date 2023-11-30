@@ -1,5 +1,38 @@
-@media(min-width: 768px) {
-  .input-group { 
+@media (min-width: 768px) {
+  .news-input {
     width: 50%;
   }
+}
+
+
+/* Hex colours */
+
+.bg-grey {
+  background-color: #404146; 
+} 
+
+.bg-gold {
+  background-color: #C0AC7A; 
+} 
+
+
+.bg-light-grey {
+  background-color: #BFC3C6; 
+} 
+
+.bg-off-white {
+  background-color: #FFFAF4; 
+} 
+
+.bg-cream {
+  background-color: #fdefdc; 
+} 
+ 
+
+.text-cream {
+  color: #f9e6cb; 
+} 
+
+.text-gold {
+  color: #C0AC7A;
 }
