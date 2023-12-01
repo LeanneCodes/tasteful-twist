@@ -24,7 +24,6 @@ function getRecipe(cuisine) {
                 console.log(titleSplit); 
                 var title = titleSplit.join("+");
                 console.log(title);
-                // getNutrition(title);
 
                 var ingredients = Object.values(data.d[j].Ingredients);
                 console.log(ingredients.length);
@@ -109,6 +108,8 @@ function createRecipeCard(title, image, ingredients, instructions) {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <h2>Nutritional Information</h2>
+                        <div id="nutritionInfo${title.split("+").join("")}"></div>
                         <h2>Ingredients:</h2>
                         <ul>${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
                         <h2>Instructions:</h2>
@@ -123,6 +124,8 @@ function createRecipeCard(title, image, ingredients, instructions) {
     `;
 
     document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    getNutrition(title);
 }
 
 createRecipeCard();
@@ -207,7 +210,25 @@ function getNutrition(recipeName) {
 
                 console.log(recipeTotal);
             }
+
+            updateNutritionInfo(recipeName, recipeTotal);
         });
 };
 
-getNutrition();
+
+function updateNutritionInfo(title, nutritionData) {
+    var nutritionInfoDiv = document.getElementById(`nutritionInfo${title.split("+").join("")}`);
+    nutritionInfoDiv.innerHTML = `
+        <p>Calories: ${nutritionData.calories}</p>
+        <p>Fat: ${nutritionData.fat}</p>
+        <p>Saturated Fat: ${nutritionData.satFat}</p>
+        <p>Protein: ${nutritionData.protein}</p>
+        <p>Sodium: ${nutritionData.sodium}</p>
+        <p>Potassium: ${nutritionData.potassium}</p>
+        <p>Cholesterol: ${nutritionData.cholesterol}</p>
+        <p>Carbs: ${nutritionData.carbs}</p>
+        <p>Fibre: ${nutritionData.fibre}</p>
+        <p>Sugar: ${nutritionData.sugar}</p>
+        <p>Serving Size: ${nutritionData.servingSize}</p>
+    `;
+};
