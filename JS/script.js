@@ -3,7 +3,7 @@ function getRecipe(cuisine) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'c7965e32a1mshbe160fd7fa536fap1de1ccjsn06ed08451b4a',
+            'X-RapidAPI-Key': '42025b3a89msh8b63ea4c6bc8c91p192ed4jsnf26890e5742f',
             'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
         }
     };
@@ -13,16 +13,34 @@ function getRecipe(cuisine) {
             return response.json();
         }).then(function(data) {
             console.log(cuisine + " recipes", data);
-            console.log(data.d[0].Title);
-            var titleSplit = data.d[0].Title.split(" ");
-            console.log(titleSplit); 
-            var title = titleSplit.join("+");
-            console.log(title);
-            getNutrition(title);
-        });
-}
+            console.log(data.d.length);
 
-// getRecipe("mexican");
+            for (var j = 0; j < data.d.length; j++) {
+                var dataTitle = data.d[j].Title;
+                console.log(dataTitle);
+                var titleClean = dataTitle.replace("(", "").replace(")", "");
+                console.log(titleClean);
+                var titleSplit = titleClean.split(" ");
+                console.log(titleSplit); 
+                var title = titleSplit.join("+");
+                console.log(title);
+                getNutrition(title);
+
+                var ingredients = Object.values(data.d[j].Ingredients);
+                console.log(ingredients.length);
+                for (var k = 0; k < ingredients.length; k++) {
+                    console.log(ingredients[k]);
+                }
+                console.log(ingredients);
+                var instructions = data.d[j].Instructions;
+                console.log(instructions);
+                var image = data.d[j].Image;
+                console.log(image);
+            }
+        });
+};
+
+getRecipe("mexican");
 // getRecipe("spanish");
 // getRecipe("italian");
 // getRecipe("greek");
@@ -33,13 +51,7 @@ function getRecipe(cuisine) {
 
 
 
-function getNutrition() {
-    const name = "sausage and mash potato";
-    const nameSplit = name.split(" ");
-    console.log(nameSplit);
-    const join = nameSplit.join("+");
-    console.log(join);
-    const recipeName = join;
+function getNutrition(recipeName) {
     const nutritionURL = `https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition?query=${recipeName}`;
     const options = {
         method: 'GET',
