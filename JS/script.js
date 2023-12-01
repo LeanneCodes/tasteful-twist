@@ -139,29 +139,40 @@ function createRecipeCard(title, image, ingredients, instructions) {
     getNutrition(title);
 
     faveRecipeEl.addEventListener('click', function() {
-        addToFavourites(title, image, ingredients, instructions, recipeFave);
+        toggleFavorite(title, image, ingredients, instructions, recipeFave);
     });
-}
+
+    recipeFave.addEventListener('click', function() {
+        toggleFavorite(title, image, ingredients, instructions, recipeFave);
+    });
+
+};
 
 
-function addToFavourites(title, image, ingredients, instructions, recipeFave) {
+function toggleFavorite(title, image, ingredients, instructions, recipeFave) {
     var recipeDetails = {
         title: title.split("+").join(" "),
         image: image,
         ingredients: ingredients,
-        instructions: instructions
+        instructions: instructions,
+        heart: true
     };
 
     var recipeDetailsJSON = JSON.stringify(recipeDetails);
 
-    localStorage.setItem(title.split("+").join(" "), recipeDetailsJSON);
-    console.log(recipeDetails.title);
+    var isFavorite = recipeFave.classList.contains("fa-regular");
 
-    if (recipeFave.getAttribute("data-target") === recipeDetails.title ) {
+    if (isFavorite) {
+        // Add to favorites
+        localStorage.setItem(title.split("+").join(" "), recipeDetailsJSON);
         recipeFave.classList.remove("fa-regular");
         recipeFave.classList.add("fa-solid");
+    } else {
+        // Remove from favorites
+        localStorage.removeItem(title.split("+").join(" "));
+        recipeFave.classList.remove("fa-solid");
+        recipeFave.classList.add("fa-regular");
     }
-
 }
 
 
