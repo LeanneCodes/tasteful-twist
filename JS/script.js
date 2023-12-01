@@ -3,7 +3,7 @@ function getRecipe(cuisine) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '42025b3a89msh8b63ea4c6bc8c91p192ed4jsnf26890e5742f',
+            'X-RapidAPI-Key': 'f2c0025551msh634b76b514de39bp12e43cjsn68aa06d692f3',
             'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
         }
     };
@@ -37,7 +37,7 @@ function getRecipe(cuisine) {
                 var image = data.d[j].Image;
                 console.log(image);
 
-                createRecipeCard(title, image);
+                createRecipeCard(title, image, ingredients, instructions);
             }
         });
 };
@@ -63,7 +63,7 @@ if (window.location.pathname === '/mexican.html' || window.location.pathname ===
 }
 
 
-function createRecipeCard(title, image) {
+function createRecipeCard(title, image, ingredients, instructions) {
     var recipeContainer = document.getElementById("recipe-container");
     recipeContainer.setAttribute("class", "row");
     recipeContainer.setAttribute("style", "justify-content: space-around; margin: 50px;")
@@ -76,26 +76,68 @@ function createRecipeCard(title, image) {
     } else {
         recipeImage.setAttribute("src", image)
         recipeImage.setAttribute("class", "card-img-top")
-        recipeImage.setAttribute("alt", title);
+        recipeImage.setAttribute("alt", title.split("+").join(" "));
     }
     var recipeTitleBody = document.createElement("div");
-    var recipeCardTitle = document.createElement("h5")
+    var recipeCardTitle = document.createElement("h5");
     recipeCardTitle.setAttribute("class", "card-title");
     recipeCardTitle.setAttribute("style", "margin-bottom: 0 !important");
     recipeCardTitle.innerText = title.split("+").join(" ");
     var recipeBtnBody = document.createElement("div");
     recipeBtnBody.setAttribute("style", "display: flex; justify-content: space-around;")
-    var recipeDetailsBtn = document.createElement("a")
+    var recipeDetailsBtn = document.createElement("button");
     var recipeFave = document.createElement("i");
     recipeFave.setAttribute("class", "fa-regular fa-heart");
     recipeFave.setAttribute("style", "display: flex; justify-content: center; align-items: center; font-size: 1.5rem");
     recipeDetailsBtn.setAttribute("class", "btn btn-primary");
+    recipeDetailsBtn.setAttribute("type", "button");
     recipeDetailsBtn.setAttribute("style", "width: 75%;");
     recipeDetailsBtn.innerText = "View Recipe";
+    recipeDetailsBtn.setAttribute("data-bs-target", "#"+title.split("+").join(""));
+    recipeDetailsBtn.setAttribute("data-bs-toggle", "modal");
     recipeTitleBody.append(recipeCardTitle);
     recipeBtnBody.append(recipeDetailsBtn, recipeFave);
     recipeCard.append(recipeImage, recipeTitleBody, recipeBtnBody);
     recipeContainer.append(recipeCard);
+
+    var modalContainer = document.createElement("div");
+    modalContainer.setAttribute("id", title.split("+").join(""));
+    modalContainer.setAttribute("class", "modal fade");
+    modalContainer.setAttribute("tabindex", "-1");
+    modalContainer.setAttribute("aria-labelledby", title.split("+").join("")+"label");
+    modalContainer.setAttribute("aria-hidden", "true");
+    var modal = document.createElement("div");
+    modal.setAttribute("class", "modal-dialog modal-dialog-centered modal-dialog-scrollable");
+    var modalContent = document.createElement("div");
+    var modalHeader = document.createElement("div");
+    var modalTitle = document.createElement("h1");
+    modalTitle.setAttribute("class", "modal-title fs-5");
+    modalTitle.setAttribute("id", title.split("+").join("")+"label");
+    modalTitle.innerText = "How to make: " + title.split("+").join(" ");
+    var modalDismiss = document.createElement("button");
+    modalDismiss.setAttribute("type", "button");
+    modalDismiss.setAttribute("class", "btn-close");
+    modalDismiss.setAttribute("data-bs-dismiss", "modal");
+    modalDismiss.setAttribute("aria-label", "Close");
+    modalHeader.append(modalTitle, modalDismiss);
+    var modalBody = document.createElement("div");
+    modalBody.innerHTML = `
+        <h2>Ingredients:</h2>
+        <ul>${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
+        <h2>Instructions:</h2>
+        <p>${instructions}</p>
+    `;
+    var modalFooter = document.createElement("div");
+    modalFooter.setAttribute("class", "modal-footer");
+    var modalCloseBtn = document.createElement("button");
+    modalCloseBtn.setAttribute("class", "btn btn-secondary");
+    modalCloseBtn.setAttribute("type", "button");
+    modalCloseBtn.setAttribute("data-bs-dismiss", "modal");
+    modalCloseBtn.innerText = "Close";
+    modalContent.append(modalHeader, modalBody, modalFooter);
+    modal.append(modalContent);
+    modalContainer.append(modal);
+    document.body.append(modalContainer);
 }
 
 createRecipeCard();
