@@ -88,6 +88,8 @@ function createRecipeCard(title, image, ingredients, instructions) {
     var recipeFave = document.createElement("i");
     recipeFave.setAttribute("class", "fa-regular fa-heart d-flex justify-content-center align-items-center");
     recipeFave.setAttribute("style", "font-size: 1.5rem");
+    recipeFave.setAttribute("data-target", title.split("+").join(" "));
+    console.log(recipeFave);
     recipeDetailsBtn.setAttribute("class", "btn btn-primary");
     recipeDetailsBtn.setAttribute("type", "button");
     recipeDetailsBtn.setAttribute("style", "width: 75%;");
@@ -98,6 +100,9 @@ function createRecipeCard(title, image, ingredients, instructions) {
     recipeBtnBody.append(recipeDetailsBtn, recipeFave);
     recipeCard.append(recipeImage, recipeTitleBody, recipeBtnBody);
     recipeContainer.append(recipeCard);
+
+    var heartId = document.querySelector(`[data-target="${title.split("+").join(" ")}"]`).textContent;
+    console.log(heartId);
 
     var modalHTML = `
         <div class="modal fade" id="${title.split("+").join("")}" tabindex="-1" aria-labelledby="${title.split("+").join("")}label" aria-hidden="true">
@@ -134,12 +139,12 @@ function createRecipeCard(title, image, ingredients, instructions) {
     getNutrition(title);
 
     faveRecipeEl.addEventListener('click', function() {
-        addToFavourites(title, image, ingredients, instructions);
+        addToFavourites(title, image, ingredients, instructions, recipeFave);
     });
 }
 
 
-function addToFavourites(title, image, ingredients, instructions) {
+function addToFavourites(title, image, ingredients, instructions, recipeFave) {
     var recipeDetails = {
         title: title.split("+").join(" "),
         image: image,
@@ -150,6 +155,13 @@ function addToFavourites(title, image, ingredients, instructions) {
     var recipeDetailsJSON = JSON.stringify(recipeDetails);
 
     localStorage.setItem(title.split("+").join(" "), recipeDetailsJSON);
+    console.log(recipeDetails.title);
+
+    if (recipeFave.getAttribute("data-target") === recipeDetails.title ) {
+        recipeFave.classList.remove("fa-regular");
+        recipeFave.classList.add("fa-solid");
+    }
+
 }
 
 
