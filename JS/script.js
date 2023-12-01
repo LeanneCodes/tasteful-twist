@@ -1,6 +1,7 @@
-var subAPI = "8b1cea18610f4b56a5703c3300b944fe";
+var subAPI = '8b1cea18610f4b56a5703c3300b944fe';
 
 console.log(
+<<<<<<< HEAD
   "https://api.spoonacular.com/food/ingredients/substitutes?ingredientName=butter"
 );
 //------------------------------Starts Subscription Form ------------------------------
@@ -50,3 +51,7 @@ function handleCB(event) {
 cuisineDropdownMenu.addEventListener("change", handleCB);
 
 //------------------------------Ends Subscription Form ------------------------------
+=======
+  'https://api.spoonacular.com/food/ingredients/substitutes?ingredientName=butter'
+);
+>>>>>>> 3689cdb8481f30455fa3fb3f3c102ca3219a419f

@@ -1,12 +1,10 @@
-/* Variables */
-:root {
-  --dark-grey: #404146;
-  --light-grey: #bfc3c6;
-  --off-White: #fffaf4;
-  --gold: #c0ac7a;
-  --cream: #fef2e0;
+@media (min-width: 768px) {
+  .news-input {
+    width: 50%;
+  }
 }
 
+<<<<<<< HEAD
 /* .... Start Body Section .... */
 body {
   background-color: black !important;
@@ -29,21 +27,46 @@ body {
 }
 
 /* .... End Navbar Section .... */
+=======
+>>>>>>> 3689cdb8481f30455fa3fb3f3c102ca3219a419f
 
-/* .... Start Hero Section .... */
-/* .... End Hero Section .... */
+/* Hex colours */
 
-/* .... Start Recipe Card Section ..... */
+.bg-grey {
+  background-color: #404146; 
+} 
 
-/* .... Explore Quick and Easy Recipes Card Section .... */
+.bg-gold {
+  background-color: #C0AC7A; 
+} 
 
-/* .... Continental Culinary Classics Card Section .... */
 
-/* .... End Recipe Card Section .... */
+.bg-light-grey {
+  background-color: #BFC3C6; 
+} 
 
+<<<<<<< HEAD
 /* .... Start Footer Section .... */
 footer {
   margin-top: 100px;
 }
 
 /* .... End Footer Section .... */
+=======
+.bg-off-white {
+  background-color: #FFFAF4; 
+} 
+
+.bg-cream {
+  background-color: #fdefdc; 
+} 
+ 
+
+.text-cream {
+  color: #f9e6cb; 
+} 
+
+.text-gold {
+  color: #C0AC7A;
+}
+>>>>>>> 3689cdb8481f30455fa3fb3f3c102ca3219a419f
