@@ -45,20 +45,20 @@ if (window.location.pathname === '/mexican.html' || window.location.pathname ===
     getRecipe("mexican");
 } else if (window.location.pathname === '/Italiancuisine.html') {
     getRecipe("italian");
-} else if (window.location.pathname === '/greek.html') {
+} else if (window.location.pathname === '/Greekcuisine.html') {
     getRecipe("greek");
-} else if (window.location.pathname === '/asian.html') {
+} else if (window.location.pathname === '/Asiancuisine.html') {
     getRecipe("asian");
-} else if (window.location.pathname === '/indian.html') {
+} else if (window.location.pathname === '/Indiancuisine.html') {
     getRecipe("indian");
-} else if (window.location.pathname === '/french.html') {
+} else if (window.location.pathname === '/Frenchcuisine.html') {
     getRecipe("french");
-} else if (window.location.pathname === '/spanish.html') {
+} else if (window.location.pathname === '/Spanishcuisine.html') {
     getRecipe("spanish");
-} else if (window.location.pathname === '/moroccan.html') {
+} else if (window.location.pathname === '/Moroccancuisine.html') {
     getRecipe("moroccan");
 } else if (window.location.pathname === '/favourites.html') {
-    console.log("fave page");
+    showAllFavourites();
 } else {
     console.log("No page exists");
 }
@@ -103,8 +103,11 @@ function createRecipeCard(title, image, ingredients, instructions) {
     recipeCard.append(recipeImage, recipeTitleBody, recipeBtnBody);
     recipeContainer.append(recipeCard);
 
-    var heartId = document.querySelector(`[data-target="${title.split("+").join(" ")}"]`).textContent;
+    var heartId = document.querySelector(`[data-target="${title.split("+").join(" ")}"]`).dataset.target;
     console.log(heartId);
+
+    var heartClassRegular = document.querySelectorAll(".fa-regular");
+    console.log(heartClassRegular);
 
     var modalHTML = `
         <div class="modal fade" id="${title.split("+").join("")}" tabindex="-1" aria-labelledby="${title.split("+").join("")}label" aria-hidden="true">
@@ -181,10 +184,7 @@ function toggleFavorite(title, image, ingredients, instructions, recipeFave) {
         recipeFave.classList.remove("fa-solid");
         recipeFave.classList.add("fa-regular");
     }
-}
-
-
-createRecipeCard();
+};
 
 
 function getNutrition(recipeName) {
@@ -287,4 +287,33 @@ function updateNutritionInfo(title, nutritionData) {
         <span style="display: inline-flex;" class="badge text-bg-info">Sugar: ${nutritionData.sugar}</span>
         <span style="display: inline-flex;" class="badge text-bg-info">Serving Size: ${nutritionData.servingSize}</span>
     `;
+};
+
+function showAllFavourites() {
+    var allKeys = Object.keys(localStorage);
+    allKeys.forEach(function(key) {
+        var storedValue = localStorage.getItem(key);
+        if (isRecipe(storedValue)) {
+            var recipeDetails = JSON.parse(storedValue);
+            createRecipeCard(recipeDetails.title, recipeDetails.image, recipeDetails.ingredients, recipeDetails.instructions);
+            console.log(recipeDetails.title);
+            var heart = document.querySelector(`[data-target="${recipeDetails.title}"]`);
+
+            if (heart) {
+                // Toggle the class for the specific heart icon
+                heart.classList.remove("fa-regular");
+                heart.classList.add("fa-solid");
+            }
+        }
+    });
+};
+
+
+function isRecipe(value) {
+    try {
+        var parsedValue = JSON.parse(value);
+        return parsedValue && typeof parsedValue === 'object';
+    } catch (error) {
+        return false;
+    }
 };
