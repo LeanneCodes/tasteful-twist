@@ -108,8 +108,10 @@ function createRecipeCard(title, image, ingredients, instructions) {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h2>Nutritional Information</h2>
-                        <div id="nutritionInfo${title.split("+").join("")}"></div>
+                        <h2>Nutritional Information<sup>*</sup></h2>
+                        <div id="nutritionInfo${title.split("+").join("")}"></div><br>
+                        <p class="text-muted"><sup>*</sup>Nutritional data is based on estimates. It can vary depending on specific ingredients used.</p>
+                        <br>
                         <h2>Ingredients:</h2>
                         <ul>${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
                         <h2>Instructions:</h2>
@@ -195,17 +197,17 @@ function getNutrition(recipeName) {
 
                 var recipeTotal = {
                     name: recipeName.split("+").join(" "),
-                    calories: totalCalories + " kcal",
-                    fat: totalFat + "g",
-                    satFat: totalSaturatedFat + "g",
-                    protein: totalProtein + "g",
-                    sodium: totalSodium + "mg",
-                    potassium: totalPotassium + "mg",
-                    cholesterol: totalCholesterol + "mg",
+                    calories: parseInt((totalCalories).toFixed(2)) + " kcal",
+                    fat: parseInt((totalFat).toFixed(2)) + "g",
+                    satFat: parseInt((totalSaturatedFat).toFixed(2)) + "g",
+                    protein: parseInt((totalProtein).toFixed(2)) + "g",
+                    sodium: parseInt((totalSodium).toFixed(2)) + "mg",
+                    potassium: parseInt((totalPotassium).toFixed(2)) + "mg",
+                    cholesterol: parseInt((totalCholesterol).toFixed(2)) + "mg",
                     carbs: parseInt((totalCarbs).toFixed(2)) + "g",
-                    fibre: totalFibre + "g",
-                    sugar: totalSugar + "g",
-                    servingSize: servingSize + "g"
+                    fibre: parseInt((totalFibre).toFixed(2)) + "g",
+                    sugar: parseInt((totalSugar).toFixed(2))+ "g",
+                    servingSize: parseInt((servingSize).toFixed(0)) + "g"
                 }
 
                 console.log(recipeTotal);
@@ -219,16 +221,16 @@ function getNutrition(recipeName) {
 function updateNutritionInfo(title, nutritionData) {
     var nutritionInfoDiv = document.getElementById(`nutritionInfo${title.split("+").join("")}`);
     nutritionInfoDiv.innerHTML = `
-        <p>Calories: ${nutritionData.calories}</p>
-        <p>Fat: ${nutritionData.fat}</p>
-        <p>Saturated Fat: ${nutritionData.satFat}</p>
-        <p>Protein: ${nutritionData.protein}</p>
-        <p>Sodium: ${nutritionData.sodium}</p>
-        <p>Potassium: ${nutritionData.potassium}</p>
-        <p>Cholesterol: ${nutritionData.cholesterol}</p>
-        <p>Carbs: ${nutritionData.carbs}</p>
-        <p>Fibre: ${nutritionData.fibre}</p>
-        <p>Sugar: ${nutritionData.sugar}</p>
-        <p>Serving Size: ${nutritionData.servingSize}</p>
+        <span style="display: inline-flex;" class="badge text-bg-info">Calories: ${nutritionData.calories}</span>
+        <span style="display: inline-flex;" class="badge text-bg-info">Fat: ${nutritionData.fat}</span>
+        <span style="display: inline-flex;" class="badge text-bg-info">Saturated Fat: ${nutritionData.satFat}</span>
+        <span style="display: inline-flex;" class="badge text-bg-info">Protein: ${nutritionData.protein}</span>
+        <span style="display: inline-flex;" class="badge text-bg-info">Sodium: ${nutritionData.sodium}</span>
+        <span style="display: inline-flex;" class="badge text-bg-info">Potassium: ${nutritionData.potassium}</span>
+        <span style="display: inline-flex;" class="badge text-bg-info">Cholesterol: ${nutritionData.cholesterol}</span>
+        <span style="display: inline-flex;" class="badge text-bg-info">Carbs: ${nutritionData.carbs}</span>
+        <span style="display: inline-flex;" class="badge text-bg-info">Fibre: ${nutritionData.fibre}</span>
+        <span style="display: inline-flex;" class="badge text-bg-info">Sugar: ${nutritionData.sugar}</span>
+        <span style="display: inline-flex;" class="badge text-bg-info">Serving Size: ${nutritionData.servingSize}</span>
     `;
 };
