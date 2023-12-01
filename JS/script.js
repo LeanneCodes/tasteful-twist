@@ -100,44 +100,29 @@ function createRecipeCard(title, image, ingredients, instructions) {
     recipeCard.append(recipeImage, recipeTitleBody, recipeBtnBody);
     recipeContainer.append(recipeCard);
 
-    var modalContainer = document.createElement("div");
-    modalContainer.setAttribute("id", title.split("+").join(""));
-    modalContainer.setAttribute("class", "modal fade");
-    modalContainer.setAttribute("tabindex", "-1");
-    modalContainer.setAttribute("aria-labelledby", title.split("+").join("")+"label");
-    modalContainer.setAttribute("aria-hidden", "true");
-    var modal = document.createElement("div");
-    modal.setAttribute("class", "modal-dialog modal-dialog-centered modal-dialog-scrollable");
-    var modalContent = document.createElement("div");
-    var modalHeader = document.createElement("div");
-    var modalTitle = document.createElement("h1");
-    modalTitle.setAttribute("class", "modal-title fs-5");
-    modalTitle.setAttribute("id", title.split("+").join("")+"label");
-    modalTitle.innerText = "How to make: " + title.split("+").join(" ");
-    var modalDismiss = document.createElement("button");
-    modalDismiss.setAttribute("type", "button");
-    modalDismiss.setAttribute("class", "btn-close");
-    modalDismiss.setAttribute("data-bs-dismiss", "modal");
-    modalDismiss.setAttribute("aria-label", "Close");
-    modalHeader.append(modalTitle, modalDismiss);
-    var modalBody = document.createElement("div");
-    modalBody.innerHTML = `
-        <h2>Ingredients:</h2>
-        <ul>${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
-        <h2>Instructions:</h2>
-        <p>${instructions}</p>
+    var modalHTML = `
+        <div class="modal fade" id="${title.split("+").join("")}" tabindex="-1" aria-labelledby="${title.split("+").join("")}label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-3" style="width: 90%;" id="${title.split("+").join("")}label">${title.split("+").join(" ")}</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h2>Ingredients:</h2>
+                        <ul>${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
+                        <h2>Instructions:</h2>
+                        <p>${instructions}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     `;
-    var modalFooter = document.createElement("div");
-    modalFooter.setAttribute("class", "modal-footer");
-    var modalCloseBtn = document.createElement("button");
-    modalCloseBtn.setAttribute("class", "btn btn-secondary");
-    modalCloseBtn.setAttribute("type", "button");
-    modalCloseBtn.setAttribute("data-bs-dismiss", "modal");
-    modalCloseBtn.innerText = "Close";
-    modalContent.append(modalHeader, modalBody, modalFooter);
-    modal.append(modalContent);
-    modalContainer.append(modal);
-    document.body.append(modalContainer);
+
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
 }
 
 createRecipeCard();
