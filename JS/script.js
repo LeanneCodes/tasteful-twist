@@ -65,8 +65,11 @@ if (window.location.pathname === '/mexican.html' || window.location.pathname ===
 
 function createRecipeCard(title, image) {
     var recipeContainer = document.getElementById("recipe-container");
+    recipeContainer.setAttribute("class", "row");
+    recipeContainer.setAttribute("style", "justify-content: space-around; margin: 50px;")
     var recipeCard = document.createElement("div")
-    recipeCard.setAttribute("class", "card");
+    recipeCard.setAttribute("class", "card col-sm-12 col-md-4 col-lg-3");
+    recipeCard.setAttribute("style", "width: 18rem; padding: 20px; text-align: center; justify-content: space-between; margin-bottom: 2rem; height: 380px;");
     var recipeImage = document.createElement("img")
     if (!image) {
         console.log("no image available")
@@ -75,15 +78,23 @@ function createRecipeCard(title, image) {
         recipeImage.setAttribute("class", "card-img-top")
         recipeImage.setAttribute("alt", title);
     }
-    var recipeBody = document.createElement("div");
+    var recipeTitleBody = document.createElement("div");
     var recipeCardTitle = document.createElement("h5")
     recipeCardTitle.setAttribute("class", "card-title");
+    recipeCardTitle.setAttribute("style", "margin-bottom: 0 !important");
     recipeCardTitle.innerText = title.split("+").join(" ");
+    var recipeBtnBody = document.createElement("div");
+    recipeBtnBody.setAttribute("style", "display: flex; justify-content: space-around;")
     var recipeDetailsBtn = document.createElement("a")
-    recipeDetailsBtn.setAttribute("class", "btn btn-primary")
+    var recipeFave = document.createElement("i");
+    recipeFave.setAttribute("class", "fa-regular fa-heart");
+    recipeFave.setAttribute("style", "display: flex; justify-content: center; align-items: center; font-size: 1.5rem");
+    recipeDetailsBtn.setAttribute("class", "btn btn-primary");
+    recipeDetailsBtn.setAttribute("style", "width: 75%;");
     recipeDetailsBtn.innerText = "View Recipe";
-    recipeBody.append(recipeCardTitle, recipeDetailsBtn);
-    recipeCard.append(recipeImage, recipeBody);
+    recipeTitleBody.append(recipeCardTitle);
+    recipeBtnBody.append(recipeDetailsBtn, recipeFave);
+    recipeCard.append(recipeImage, recipeTitleBody, recipeBtnBody);
     recipeContainer.append(recipeCard);
 }
 
