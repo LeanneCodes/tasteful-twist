@@ -67,8 +67,8 @@ function createRecipeCard(title, image, ingredients, instructions) {
     recipeContainer.setAttribute("class", "row");
     recipeContainer.setAttribute("style", "justify-content: space-around; margin: 50px;")
     var recipeCard = document.createElement("div")
-    recipeCard.setAttribute("class", "card col-sm-12 col-md-4 col-lg-3");
-    recipeCard.setAttribute("style", "width: 18rem; padding: 20px; text-align: center; justify-content: space-between; margin-bottom: 2rem; height: 380px;");
+    recipeCard.setAttribute("class", "card col-sm-12 col-md-4 col-lg-3 p-3 text-center justify-content-between mb-3");
+    recipeCard.setAttribute("style", "width: 18rem; height: 380px;");
     var recipeImage = document.createElement("img")
     if (!image) {
         console.log("no image available")
@@ -86,8 +86,8 @@ function createRecipeCard(title, image, ingredients, instructions) {
     recipeBtnBody.setAttribute("style", "display: flex; justify-content: space-around;")
     var recipeDetailsBtn = document.createElement("button");
     var recipeFave = document.createElement("i");
-    recipeFave.setAttribute("class", "fa-regular fa-heart");
-    recipeFave.setAttribute("style", "display: flex; justify-content: center; align-items: center; font-size: 1.5rem");
+    recipeFave.setAttribute("class", "fa-regular fa-heart d-flex justify-content-center align-items-center");
+    recipeFave.setAttribute("style", "font-size: 1.5rem");
     recipeDetailsBtn.setAttribute("class", "btn btn-primary");
     recipeDetailsBtn.setAttribute("type", "button");
     recipeDetailsBtn.setAttribute("style", "width: 75%;");
@@ -102,7 +102,7 @@ function createRecipeCard(title, image, ingredients, instructions) {
     var modalHTML = `
         <div class="modal fade" id="${title.split("+").join("")}" tabindex="-1" aria-labelledby="${title.split("+").join("")}label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
+                <div class="modal-content" id="Modal-${title.split("+").join("")}">
                     <div class="modal-header">
                         <h1 class="modal-title fs-3" style="width: 90%;" id="${title.split("+").join("")}label">${title.split("+").join(" ")}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -118,6 +118,7 @@ function createRecipeCard(title, image, ingredients, instructions) {
                         <p>${instructions}</p>
                     </div>
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="fave${title.split("+").join("")}">Add to Favourites</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -127,8 +128,30 @@ function createRecipeCard(title, image, ingredients, instructions) {
 
     document.body.insertAdjacentHTML('beforeend', modalHTML);
 
+    var faveRecipeEl = document.getElementById(`fave${title.split("+").join("")}`);
+    console.log(faveRecipeEl);
+    
     getNutrition(title);
+
+    faveRecipeEl.addEventListener('click', function() {
+        addToFavourites(title, image, ingredients, instructions);
+    });
 }
+
+
+function addToFavourites(title, image, ingredients, instructions) {
+    var recipeDetails = {
+        title: title.split("+").join(" "),
+        image: image,
+        ingredients: ingredients,
+        instructions: instructions
+    };
+
+    var recipeDetailsJSON = JSON.stringify(recipeDetails);
+
+    localStorage.setItem(title.split("+").join(" "), recipeDetailsJSON);
+}
+
 
 createRecipeCard();
 
