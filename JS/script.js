@@ -24,7 +24,7 @@ function getRecipe(cuisine) {
                 console.log(titleSplit); 
                 var title = titleSplit.join("+");
                 console.log(title);
-                getNutrition(title);
+                // getNutrition(title);
 
                 var ingredients = Object.values(data.d[j].Ingredients);
                 console.log(ingredients.length);
@@ -36,6 +36,8 @@ function getRecipe(cuisine) {
                 console.log(instructions);
                 var image = data.d[j].Image;
                 console.log(image);
+
+                createRecipeCard(title, image);
             }
         });
 };
@@ -61,7 +63,31 @@ if (window.location.pathname === '/mexican.html' || window.location.pathname ===
 }
 
 
-var recipeContainer = document.getElementById("recipe-container");
+function createRecipeCard(title, image) {
+    var recipeContainer = document.getElementById("recipe-container");
+    var recipeCard = document.createElement("div")
+    recipeCard.setAttribute("class", "card");
+    var recipeImage = document.createElement("img")
+    if (!image) {
+        console.log("no image available")
+    } else {
+        recipeImage.setAttribute("src", image)
+        recipeImage.setAttribute("class", "card-img-top")
+        recipeImage.setAttribute("alt", title);
+    }
+    var recipeBody = document.createElement("div");
+    var recipeCardTitle = document.createElement("h5")
+    recipeCardTitle.setAttribute("class", "card-title");
+    recipeCardTitle.innerText = title.split("+").join(" ");
+    var recipeDetailsBtn = document.createElement("a")
+    recipeDetailsBtn.setAttribute("class", "btn btn-primary")
+    recipeDetailsBtn.innerText = "View Recipe";
+    recipeBody.append(recipeCardTitle, recipeDetailsBtn);
+    recipeCard.append(recipeImage, recipeBody);
+    recipeContainer.append(recipeCard);
+}
+
+createRecipeCard();
 
 
 function getNutrition(recipeName) {
