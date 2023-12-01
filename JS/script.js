@@ -32,7 +32,7 @@ function getRecipe(cuisine) {
                     console.log(ingredients[k]);
                 }
                 console.log(ingredients);
-                var instructions = data.d[j].Instructions;
+                var instructions = data.d[j].Instructions.split(".").join(".<br><br>");
                 console.log(instructions);
                 var image = data.d[j].Image;
                 console.log(image);
