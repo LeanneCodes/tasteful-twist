@@ -40,15 +40,28 @@ function getRecipe(cuisine) {
         });
 };
 
-getRecipe("mexican");
-// getRecipe("spanish");
-// getRecipe("italian");
-// getRecipe("greek");
-// getRecipe("asian");
-// getRecipe("indian");
-// getRecipe("french");
-// getRecipe("moroccan");
+if (window.location.pathname === '/mexican.html' || window.location.pathname === '/dummy.html') {
+    getRecipe("mexican");
+} else if (window.location.pathname === '/italian.html') {
+    getRecipe("italian");
+} else if (window.location.pathname === '/greek.html') {
+    getRecipe("greek");
+} else if (window.location.pathname === '/asian.html') {
+    getRecipe("asian");
+} else if (window.location.pathname === '/indian.html') {
+    getRecipe("indian");
+} else if (window.location.pathname === '/french.html') {
+    getRecipe("french");
+} else if (window.location.pathname === '/spanish.html') {
+    getRecipe("spanish");
+} else if (window.location.pathname === '/moroccan.html') {
+    getRecipe("moroccan");
+} else {
+    console.log("No page exists");
+}
 
+
+var recipeContainer = document.getElementById("recipe-container");
 
 
 function getNutrition(recipeName) {
