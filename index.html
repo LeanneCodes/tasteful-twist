@@ -11,15 +11,17 @@
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <link href="./CSS/style.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/c5cf94838c.js" crossorigin="anonymous"></script> <!-- Icon font -->
 
 
   <title>Tasteful Twist</title>
-  </head>
-  <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+</head>
+
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
   <!-- ................. Start Navbar Section ................. -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href='#'><img src="/Images/LogoDesign1-LM.png" width= 400px height=85px alt="logo"></a>
+    <di class="container-fluid">
+      <a class="navbar-brand" href='#'><img src="/Images/LogoDesign1-LM.png" width=400px height=85px alt="logo"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -69,19 +71,240 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
           </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-success" type="submit" fdprocessedid="y5alsi">
-            Search
-          </button>
-        </form>
+          <div class="formContact">
+            <form>
+              <li class="nav-item" id="nav-tab" role="tablist">
+                <!-------------------- Contact Page -------------------->
+                <!-- Button trigger modal -->
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#contactModal"> <i
+                    class="fa-regular fa-user" style="color: #000000;"></i> </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="contactModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <!-- Add a close button -->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                          <button class="nav-link active col-md-6" id="nav-home-tab" data-bs-toggle="tab"
+                            href="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                            <h4>Welcome</h4>
+                          </button>
+                          <button class="nav-link col-md-6" id="nav-profile-tab" data-bs-toggle="tab"
+                            href="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                            aria-selected="false">
+                            <h4>Sign Up</h4>
+                          </button>
+                        </div>
+                        <div class="tab-content" id="nav-tabContent">
+                          <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                            aria-labelledby="nav-home-tab">
+                            <br>
+                            <div class="row g-3">
+                              <form>
+                                <div class="text-center mb-3">
+                                  <br>
+                                  <p>Sign in with:</p>
+                                  <br>
+                                  <button data-mdb-ripple-init type="button" class="btn  btn-floating mx-1">
+                                    <i class="fab fa-facebook-f"></i>
+                                  </button>
+
+                                  <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
+                                    <i class="fab fa-instagram"></i>
+                                  </button>
+
+                                  <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
+                                    <i class="fab fa-twitter"></i>
+                                  </button>
+
+                                  <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
+                                    <i class="fab fa-tiktok"></i>
+                                  </button>
+                                </div>
+
+                                <p class="text-center">or</p>
+                                <div class="col-md-12">
+                                  <input type="email" class="form-control" id="emailInfoSignIn" placeholder="Email"
+                                    required>
+                                </div>
+                                <div class="col-md-12">
+                                  <input type="password" class="form-control" id="passwordInfoSignIn"
+                                    placeholder="Password" required>
+                                  <hr />
+                                  <!-- 2 column grid layout for inline styling -->
+                                  <div class="row mb-4">
+                                    <div class="col d-flex justify-content-center">
+                                      <!-- Checkbox -->
+                                      <div class="formCheck">
+                                        <input class="formCheckInput" type="checkbox" value="" id="rememberForm" />
+                                        <label class="formCheckLabel" for="rememberForm"> Remember me </label>
+                                      </div>
+                                    </div>
+                              </form>
+                              <div class="col">
+                                <!-- Simple link -->
+                                <a href="#!">Forgot password?</a>
+                              </div>
+                            </div>
+                            <hr />
+                            <button class="col-md-12">Login</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <form class="row g-3">
+                          <form>
+                            <div class="text-center mb-3">
+                              <br>
+                              <p>Sign up with:</p>
+                              <br>
+                              <button data-mdb-ripple-init type="button" class="btn  btn-floating mx-1">
+                                <i class="fab fa-facebook-f"></i>
+                              </button>
+
+                              <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
+                                <i class="fab fa-instagram"></i>
+                              </button>
+
+                              <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
+                                <i class="fab fa-twitter"></i>
+                              </button>
+
+                              <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
+                                <i class="fab fa-tiktok"></i>
+                              </button>
+                            </div>
+
+                            <p class="text-center">or</p>
+                            <div class="col-md-12">
+                              <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                            </div>
+                            <div class="col-md-12">
+                              <input type="email" class="form-control" id="emailInfo" placeholder="Email" required>
+                            </div>
+                            <div class="col-md-12">
+                              <input type="password" class="form-control" id="passwordInfo" placeholder="Password"
+                                required>
+                            </div>
+                            <div class="col-md-12">
+                              <input type="repeatPassword" class="form-control" id="repeatPasswordInfo"
+                                placeholder=" Repeat Password" required>
+                            </div>
+                            <div class="col-12">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required />
+                                <label class="form-check-label" for="invalidCheck2">Agree to terms and
+                                  conditions</label>
+                              </div>
+                            </div>
+                            <hr />
+                            <button class="col-md-12">Sign up</button>
+                          </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </div>
       </div>
-    </div>
+      </div>
+      </li>
+      </div>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-outline-success" type="submit" fdprocessedid="y5alsi">
+          Search
+        </button>
+      </form>
+      </div>
+      <!-- ................. Start Subscribe Section ................. -->
+      <section class="text-light p-5 ">
+        <div class="container">
+          <!-- Button trigger modal -->
+          <div class="input-group news-input d-md-flex align-items-center">
+            <button class="btn  btn-light text-dark btn-md text-center fw-bolder fs-4" type="button"
+              data-bs-toggle="modal" data-bs-target="#staticBackdrop"> Subscribe </button>
+            <!-- <h5 class="mb-3 mb-md-0 text-black col-md-6">     for yummy recipes to your inbox! </h5> -->
+          </div>
+        </div>
+
+      </section>
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel"> Subscription for Email Digestion!</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true"></span>&times;</span></button>
+            </div>
+            <form class="row g-3">
+              <div class="col-md-6">
+                <label for="FirstName" class="form-label"> First Name</label>
+                <input type="text" class="form-control" id="firstName" required>
+              </div>
+              <div class="col-md-6">
+                <label for="LastName" class="form-label"> Last Name</label>
+                <input type="text" class="form-control" id="lastName" required>
+              </div>
+
+              <div class="col-md-8">
+                <label for="emailInfo" class="form-label">Email</label>
+                <input type="email" class="form-control" id="emailInfo" required>
+              </div>
+
+              <!-- <h5 col-md-6 class="form-title"> By Time </h5> -->
+              <div class="timeDropdown col-md-6">
+                <button class="btn   col-md-6" type="button"> Time </button>
+                <ul class="timeDropdown-menu" aria-labelledby="multiSelectTimeDropdown">
+                  <li><label><input type="checkbox" value="15min"> 15 minutes </label></li>
+                  <li><label><input type="checkbox" value="30min"> 30 minutes </label></li>
+                  <li><label><input type="checkbox" value="60min"> 60 minutes </label></li>
+                </ul>
+              </div>
+
+              <div class="CuisineDropdown col-md-6">
+                <button class="btn  col-md-6" type="button"> Cuisine </button>
+                <ul class="cuisineDropdown-menu" aria-labelledby="multiSelectCuisineDropdown">
+                  <li> <label> <input type="checkbox" value="italian"> Italian Cuisine</label></li>
+                  <li><label><input type="checkbox" value="greek"> Greek Cuisine </label></li>
+                  <li><label> <input type="checkbox" value="spain"> Spanish Cuisine </label></li>
+                </ul>
+              </div>
+
+              <!-- <h4 col-md-6 class="form-check"> Frequency </h4> -->
+              <div class="frequencyDropdown col-md-12">
+                <button class="btn  col-md-6" type="button"> Frequency of Email Digestion </button>
+                <ul class="frequencyDropdown-menu" aria-labelledby="radioButtonFrequencyDropdown">
+                  <div class="time ">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault">
+                    <label> Daily</label>
+                  </div>
+                  <div class="time ">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault">
+                    <label> Weekly </label>
+                  </div>
+                  <div class="time">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault">
+                    <label> Monthly </label>
+                </ul>
+              </div>
+            </form>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
+              <button type="submit" class="btn btn-primary"> Subscribe! </button>
+            </div>
+          </div>
+        </div>
+        <!-- ................. End Subscribe Section ................. -->
   </nav>
   <!-- ................. End Navbar Section ................. -->
-
-
 
   <!-- ................. Start Hero Section ................. -->
 
@@ -150,63 +373,64 @@
   <section id="recipes" class="p-5">
     <div class="container">
       <h2 class="fs-1 text-center text-gold"><strong>Explore Quick and Easy Recipes </strong></h2>
-      <p class="text-center""> Browse through our handpicked assortment of recipes, thoughtfully crafted to suit your hectic timetable</p>
+      <p class="text-center"> Browse through our handpicked assortment of recipes, thoughtfully crafted to suit your
+        hectic timetable</p>
       <div class=" row text-center g-4">
-      <div class="col-md">
-        <div class="card bg-black text-light">
-          <div class="card-body text-center">
-            <div class="h1 mb-3">
-              <img src="./Images/15min.png" class="img-fluid" alt="">
+        <div class="col-md">
+          <div class="card bg-black text-light">
+            <div class="card-body text-center">
+              <div class="h1 mb-3">
+                <img src="./Images/15min.png" class="img-fluid" alt="">
+              </div>
+              <h3 class="card-title mb-3">
+                15 Minute Recipes
+              </h3>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium aut eligendi odio delectus sed
+                sequi! Dolorem.
+              </p>
+              <a href="#">
+                <button class="btn bg-gold">View Recipes</button></a>
             </div>
-            <h3 class="card-title mb-3">
-              15 Minute Recipes
-            </h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium aut eligendi odio delectus sed
-              sequi! Dolorem.
-            </p>
-            <a href="#">
-              <button class="btn bg-gold">View Recipes</button></a>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="card bg-black text-light">
+            <div class="card-body text-center">
+              <div class="h1 mb-3">
+                <img src="./Images/30min.png" class="img-fluid" alt="">
+              </div>
+              <h3 class="card-title mb-3">
+                30 Minute Recipes
+              </h3>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium aut eligendi odio delectus sed
+                sequi! Dolorem.
+              </p>
+              <a href="#">
+                <button class="btn bg-gold">View Recipes</button></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="card bg-black text-light">
+            <div class="card-body text-center">
+              <div class="h1 mb-3">
+                <img src="./Images/60min.png" class="img-fluid" alt="">
+              </div>
+              <h3 class="card-title mb-3">
+                60 Minute Recipes
+              </h3>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium aut eligendi odio delectus sed
+                sequi! Dolorem.
+              </p>
+              <a href="#">
+                <button class="btn bg-gold">View Recipes</button></a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md">
-        <div class="card bg-black text-light">
-          <div class="card-body text-center">
-            <div class="h1 mb-3">
-              <img src="./Images/30min.png" class="img-fluid" alt="">
-            </div>
-            <h3 class="card-title mb-3">
-              30 Minute Recipes
-            </h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium aut eligendi odio delectus sed
-              sequi! Dolorem.
-            </p>
-            <a href="#">
-              <button class="btn bg-gold">View Recipes</button></a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md">
-        <div class="card bg-black text-light">
-          <div class="card-body text-center">
-            <div class="h1 mb-3">
-              <img src="./Images/60min.png" class="img-fluid" alt="">
-            </div>
-            <h3 class="card-title mb-3">
-              60 Minute Recipes
-            </h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium aut eligendi odio delectus sed
-              sequi! Dolorem.
-            </p>
-            <a href="#">
-              <button class="btn bg-gold">View Recipes</button></a>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- ................. Continental Culinary Classics Card Section ................. -->
@@ -275,86 +499,58 @@
 
 
   <!-- ................. Start Subscribe Section ................. -->
-  <section class="bg-cream  text-light p-5">
-    <div class="container">
-      <div class="d-md-flex justify-content-between align-items-center">
-        <h3 class="mb-3 mb-md-0 text-black">Sign Up For Yummy Daily Recipes To Your Inbox:</h3>
 
-        <div class="input-group news-input">
-          <input type="text" class="form-control" placeholder="Enter Email" />
-          <button class="btn bg-dark text-light btn-lg" type="button">Subscribe</button>
-        </div>
-      </div>
-    </div>
-  </section>
+
   <!-- ................. End Subscribe Section ................. -->
 
 
 
   <!-- ................. Start Footer Section ................. -->
-  <div class="container">
-    <footer class="py-1">
-      <div class="row d-flex justify-content-between">
-        <div class="col-12 mb-4">
-          <form id="subscriptionForm">
-            <h5>Subscribe to our newsletter</h5>
-            <p>Monthly digest of what's new and exciting from us.</p>
-            <div class="d-flex flex-column flex-sm-row w-100 gap-sm-5">
-              <label for="newsletterEmail" class="visually-hidden">Email address</label>
-              <input id="newsletterEmail" type="email" class="form-control" placeholder="Email address" required>
-              <button class="btn btn-primary" type="submit">Subscribe</button>
-            </div>
-          </form>
-        </div>
-      </div>
+  <footer>
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p class="text-dark">© 2023 TastefulTwists, Inc. All rights reserved.</p>
+      <ul class="list-unstyled d-flex">
+        <li class="ms-3">
+          <a class="link-body-emphasis" href="https://twitter.com">
+            <img src="./Images/twitter-logo.png" alt="Twitter" width="24" height="24">
+          </a>
+        </li>
+        <li class="ms-3">
+          <a class="link-body-emphasis" href="https://www.instagram.com/">
+            <img src="./Images/instagram-logo.png" alt="Instagram" width="24" height="24">
+          </a>
+        </li>
+        <li class="ms-3">
+          <a class="link-body-emphasis" href="https://www.facebook.com/home">
+            <img src="./Images/facebook-logo.png" alt="Facebook" width="24" height="24">
+          </a>
+        </li>
+        <li class="ms-3">
+          <a class="link-body-emphasis" href="https://www.tiktok.com/en/">
+            <img src="./Images/tiktok-logo.png" alt="TikTok" width="24" height="24">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
 
-      <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-        <p>© 2023 TastefulTwists, Inc. All rights reserved.</p>
-        <ul class="list-unstyled d-flex">
-          <li class="ms-3">
-            <a class="link-body-emphasis" href="https://twitter.com">
-              <img src="./Images/twitter-logo.png" alt="Twitter" width="24" height="24">
-            </a>
-          </li>
-          <li class="ms-3">
-            <a class="link-body-emphasis" href="https://www.instagram.com/">
-              <img src="./Images/instagram-logo.png" alt="Instagram" width="24" height="24">
-            </a>
-          </li>
-          <li class="ms-3">
-            <a class="link-body-emphasis" href="https://www.facebook.com/home">
-              <img src="./Images/facebook-logo.png" alt="Facebook" width="24" height="24">
-            </a>
-          </li>
-          <li class="ms-3">
-            <a class="link-body-emphasis" href="https://www.tiktok.com/en/">
-              <img src="./Images/tiktok-logo.png" alt="TikTok" width="24" height="24">
-            </a>
-          </li>
-        </ul>
-      </div>
-    </footer>
-  </div>
-  <!-- ................. End Footer Section ................. -->
 
   <!-- ................. Start Bootstrap CSS ................. -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-      crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-      crossorigin="anonymous"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+
   <script src="./JS/script.js"></script>
   <!-- ................. End Bootstrap CSS ................. -->
 
-  </footer>
-  <!-- ................. End Footer Section ................. -->
 </body>
 
 </html>

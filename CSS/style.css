@@ -4,6 +4,31 @@
   }
 }
 
+<<<<<<< HEAD
+/* .... Start Body Section .... */
+body {
+  background-color: black !important;
+  font-family: 'Mona Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* .... End Body Section .... */
+/* .... Start Navbar Section .... */
+.navbar-nav {
+  margin-left: auto;
+  margin-right: 0 !important;
+}
+
+
+/* Contact Section */
+.formContact {
+  /* background-color: linear-gradient(--light-grey; ) max-width: 500px;
+  width: 100%;
+  padding: 30px; */
+}
+
+/* .... End Navbar Section .... */
+=======
+>>>>>>> 3689cdb8481f30455fa3fb3f3c102ca3219a419f
 
 /* Hex colours */
 
@@ -20,6 +45,14 @@
   background-color: #BFC3C6; 
 } 
 
+<<<<<<< HEAD
+/* .... Start Footer Section .... */
+footer {
+  margin-top: 100px;
+}
+
+/* .... End Footer Section .... */
+=======
 .bg-off-white {
   background-color: #FFFAF4; 
 } 
@@ -36,3 +69,4 @@
 .text-gold {
   color: #C0AC7A;
 }
+>>>>>>> 3689cdb8481f30455fa3fb3f3c102ca3219a419f
