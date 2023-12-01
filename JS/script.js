@@ -3,7 +3,7 @@ function getRecipe(cuisine) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'f2c0025551msh634b76b514de39bp12e43cjsn68aa06d692f3',
+            'X-RapidAPI-Key': '8dda9d9ee6msh61bc18e73875257p1cca71jsn3ba2b933a71d',
             'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
         }
     };
@@ -43,7 +43,7 @@ function getRecipe(cuisine) {
 
 if (window.location.pathname === '/mexican.html' || window.location.pathname === '/dummy.html') {
     getRecipe("mexican");
-} else if (window.location.pathname === '/italian.html') {
+} else if (window.location.pathname === '/Italiancuisine.html') {
     getRecipe("italian");
 } else if (window.location.pathname === '/greek.html') {
     getRecipe("greek");
@@ -57,6 +57,8 @@ if (window.location.pathname === '/mexican.html' || window.location.pathname ===
     getRecipe("spanish");
 } else if (window.location.pathname === '/moroccan.html') {
     getRecipe("moroccan");
+} else if (window.location.pathname === '/favourites.html') {
+    console.log("fave page");
 } else {
     console.log("No page exists");
 }
@@ -116,7 +118,6 @@ function createRecipeCard(title, image, ingredients, instructions) {
                         <h2>Nutritional Information<sup>*</sup></h2>
                         <div id="nutritionInfo${title.split("+").join("")}"></div><br>
                         <p class="text-muted"><sup>*</sup>Nutritional data is based on estimates. It can vary depending on specific ingredients used.</p>
-                        <br>
                         <h2>Ingredients:</h2>
                         <ul>${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
                         <h2>Instructions:</h2>
@@ -146,6 +147,13 @@ function createRecipeCard(title, image, ingredients, instructions) {
         toggleFavorite(title, image, ingredients, instructions, recipeFave);
     });
 
+    return {
+        title: title,
+        image: image,
+        ingredients: ingredients,
+        instructions: instructions,
+        recipeFave: recipeFave
+    };
 };
 
 
@@ -184,7 +192,7 @@ function getNutrition(recipeName) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'c7965e32a1mshbe160fd7fa536fap1de1ccjsn06ed08451b4a',
+            'X-RapidAPI-Key': '8dda9d9ee6msh61bc18e73875257p1cca71jsn3ba2b933a71d',
             'X-RapidAPI-Host': 'nutrition-by-api-ninjas.p.rapidapi.com'
         }
     };
