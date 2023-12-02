@@ -42,28 +42,61 @@ function getRecipe(cuisine) {
 };
 
 if (window.location.pathname === '/mexican.html' || window.location.pathname === '/dummy.html') {
-    getRecipe("mexican");
+    document.addEventListener("DOMContentLoaded", function() {
+        getRecipe("mexican");
+        showAllFavourites();
+    });
 } else if (window.location.pathname === '/Italiancuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
         getRecipe("italian");
         showAllFavourites();
     });
 } else if (window.location.pathname === '/Greekcuisine.html') {
-    getRecipe("greek");
+    document.addEventListener("DOMContentLoaded", function() {
+        getRecipe("greek");
+        showAllFavourites();
+    });
 } else if (window.location.pathname === '/Asiancuisine.html') {
-    getRecipe("asian");
+    document.addEventListener("DOMContentLoaded", function() {
+        getRecipe("asian");
+        showAllFavourites();
+    });
 } else if (window.location.pathname === '/Indiancuisine.html') {
-    getRecipe("indian");
+    document.addEventListener("DOMContentLoaded", function() {
+        getRecipe("indian");
+        showAllFavourites();
+    });
 } else if (window.location.pathname === '/Frenchcuisine.html') {
-    getRecipe("french");
+    document.addEventListener("DOMContentLoaded", function() {
+        getRecipe("french");
+        showAllFavourites();
+    });
 } else if (window.location.pathname === '/Spanishcuisine.html') {
-    getRecipe("spanish");
+    document.addEventListener("DOMContentLoaded", function() {
+        getRecipe("spanish");
+        showAllFavourites();
+    });
 } else if (window.location.pathname === '/Moroccancuisine.html') {
-    getRecipe("moroccan");
+    document.addEventListener("DOMContentLoaded", function() {
+        getRecipe("moroccan");
+        showAllFavourites();
+    });
 } else if (window.location.pathname === '/favourites.html') {
     document.addEventListener("DOMContentLoaded", function() {
         showAllFavourites();
     });
+    var recipeContainer = document.getElementById("recipe-container");
+    console.log(recipeContainer.childElementCount)
+    if (recipeContainer.childElementCount === 0 || null) {
+        var displayComment = document.createElement("h3");
+        displayComment.textContent = "No recipes have been favourited yet!";
+        recipeContainer.appendChild(displayComment);
+    }
+    
+    if (recipeContainer.childElementCount > 0) {
+        displayComment.textContent = "";
+        recipeContainer.appendChild(displayComment);
+    }
 } else {
     console.log("No page exists");
 }
@@ -92,6 +125,12 @@ function createRecipeCard(title, image, ingredients, instructions) {
     }
 
     var recipeContainer = document.getElementById("recipe-container");
+    console.log(recipeContainer.childElementCount)
+    if (recipeContainer.childElementCount === 0) {
+        var displayComment = document.createElement("h3");
+        displayComment.textContent = "No recipes are available at this time!";
+        recipeContainer.appendChild(displayComment);
+    }
     recipeContainer.setAttribute("class", "row");
     if (window.location.pathname === '/favourites.html') {
         recipeContainer.setAttribute("style", "justify-content: flex-start; margin: 50px;")
