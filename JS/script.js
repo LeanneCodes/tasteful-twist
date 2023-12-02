@@ -126,11 +126,7 @@ function createRecipeCard(title, image, ingredients, instructions) {
 
     var recipeContainer = document.getElementById("recipe-container");
     console.log(recipeContainer.childElementCount)
-    if (recipeContainer.childElementCount === 0) {
-        var displayComment = document.createElement("h3");
-        displayComment.textContent = "No recipes are available at this time!";
-        recipeContainer.appendChild(displayComment);
-    }
+    
     recipeContainer.setAttribute("class", "row");
     if (window.location.pathname === '/favourites.html') {
         recipeContainer.setAttribute("style", "justify-content: flex-start; margin: 50px;")
