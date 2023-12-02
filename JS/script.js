@@ -3,7 +3,7 @@ function getRecipe(cuisine) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '8dda9d9ee6msh61bc18e73875257p1cca71jsn3ba2b933a71d',
+            'X-RapidAPI-Key': 'c7965e32a1mshbe160fd7fa536fap1de1ccjsn06ed08451b4a',
             'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
         }
     };
@@ -58,7 +58,9 @@ if (window.location.pathname === '/mexican.html' || window.location.pathname ===
 } else if (window.location.pathname === '/Moroccancuisine.html') {
     getRecipe("moroccan");
 } else if (window.location.pathname === '/favourites.html') {
-    showAllFavourites();
+    document.addEventListener("DOMContentLoaded", function() {
+        showAllFavourites();
+    });
 } else {
     console.log("No page exists");
 }
@@ -67,10 +69,18 @@ if (window.location.pathname === '/mexican.html' || window.location.pathname ===
 function createRecipeCard(title, image, ingredients, instructions) {
     var recipeContainer = document.getElementById("recipe-container");
     recipeContainer.setAttribute("class", "row");
-    recipeContainer.setAttribute("style", "justify-content: space-around; margin: 50px;")
-    var recipeCard = document.createElement("div")
+    if (window.location.pathname === '/favourites.html') {
+        recipeContainer.setAttribute("style", "justify-content: flex-start; margin: 50px;")
+    } else {
+        recipeContainer.setAttribute("style", "justify-content: space-around; margin: 50px;")
+    }
+    var recipeCard = document.createElement("div");
     recipeCard.setAttribute("class", "card col-sm-12 col-md-4 col-lg-3 p-3 text-center justify-content-between mb-3");
-    recipeCard.setAttribute("style", "width: 18rem; height: 380px;");
+    if (window.location.pathname === '/favourites.html') {
+        recipeCard.setAttribute("style", "width: 18rem; height: 380px; margin-right: 30px;");
+    } else {
+        recipeCard.setAttribute("style", "width: 18rem; height: 380px;");
+    }
     var recipeImage = document.createElement("img")
     if (!image) {
         console.log("no image available")
@@ -109,6 +119,14 @@ function createRecipeCard(title, image, ingredients, instructions) {
     var heartClassRegular = document.querySelectorAll(".fa-regular");
     console.log(heartClassRegular);
 
+    var modalBtn = "";
+
+    if (window.location.pathname === '/favourites.html') {
+        var modalBtn = "Remove from favourites";
+    } else {
+        var modalBtn = "Add to Favourites";
+    }
+
     var modalHTML = `
         <div class="modal fade" id="${title.split("+").join("")}" tabindex="-1" aria-labelledby="${title.split("+").join("")}label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -127,7 +145,7 @@ function createRecipeCard(title, image, ingredients, instructions) {
                         <p>${instructions}</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="fave${title.split("+").join("")}">Add to Favourites</button>
+                        <button type="button" class="btn btn-primary" id="fave${title.split("+").join("")}">${modalBtn}</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -183,7 +201,7 @@ function toggleFavorite(title, image, ingredients, instructions, recipeFave) {
         localStorage.removeItem(title.split("+").join(" "));
         recipeFave.classList.remove("fa-solid");
         recipeFave.classList.add("fa-regular");
-    }
+    };
 };
 
 
@@ -295,15 +313,53 @@ function showAllFavourites() {
         var storedValue = localStorage.getItem(key);
         if (isRecipe(storedValue)) {
             var recipeDetails = JSON.parse(storedValue);
-            createRecipeCard(recipeDetails.title, recipeDetails.image, recipeDetails.ingredients, recipeDetails.instructions);
+            createRecipeCard(recipeDetails.title.split(" ").join(""), recipeDetails.image, recipeDetails.ingredients, recipeDetails.instructions);
             console.log(recipeDetails.title);
-            var heart = document.querySelector(`[data-target="${recipeDetails.title}"]`);
 
+            // Get all elements with the class 'card-title'
+            var cardTitles = document.querySelectorAll('.card-title');
+
+            // Iterate over each element
+            cardTitles.forEach(function(cardTitle) {
+                // Get the current text content
+                var currentText = cardTitle.innerText;
+
+                // Add a space before each uppercase letter and before the word 'and'
+                var newText = currentText.replace(/([A-Z])|(and)/g, function(match, uppercase, and) {
+                    // If it's an uppercase letter, add a space before it
+                    if (uppercase) {
+                        return ' ' + uppercase;
+                    }
+                    // If it's the word 'and', add spaces around it
+                    else if (and) {
+                        return ' ' + and + ' ';
+                    }
+                });
+
+                // Update the text content with the modified string
+                cardTitle.innerText = newText.trim();
+            });
+
+            var modalTitle = document.getElementById(`${recipeDetails.title.split(" ").join("")}`);
+            console.log(modalTitle.children[0].children[0].children[0].children[0]);
+            modalTitle.children[0].children[0].children[0].children[0].textContent = recipeDetails.title;
+
+            var modalFaveBtn = document.getElementById("fave" + `${recipeDetails.title.split(" ").join("")}`);
+            console.log(modalFaveBtn.getAttribute("type"))
+            if (modalFaveBtn.getAttribute("type") === "button") {
+                modalFaveBtn.addEventListener('click', function() {
+                    localStorage.removeItem(`${recipeDetails.title}`);
+                    window.location.reload();
+                })
+            }
+
+            var heart = document.querySelector(`[data-target="${recipeDetails.title.split(" ").join("")}"]`);
             if (heart) {
                 // Toggle the class for the specific heart icon
                 heart.classList.remove("fa-regular");
                 heart.classList.add("fa-solid");
             }
+
         }
     });
 };
