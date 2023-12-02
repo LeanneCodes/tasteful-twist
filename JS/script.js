@@ -3,7 +3,7 @@ function getRecipe(cuisine) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'c7965e32a1mshbe160fd7fa536fap1de1ccjsn06ed08451b4a',
+            'X-RapidAPI-Key': 'f2c0025551msh634b76b514de39bp12e43cjsn68aa06d692f3',
             'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
         }
     };
@@ -44,7 +44,10 @@ function getRecipe(cuisine) {
 if (window.location.pathname === '/mexican.html' || window.location.pathname === '/dummy.html') {
     getRecipe("mexican");
 } else if (window.location.pathname === '/Italiancuisine.html') {
-    getRecipe("italian");
+    document.addEventListener("DOMContentLoaded", function() {
+        getRecipe("italian");
+        showAllFavourites();
+    });
 } else if (window.location.pathname === '/Greekcuisine.html') {
     getRecipe("greek");
 } else if (window.location.pathname === '/Asiancuisine.html') {
@@ -67,6 +70,27 @@ if (window.location.pathname === '/mexican.html' || window.location.pathname ===
 
 
 function createRecipeCard(title, image, ingredients, instructions) {
+    // remove duplicate cards from the cuisine page if the user has already add them to their favourites
+    var existingRecipeCards = document.querySelectorAll(`.card-title`);
+    var duplicateFound = false;
+
+    existingRecipeCards.forEach(function (cardTitle) {
+        if (cardTitle.innerText.trim() === title.split("+").join(" ")) {
+            duplicateFound = true;
+            // Update favorite icon only if it's not already set to fa-solid
+            var existingFaveIcon = cardTitle.closest('.card').querySelector(".fa-heart");
+            if (existingFaveIcon && !existingFaveIcon.classList.contains("fa-solid")) {
+                existingFaveIcon.classList.remove("fa-regular");
+                existingFaveIcon.classList.add("fa-solid");
+            }
+        }
+    });
+
+    if (duplicateFound) {
+        console.log("Duplicate recipe found. Removing the second occurrence:", title);
+        return;
+    }
+
     var recipeContainer = document.getElementById("recipe-container");
     recipeContainer.setAttribute("class", "row");
     if (window.location.pathname === '/favourites.html') {
@@ -313,6 +337,7 @@ function showAllFavourites() {
         var storedValue = localStorage.getItem(key);
         if (isRecipe(storedValue)) {
             var recipeDetails = JSON.parse(storedValue);
+            
             createRecipeCard(recipeDetails.title.split(" ").join(""), recipeDetails.image, recipeDetails.ingredients, recipeDetails.instructions);
             console.log(recipeDetails.title);
 
@@ -325,16 +350,17 @@ function showAllFavourites() {
                 var currentText = cardTitle.innerText;
 
                 // Add a space before each uppercase letter and before the word 'and'
-                var newText = currentText.replace(/([A-Z])|(and)/g, function(match, uppercase, and) {
+                var newText = currentText.replace(/([A-Z])|(and)|(with)|(de)/g, function(match, uppercase, and, withText, de) {
                     // If it's an uppercase letter, add a space before it
                     if (uppercase) {
                         return ' ' + uppercase;
                     }
-                    // If it's the word 'and', add spaces around it
-                    else if (and) {
-                        return ' ' + and + ' ';
+                    // If it's the word 'and' or 'with', add spaces around it
+                    else if (and || withText) {
+                        return ' ' + (and || withText || de) + ' ';
                     }
-                });
+                });                
+                
 
                 // Update the text content with the modified string
                 cardTitle.innerText = newText.trim();
@@ -372,4 +398,26 @@ function isRecipe(value) {
     } catch (error) {
         return false;
     }
+};
+
+function getAllFavorites() {
+    var favorites = [];
+
+    for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        var storedValue = localStorage.getItem(key);
+
+        if (isRecipe(storedValue)) {
+            var recipeDetails = JSON.parse(storedValue);
+
+            favorites.push({
+                title: recipeDetails.title,
+                image: recipeDetails.image,
+                ingredients: recipeDetails.ingredients,
+                instructions: recipeDetails.instructions
+            });
+        }
+    }
+
+    return favorites;
 };
