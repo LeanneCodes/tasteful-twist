@@ -4,10 +4,9 @@
   }
 }
 
-<<<<<<< HEAD
 /* .... Start Body Section .... */
 body {
-  background-color: black !important;
+  /* background-color: black !important; */
   font-family: 'Mona Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -20,15 +19,13 @@ body {
 
 
 /* Contact Section */
-.formContact {
-  /* background-color: linear-gradient(--light-grey; ) max-width: 500px;
+/* .formContact {
+  background-color: linear-gradient(--light-grey; ) max-width: 500px;
   width: 100%;
-  padding: 30px; */
-}
+  padding: 30px;
+} */
 
 /* .... End Navbar Section .... */
-=======
->>>>>>> 3689cdb8481f30455fa3fb3f3c102ca3219a419f
 
 /* Hex colours */
 
@@ -45,14 +42,12 @@ body {
   background-color: #BFC3C6; 
 } 
 
-<<<<<<< HEAD
 /* .... Start Footer Section .... */
 footer {
   margin-top: 100px;
 }
 
 /* .... End Footer Section .... */
-=======
 .bg-off-white {
   background-color: #FFFAF4; 
 } 
@@ -60,7 +55,6 @@ footer {
 .bg-cream {
   background-color: #fdefdc; 
 } 
- 
 
 .text-cream {
   color: #f9e6cb; 
@@ -69,4 +63,15 @@ footer {
 .text-gold {
   color: #C0AC7A;
 }
->>>>>>> 3689cdb8481f30455fa3fb3f3c102ca3219a419f
+
+/* start of recipe section */
+#recipes {
+  margin-top: 100px;
+}
+
+a {
+  text-decoration: none;
+  color: black !important;
+}
+
+/* end of recipe section */
