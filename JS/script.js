@@ -3,7 +3,7 @@ function getRecipe(cuisine) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'f2c0025551msh634b76b514de39bp12e43cjsn68aa06d692f3',
+            'X-RapidAPI-Key': '8dda9d9ee6msh61bc18e73875257p1cca71jsn3ba2b933a71d',
             'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
         }
     };
@@ -16,6 +16,7 @@ function getRecipe(cuisine) {
             console.log(data.d.length);
 
             for (var j = 0; j < data.d.length; j++) {
+                
                 var dataTitle = data.d[j].Title;
                 console.log(dataTitle);
                 var titleClean = dataTitle.replace("(", "").replace(")", "");
@@ -43,43 +44,59 @@ function getRecipe(cuisine) {
 
 if (window.location.pathname === '/cuisines/mexicanCuisine.html' || window.location.pathname === '/dummy.html') {
     document.addEventListener("DOMContentLoaded", function() {
-        getRecipe("mexican");
-        showAllFavourites();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine.html")[0].toLowerCase();
+        console.log(cuisine);
+        getRecipe(cuisine);
+        showAllFavourites(cuisine);
     });
 } else if (window.location.pathname === '/cuisines/italianCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
-        getRecipe("italian");
-        showAllFavourites();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine.html")[0].toLowerCase();
+        console.log(cuisine);
+        getRecipe(cuisine);
+        showAllFavourites(cuisine);
     });
 } else if (window.location.pathname === '/cuisines/greekCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
-        getRecipe("greek");
-        showAllFavourites();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine.html")[0].toLowerCase();
+        console.log(cuisine);
+        getRecipe(cuisine);
+        showAllFavourites(cuisine);
     });
 } else if (window.location.pathname === '/cuisines/asianCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
-        getRecipe("asian");
-        showAllFavourites();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine.html")[0].toLowerCase();
+        console.log(cuisine);
+        getRecipe(cuisine);
+        showAllFavourites(cuisine);
     });
 } else if (window.location.pathname === '/cuisines/indianCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
-        getRecipe("indian");
-        showAllFavourites();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine.html")[0].toLowerCase();
+        console.log(cuisine);
+        getRecipe(cuisine);
+        showAllFavourites(cuisine);
     });
 } else if (window.location.pathname === '/cuisines/frenchCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
-        getRecipe("french");
-        showAllFavourites();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine.html")[0].toLowerCase();
+        console.log(cuisine);
+        getRecipe(cuisine);
+        showAllFavourites(cuisine);
     });
 } else if (window.location.pathname === '/cuisines/spanishCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
-        getRecipe("spanish");
-        showAllFavourites();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine.html")[0].toLowerCase();
+        console.log(cuisine);
+        getRecipe(cuisine);
+        showAllFavourites(cuisine);
     });
 } else if (window.location.pathname === '/cuisines/moroccanCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
-        getRecipe("moroccan");
-        showAllFavourites();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine.html")[0].toLowerCase();
+        console.log(cuisine);
+        getRecipe(cuisine);
+        showAllFavourites(cuisine);
     });
 } else if (window.location.pathname === '/favourites.html') {
     document.addEventListener("DOMContentLoaded", function() {
@@ -102,7 +119,7 @@ if (window.location.pathname === '/cuisines/mexicanCuisine.html' || window.locat
 }
 
 
-function createRecipeCard(title, image, ingredients, instructions) {
+function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     // remove duplicate cards from the cuisine page if the user has already add them to their favourites
     var existingRecipeCards = document.querySelectorAll(`.card-title`);
     var duplicateFound = false;
@@ -237,12 +254,13 @@ function createRecipeCard(title, image, ingredients, instructions) {
 };
 
 
-function toggleFavorite(title, image, ingredients, instructions, recipeFave) {
+function toggleFavorite(title, image, ingredients, instructions, recipeFave, cuisine) {
     var recipeDetails = {
         title: title.split("+").join(" "),
         image: image,
         ingredients: ingredients,
         instructions: instructions,
+        cuisine: cuisine,
         heart: true
     };
 
@@ -366,15 +384,19 @@ function updateNutritionInfo(title, nutritionData) {
     `;
 };
 
-function showAllFavourites() {
+function showAllFavourites(currentPageCuisine) {
     var allKeys = Object.keys(localStorage);
     allKeys.forEach(function(key) {
         var storedValue = localStorage.getItem(key);
         if (isRecipe(storedValue)) {
             var recipeDetails = JSON.parse(storedValue);
             
-            createRecipeCard(recipeDetails.title.split(" ").join(""), recipeDetails.image, recipeDetails.ingredients, recipeDetails.instructions);
-            console.log(recipeDetails.title);
+            if (!currentPageCuisine || (recipeDetails.cuisine && recipeDetails.cuisine.toLowerCase() === currentPageCuisine.toLowerCase())) {
+                // Exclude favorited recipes of the current page's cuisine
+                createRecipeCard(recipeDetails.title.split(" ").join(""), recipeDetails.image, recipeDetails.ingredients, recipeDetails.instructions, currentPageCuisine);
+                console.log(recipeDetails.title);
+            }
+            
 
             // Get all elements with the class 'card-title'
             var cardTitles = document.querySelectorAll('.card-title');
