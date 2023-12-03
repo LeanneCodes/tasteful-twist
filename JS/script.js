@@ -41,42 +41,42 @@ function getRecipe(cuisine) {
         });
 };
 
-if (window.location.pathname === '/mexican.html' || window.location.pathname === '/dummy.html') {
+if (window.location.pathname === '/cuisines/mexicanCuisine.html' || window.location.pathname === '/dummy.html') {
     document.addEventListener("DOMContentLoaded", function() {
         getRecipe("mexican");
         showAllFavourites();
     });
-} else if (window.location.pathname === '/Italiancuisine.html') {
+} else if (window.location.pathname === '/cuisines/italianCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
         getRecipe("italian");
         showAllFavourites();
     });
-} else if (window.location.pathname === '/Greekcuisine.html') {
+} else if (window.location.pathname === '/cuisines/greekCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
         getRecipe("greek");
         showAllFavourites();
     });
-} else if (window.location.pathname === '/Asiancuisine.html') {
+} else if (window.location.pathname === '/cuisines/asianCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
         getRecipe("asian");
         showAllFavourites();
     });
-} else if (window.location.pathname === '/Indiancuisine.html') {
+} else if (window.location.pathname === '/cuisines/indianCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
         getRecipe("indian");
         showAllFavourites();
     });
-} else if (window.location.pathname === '/Frenchcuisine.html') {
+} else if (window.location.pathname === '/cuisines/frenchCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
         getRecipe("french");
         showAllFavourites();
     });
-} else if (window.location.pathname === '/Spanishcuisine.html') {
+} else if (window.location.pathname === '/cuisines/spanishCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
         getRecipe("spanish");
         showAllFavourites();
     });
-} else if (window.location.pathname === '/Moroccancuisine.html') {
+} else if (window.location.pathname === '/cuisines/moroccanCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
         getRecipe("moroccan");
         showAllFavourites();
@@ -385,14 +385,14 @@ function showAllFavourites() {
                 var currentText = cardTitle.innerText;
 
                 // Add a space before each uppercase letter and before the word 'and'
-                var newText = currentText.replace(/([A-Z])|(and)|(with)|(de)/g, function(match, uppercase, and, withText, de) {
+                var newText = currentText.replace(/([A-Z])|(and)|(with)|(de)|(di)/g, function(match, uppercase, and, withText, de, di) {
                     // If it's an uppercase letter, add a space before it
                     if (uppercase) {
                         return ' ' + uppercase;
                     }
                     // If it's the word 'and' or 'with', add spaces around it
-                    else if (and || withText) {
-                        return ' ' + (and || withText || de) + ' ';
+                    else if (and || withText || de || di) {
+                        return ' ' + (and || withText || de || di) + ' ';
                     }
                 });                
                 
