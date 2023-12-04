@@ -238,7 +238,7 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     getNutrition(title);
 
     faveRecipeEl.addEventListener('click', function() {
-        togglefavourite(title, image, ingredients, instructions, recipeFave);
+        togglefavourite(title, image, ingredients, instructions, recipeFave, cuisine);
     });
 
     recipeFave.addEventListener('click', function() {
