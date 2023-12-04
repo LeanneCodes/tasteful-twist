@@ -388,6 +388,9 @@ function updateNutritionInfo(title, nutritionData) {
 
 
 function showAllFavourites(currentPageCuisine) {
+    // Get the recipe container
+    var recipeContainer = document.getElementById("recipe-container");
+
     // Loop through all keys in localStorage
     for (var i = 0; i < localStorage.length; i++) {
         var key = localStorage.key(i);
@@ -399,10 +402,7 @@ function showAllFavourites(currentPageCuisine) {
             // Check if the recipe matches the current cuisine or if no specific cuisine is provided
             var shouldShowRecipe = !currentPageCuisine || (recipeDetails.cuisine && recipeDetails.cuisine.toLowerCase() === currentPageCuisine.toLowerCase());
 
-            // Check if the recipe is already displayed to avoid duplicates
-            var isRecipeDisplayed = document.getElementById(`${recipeDetails.title.split(" ").join("")}`);
-            
-            if (shouldShowRecipe && !isRecipeDisplayed) {
+            if (shouldShowRecipe) {
                 // Display the recipe card
                 createRecipeCard(recipeDetails.title, recipeDetails.image, recipeDetails.ingredients, recipeDetails.instructions, recipeDetails.cuisine);
                 console.log(recipeDetails.title);
@@ -410,6 +410,7 @@ function showAllFavourites(currentPageCuisine) {
         }
     }
 }
+
 
 
 function isRecipe(value) {
