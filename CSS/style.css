@@ -4,7 +4,6 @@
   }
 }
 
-<<<<<<< HEAD
 /* .... Start Body Section .... */
 body {
   background-color: black !important;
@@ -27,8 +26,6 @@ body {
 }
 
 /* .... End Navbar Section .... */
-=======
->>>>>>> 3689cdb8481f30455fa3fb3f3c102ca3219a419f
 
 /* Hex colours */
 
@@ -45,28 +42,9 @@ body {
   background-color: #BFC3C6; 
 } 
 
-<<<<<<< HEAD
 /* .... Start Footer Section .... */
 footer {
   margin-top: 100px;
 }
 
 /* .... End Footer Section .... */
-=======
-.bg-off-white {
-  background-color: #FFFAF4; 
-} 
-
-.bg-cream {
-  background-color: #fdefdc; 
-} 
- 
-
-.text-cream {
-  color: #f9e6cb; 
-} 
-
-.text-gold {
-  color: #C0AC7A;
-}
->>>>>>> 3689cdb8481f30455fa3fb3f3c102ca3219a419f
