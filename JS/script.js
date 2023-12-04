@@ -183,7 +183,7 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     recipeDetailsBtn.setAttribute("type", "button");
     recipeDetailsBtn.setAttribute("style", "width: 75%;");
     recipeDetailsBtn.innerText = "View Recipe";
-    recipeDetailsBtn.setAttribute("data-bs-target", "#"+title.split("+").join(""));
+    recipeDetailsBtn.setAttribute("data-bs-target", "#"+title.split(" ").join(""));
     recipeDetailsBtn.setAttribute("data-bs-toggle", "modal");
     recipeTitleBody.append(recipeCardTitle);
     recipeBtnBody.append(recipeDetailsBtn, recipeFave);
@@ -205,7 +205,7 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     }
 
     var modalHTML = `
-        <div class="modal fade" id="${title.split("+").join("")}" tabindex="-1" aria-labelledby="${title.split("+").join("")}label" aria-hidden="true">
+        <div class="modal fade" id="${title.split(" ").join("")}" tabindex="-1" aria-labelledby="${title.split(" ").join("")}label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content" id="Modal-${title.split("+").join("")}">
                     <div class="modal-header">
