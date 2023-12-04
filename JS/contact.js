@@ -14,8 +14,7 @@ function sendEmail() {
     fromName: 'Annie',
     to: 'anam.k@live.com',
     subject: 'Thank you for subscribing to TastefulTwist',
-    bodyHtml:
-      'Hi [user] Thank you for subscribing to Tasteful Twist, we post weekly update so you don"t miss out on tasty treats',
+    bodyHtml: 'Hi [user] Thank you for subscribing to Tasteful Twist, we post weekly updates so you don\'t miss out on tasty treats',
     bodyText: '',
     isTransactional: true,
   };
@@ -34,6 +33,7 @@ function sendEmail() {
     })
     .catch((error) => {
       console.error('Error:', error);
+      alert('Failed to send email');
     });
 }
 
@@ -49,14 +49,14 @@ function signUpFunc (e) {
   var userName = document.getElementById('userNameInfoSignUp').value;
   var email = document.getElementById('emailInfoSignUp').value;
   var password = document.getElementById('passwordInfoSignUp').value;
-  var repeatPassword = document.getElementById('repeatPasswordInfoSignUp').value;
+  // var repeatPassword = document.getElementById('repeatPasswordInfoSignUp').value;
 
   var user = {
     fullName: fullName,
     userName: userName,
     email: email,
     password: pass,
-    repeatPassword: repeatPass,
+    // repeatPassword: repeatPass,
   };
   var json = JSON.stringify(user);
   localStorage.setItem('userName', json);
