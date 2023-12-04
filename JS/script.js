@@ -3,7 +3,7 @@ function getRecipe(cuisine) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '42025b3a89msh8b63ea4c6bc8c91p192ed4jsnf26890e5742f',
+            'X-RapidAPI-Key': 'c7965e32a1mshbe160fd7fa536fap1de1ccjsn06ed08451b4a',
             'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
         }
     };
@@ -406,6 +406,27 @@ function showAllFavourites(currentPageCuisine) {
                 // Display the recipe card
                 createRecipeCard(recipeDetails.title, recipeDetails.image, recipeDetails.ingredients, recipeDetails.instructions, recipeDetails.cuisine);
                 console.log(recipeDetails.title);
+            }
+
+            if (window.location.pathname === '/favourites.html') {
+                var heart = document.querySelector(`[data-target="${recipeDetails.title}"]`);
+                if (heart) {
+                    // Toggle the class for the specific heart icon
+                    heart.classList.remove("fa-regular");
+                    heart.classList.add("fa-solid");
+                };
+
+                heart.addEventListener('click', function() {
+                    localStorage.removeItem(recipeDetails.title.split(" ").join(""));
+                    location.reload();
+                })
+                
+                // var faveRecipeEl = document.getElementById(`fave${recipeDetails.title}`);
+                // console.log(faveRecipeEl);
+
+                // faveRecipeEl.addEventListener('click', function() {
+                //     togglefavourite(title, image, ingredients, instructions, recipeFave, cuisine);
+                // });
             }
         }
     }
