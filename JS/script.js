@@ -421,12 +421,14 @@ function showAllFavourites(currentPageCuisine) {
                     location.reload();
                 })
                 
-                // var faveRecipeEl = document.getElementById(`fave${recipeDetails.title}`);
-                // console.log(faveRecipeEl);
+                var faveRecipeEl = document.getElementById(`fave${recipeDetails.title}`);
+                console.log(faveRecipeEl);
+                faveRecipeEl.setAttribute("id", `fave${recipeDetails.title.split(" ").join("")}`)
 
-                // faveRecipeEl.addEventListener('click', function() {
-                //     togglefavourite(title, image, ingredients, instructions, recipeFave, cuisine);
-                // });
+                faveRecipeEl.addEventListener('click', function() {
+                    localStorage.removeItem(recipeDetails.title.split(" ").join(""));
+                    location.reload();
+                });
             }
         }
     }
