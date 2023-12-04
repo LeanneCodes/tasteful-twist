@@ -6,7 +6,7 @@
 
 /* .... Start Body Section .... */
 body {
-  background-color: black !important;
+  /* background-color: black !important; */
   font-family: 'Mona Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -19,11 +19,11 @@ body {
 
 
 /* Contact Section */
-.formContact {
-  /* background-color: linear-gradient(--light-grey; ) max-width: 500px;
+/* .formContact {
+  background-color: linear-gradient(--light-grey; ) max-width: 500px;
   width: 100%;
-  padding: 30px; */
-}
+  padding: 30px;
+} */
 
 /* .... End Navbar Section .... */
 
@@ -48,3 +48,30 @@ footer {
 }
 
 /* .... End Footer Section .... */
+.bg-off-white {
+  background-color: #FFFAF4; 
+} 
+
+.bg-cream {
+  background-color: #fdefdc; 
+} 
+
+.text-cream {
+  color: #f9e6cb; 
+} 
+
+.text-gold {
+  color: #C0AC7A;
+}
+
+/* start of recipe section */
+#recipes {
+  margin-top: 100px;
+}
+
+a {
+  text-decoration: none;
+  color: black !important;
+}
+
+/* end of recipe section */
