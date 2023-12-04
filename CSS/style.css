@@ -74,4 +74,12 @@ a {
   color: black !important;
 }
 
+.bg-gold:hover {
+  background-color: #b3ab98;
+}
+
+.text-bg-info {
+  background-color: #C0AC7A !important;
+}
+
 /* end of recipe section */

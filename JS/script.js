@@ -153,9 +153,9 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     var recipeCard = document.createElement("div");
     recipeCard.setAttribute("class", "card col-sm-12 col-md-4 col-lg-3 p-3 text-center justify-content-between mb-3");
     if (window.location.pathname === '/favourites.html') {
-        recipeCard.setAttribute("style", "width: 18rem; height: 380px; margin-right: 30px;");
+        recipeCard.setAttribute("style", "width: 18rem; height: 380px; background-color: #fdefdc; border: 1px solid #fdefdc; color: #404146; margin-right: 30px;");
     } else {
-        recipeCard.setAttribute("style", "width: 18rem; height: 380px;");
+        recipeCard.setAttribute("style", "width: 18rem; height: 380px; background-color: #fdefdc; border: 1px solid #fdefdc; color: #404146;");
     }
     var recipeImage = document.createElement("img")
     if (!image) {
@@ -179,9 +179,9 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     recipeFave.setAttribute("style", "font-size: 1.5rem");
     recipeFave.setAttribute("data-target", title.split("+").join(" "));
     console.log(recipeFave);
-    recipeDetailsBtn.setAttribute("class", "btn btn-primary");
+    recipeDetailsBtn.setAttribute("class", "btn bg-gold");
     recipeDetailsBtn.setAttribute("type", "button");
-    recipeDetailsBtn.setAttribute("style", "width: 75%;");
+    recipeDetailsBtn.setAttribute("style", "width: 75%; color: white;");
     recipeDetailsBtn.innerText = "View Recipe";
     recipeDetailsBtn.setAttribute("data-bs-target", "#"+title.split(" ").join(""));
     recipeDetailsBtn.setAttribute("data-bs-toggle", "modal");
@@ -222,7 +222,7 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
                         <p>${instructions}</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="fave${title.split("+").join("")}">${modalBtn}</button>
+                        <button type="button" class="btn bg-gold text-white" id="fave${title.split("+").join("")}">${modalBtn}</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
