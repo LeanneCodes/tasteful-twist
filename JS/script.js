@@ -3,7 +3,7 @@ function getRecipe(cuisine) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '8dda9d9ee6msh61bc18e73875257p1cca71jsn3ba2b933a71d',
+            'X-RapidAPI-Key': '42025b3a89msh8b63ea4c6bc8c91p192ed4jsnf26890e5742f',
             'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
         }
     };
@@ -37,7 +37,7 @@ function getRecipe(cuisine) {
                 var image = data.d[j].Image;
                 console.log(image);
 
-                createRecipeCard(title, image, ingredients, instructions);
+                createRecipeCard(title, image, ingredients, instructions, cuisine);
             }
         });
 };
@@ -127,7 +127,7 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     existingRecipeCards.forEach(function (cardTitle) {
         if (cardTitle.innerText.trim() === title.split("+").join(" ")) {
             duplicateFound = true;
-            // Update favorite icon only if it's not already set to fa-solid
+            // Update favourite icon only if it's not already set to fa-solid
             var existingFaveIcon = cardTitle.closest('.card').querySelector(".fa-heart");
             if (existingFaveIcon && !existingFaveIcon.classList.contains("fa-solid")) {
                 existingFaveIcon.classList.remove("fa-regular");
@@ -174,6 +174,7 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     recipeBtnBody.setAttribute("style", "display: flex; justify-content: space-around;")
     var recipeDetailsBtn = document.createElement("button");
     var recipeFave = document.createElement("i");
+    recipeFave.setAttribute("class", isFavourited(title) ? "fa-solid fa-heart" : "fa-regular fa-heart");
     recipeFave.setAttribute("class", "fa-regular fa-heart d-flex justify-content-center align-items-center");
     recipeFave.setAttribute("style", "font-size: 1.5rem");
     recipeFave.setAttribute("data-target", title.split("+").join(" "));
@@ -237,11 +238,11 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     getNutrition(title);
 
     faveRecipeEl.addEventListener('click', function() {
-        toggleFavorite(title, image, ingredients, instructions, recipeFave);
+        togglefavourite(title, image, ingredients, instructions, recipeFave);
     });
 
     recipeFave.addEventListener('click', function() {
-        toggleFavorite(title, image, ingredients, instructions, recipeFave);
+        togglefavourite(title, image, ingredients, instructions, recipeFave, cuisine);
     });
 
     return {
@@ -249,12 +250,13 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
         image: image,
         ingredients: ingredients,
         instructions: instructions,
-        recipeFave: recipeFave
+        recipeFave: recipeFave,
+        cuisine: cuisine
     };
 };
 
 
-function toggleFavorite(title, image, ingredients, instructions, recipeFave, cuisine) {
+function togglefavourite(title, image, ingredients, instructions, recipeFave, cuisine) {
     var recipeDetails = {
         title: title.split("+").join(" "),
         image: image,
@@ -266,15 +268,15 @@ function toggleFavorite(title, image, ingredients, instructions, recipeFave, cui
 
     var recipeDetailsJSON = JSON.stringify(recipeDetails);
 
-    var isFavorite = recipeFave.classList.contains("fa-regular");
+    var isfavourite = recipeFave.classList.contains("fa-regular");
 
-    if (isFavorite) {
-        // Add to favorites
+    if (isfavourite) {
+        // Add to favourites
         localStorage.setItem(title.split("+").join(" "), recipeDetailsJSON);
         recipeFave.classList.remove("fa-regular");
         recipeFave.classList.add("fa-solid");
     } else {
-        // Remove from favorites
+        // Remove from favourites
         localStorage.removeItem(title.split("+").join(" "));
         recipeFave.classList.remove("fa-solid");
         recipeFave.classList.add("fa-regular");
@@ -384,68 +386,30 @@ function updateNutritionInfo(title, nutritionData) {
     `;
 };
 
+
 function showAllFavourites(currentPageCuisine) {
-    var allKeys = Object.keys(localStorage);
-    allKeys.forEach(function(key) {
+    // Loop through all keys in localStorage
+    for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
         var storedValue = localStorage.getItem(key);
+
         if (isRecipe(storedValue)) {
             var recipeDetails = JSON.parse(storedValue);
+
+            // Check if the recipe matches the current cuisine or if no specific cuisine is provided
+            var shouldShowRecipe = !currentPageCuisine || (recipeDetails.cuisine && recipeDetails.cuisine.toLowerCase() === currentPageCuisine.toLowerCase());
+
+            // Check if the recipe is already displayed to avoid duplicates
+            var isRecipeDisplayed = document.getElementById(`${recipeDetails.title.split(" ").join("")}`);
             
-            if (!currentPageCuisine || (recipeDetails.cuisine && recipeDetails.cuisine.toLowerCase() === currentPageCuisine.toLowerCase())) {
-                // Exclude favorited recipes of the current page's cuisine
-                createRecipeCard(recipeDetails.title.split(" ").join(""), recipeDetails.image, recipeDetails.ingredients, recipeDetails.instructions, currentPageCuisine);
+            if (shouldShowRecipe && !isRecipeDisplayed) {
+                // Display the recipe card
+                createRecipeCard(recipeDetails.title, recipeDetails.image, recipeDetails.ingredients, recipeDetails.instructions, recipeDetails.cuisine);
                 console.log(recipeDetails.title);
             }
-            
-
-            // Get all elements with the class 'card-title'
-            var cardTitles = document.querySelectorAll('.card-title');
-
-            // Iterate over each element
-            cardTitles.forEach(function(cardTitle) {
-                // Get the current text content
-                var currentText = cardTitle.innerText;
-
-                // Add a space before each uppercase letter and before the word 'and'
-                var newText = currentText.replace(/([A-Z])|(and)|(with)|(de)|(di)/g, function(match, uppercase, and, withText, de, di) {
-                    // If it's an uppercase letter, add a space before it
-                    if (uppercase) {
-                        return ' ' + uppercase;
-                    }
-                    // If it's the word 'and' or 'with', add spaces around it
-                    else if (and || withText || de || di) {
-                        return ' ' + (and || withText || de || di) + ' ';
-                    }
-                });                
-                
-
-                // Update the text content with the modified string
-                cardTitle.innerText = newText.trim();
-            });
-
-            var modalTitle = document.getElementById(`${recipeDetails.title.split(" ").join("")}`);
-            console.log(modalTitle.children[0].children[0].children[0].children[0]);
-            modalTitle.children[0].children[0].children[0].children[0].textContent = recipeDetails.title;
-
-            var modalFaveBtn = document.getElementById("fave" + `${recipeDetails.title.split(" ").join("")}`);
-            console.log(modalFaveBtn.getAttribute("type"))
-            if (modalFaveBtn.getAttribute("type") === "button") {
-                modalFaveBtn.addEventListener('click', function() {
-                    localStorage.removeItem(`${recipeDetails.title}`);
-                    window.location.reload();
-                })
-            }
-
-            var heart = document.querySelector(`[data-target="${recipeDetails.title.split(" ").join("")}"]`);
-            if (heart) {
-                // Toggle the class for the specific heart icon
-                heart.classList.remove("fa-regular");
-                heart.classList.add("fa-solid");
-            }
-
         }
-    });
-};
+    }
+}
 
 
 function isRecipe(value) {
@@ -457,8 +421,8 @@ function isRecipe(value) {
     }
 };
 
-function getAllFavorites() {
-    var favorites = [];
+function getAllfavourites() {
+    var favourites = [];
 
     for (var i = 0; i < localStorage.length; i++) {
         var key = localStorage.key(i);
@@ -467,14 +431,20 @@ function getAllFavorites() {
         if (isRecipe(storedValue)) {
             var recipeDetails = JSON.parse(storedValue);
 
-            favorites.push({
+            favourites.push({
                 title: recipeDetails.title,
                 image: recipeDetails.image,
                 ingredients: recipeDetails.ingredients,
-                instructions: recipeDetails.instructions
+                instructions: recipeDetails.instructions,
+                cuisine: recipeDetails.cuisine
             });
         }
     }
 
-    return favorites;
+    return favourites;
 };
+
+function isFavourited(title) {
+    // Check if the recipe is favourited in localStorage
+    return localStorage.getItem(title) !== null;
+}
