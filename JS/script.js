@@ -64,18 +64,6 @@ if (window.location.pathname === '/cuisines/mexicanCuisine.html' || window.locat
     document.addEventListener("DOMContentLoaded", function() {
         showAllFavourites();
     });
-    var recipeContainer = document.getElementById("recipe-container");
-    console.log(recipeContainer.childElementCount)
-    if (recipeContainer.childElementCount === 0 || null) {
-        var displayComment = document.createElement("h3");
-        displayComment.textContent = "No recipes have been favourited yet!";
-        recipeContainer.appendChild(displayComment);
-    }
-    
-    if (recipeContainer.childElementCount > 0) {
-        displayComment.textContent = "";
-        recipeContainer.appendChild(displayComment);
-    }
 } else {
     console.log("No page exists");
 };
@@ -169,8 +157,10 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
         return;
     }
 
+    console.log("recipe container")
     var recipeContainer = document.getElementById("recipe-container");
-    console.log(recipeContainer.childElementCount)
+    console.log(typeof recipeContainer.childElementCount)
+    
     
     recipeContainer.setAttribute("class", "row justify-content-center");
     recipeContainer.setAttribute("style", "margin: 50px auto;")
@@ -476,9 +466,23 @@ function showAllFavourites(currentPageCuisine) {
                     localStorage.removeItem(recipeDetails.title.split(" ").join(""));
                     location.reload();
                 });
+
             }
+            
         }
     }
+
+    var recipeContainer = document.getElementById("recipe-container");
+    console.log(recipeContainer.childElementCount)
+    if (recipeContainer.childElementCount === 0 && window.location.pathname === '/favourites.html') {
+        var displayComment = document.createElement("p");
+        displayComment.setAttribute("class", "text-center mt-5 text-muted fs-5")
+        displayComment.textContent = "No recipes have been saved yet!";
+        recipeContainer.appendChild(displayComment);
+    } else {
+        displayComment.textContent = "";
+        recipeContainer.appendChild(displayComment);
+    };
 };
 
 
