@@ -1,46 +1,7 @@
-function getRecipe(cuisine) {
-    const cuisineURL = `https://food-recipes-with-images.p.rapidapi.com/?q=${cuisine}`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': 'f2c0025551msh634b76b514de39bp12e43cjsn68aa06d692f3',
-            'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
-        }
-    };
+/*
 
-    fetch(cuisineURL, options)
-        .then(function(response) {
-            return response.json();
-        }).then(function(data) {
-            console.log(cuisine + " recipes", data);
-            console.log(data.d.length);
+*/
 
-            for (var j = 0; j < data.d.length; j++) {
-                
-                var dataTitle = data.d[j].Title;
-                console.log(dataTitle);
-                var titleClean = dataTitle.replace("(", "").replace(")", "");
-                console.log(titleClean);
-                var titleSplit = titleClean.split(" ");
-                console.log(titleSplit); 
-                var title = titleSplit.join("+");
-                console.log(title);
-
-                var ingredients = Object.values(data.d[j].Ingredients);
-                console.log(ingredients.length);
-                for (var k = 0; k < ingredients.length; k++) {
-                    console.log(ingredients[k]);
-                }
-                console.log(ingredients);
-                var instructions = data.d[j].Instructions.split(".").join(".<br><br>");
-                console.log(instructions);
-                var image = data.d[j].Image;
-                console.log(image);
-
-                createRecipeCard(title, image, ingredients, instructions, cuisine);
-            }
-        });
-};
 
 if (window.location.pathname === '/cuisines/mexicanCuisine.html' || window.location.pathname === '/dummy.html') {
     document.addEventListener("DOMContentLoaded", function() {
@@ -116,7 +77,52 @@ if (window.location.pathname === '/cuisines/mexicanCuisine.html' || window.locat
     }
 } else {
     console.log("No page exists");
-}
+};
+
+
+function getRecipe(cuisine) {
+    const cuisineURL = `https://food-recipes-with-images.p.rapidapi.com/?q=${cuisine}`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'f2c0025551msh634b76b514de39bp12e43cjsn68aa06d692f3',
+            'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
+        }
+    };
+
+    fetch(cuisineURL, options)
+        .then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            console.log(cuisine + " recipes", data);
+            console.log(data.d.length);
+
+            for (var j = 0; j < data.d.length; j++) {
+                
+                var dataTitle = data.d[j].Title;
+                console.log(dataTitle);
+                var titleClean = dataTitle.replace("(", "").replace(")", "");
+                console.log(titleClean);
+                var titleSplit = titleClean.split(" ");
+                console.log(titleSplit); 
+                var title = titleSplit.join("+");
+                console.log(title);
+
+                var ingredients = Object.values(data.d[j].Ingredients);
+                console.log(ingredients.length);
+                for (var k = 0; k < ingredients.length; k++) {
+                    console.log(ingredients[k]);
+                }
+                console.log(ingredients);
+                var instructions = data.d[j].Instructions.split(".").join(".<br><br>");
+                console.log(instructions);
+                var image = data.d[j].Image;
+                console.log(image);
+
+                createRecipeCard(title, image, ingredients, instructions, cuisine);
+            }
+        });
+};
 
 
 function createRecipeCard(title, image, ingredients, instructions, cuisine) {
@@ -424,8 +430,7 @@ function showAllFavourites(currentPageCuisine) {
             }
         }
     }
-}
-
+};
 
 
 function isRecipe(value) {
@@ -463,4 +468,4 @@ function getAllfavourites() {
 function isFavourited(title) {
     // Check if the recipe is favourited in localStorage
     return localStorage.getItem(title) !== null;
-}
+};
