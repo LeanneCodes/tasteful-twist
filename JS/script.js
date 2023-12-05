@@ -92,7 +92,7 @@ function getRecipe(cuisine) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'f2c0025551msh634b76b514de39bp12e43cjsn68aa06d692f3',
+            'X-RapidAPI-Key': '42025b3a89msh8b63ea4c6bc8c91p192ed4jsnf26890e5742f',
             'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
         }
     };
@@ -172,11 +172,13 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     var recipeContainer = document.getElementById("recipe-container");
     console.log(recipeContainer.childElementCount)
     
-    recipeContainer.setAttribute("class", "row");
-    recipeContainer.setAttribute("style", "justify-content: flex-start; margin: 41px;")
+    recipeContainer.setAttribute("class", "row justify-content-center");
+    recipeContainer.setAttribute("style", "margin: 50px auto;")
+
     var recipeCard = document.createElement("div");
-    recipeCard.setAttribute("class", "card col-sm-6 col-md-4 p-3 text-center justify-content-between mb-4");
-    recipeCard.setAttribute("style", "width: 20.5rem; height: 350px; background-color: #fdefdc; border: 1px solid #fdefdc; color: #404146; margin: auto;");
+    recipeCard.setAttribute("class", "card col-sm-12 col-md-6 col-lg-4 p-3 m-4 text-center justify-content-between");
+    recipeCard.setAttribute("style", "max-width: 21rem; height: 400px; background-color: #fdefdc; border: 1px solid #fdefdc; color: #404146;");
+
     var recipeImage = document.createElement("img")
     if (!image) {
         console.log("no image available")
