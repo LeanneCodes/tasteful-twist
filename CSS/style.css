@@ -74,8 +74,8 @@ a {
   color: black !important;
 }
 
-.bg-gold:hover {
-  background-color: #b3ab98;
+.btn.bg-gold:hover {
+  background-color: #b3ab98 !important;
 }
 
 .text-bg-info {
