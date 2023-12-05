@@ -42,7 +42,7 @@ function sendEmail() {
 // -------------------------------  Starts Local Storage for  Sign up / in form  ---------------------------------------------
 // Sign up forms
 function signUpFunc (e) {
-  event.preventDefault();
+  e.preventDefault();
   console.log('working');
 
   var fullName = document.getElementById('fullNameInfoSignUp').value;
@@ -55,7 +55,7 @@ function signUpFunc (e) {
     fullName: fullName,
     userName: userName,
     email: email,
-    password: pass,
+    password: password,
     // repeatPassword: repeatPass,
   };
   var json = JSON.stringify(user);
@@ -64,26 +64,60 @@ function signUpFunc (e) {
 };
 
 // Sign in forms
+
 function signInFunc (e) {
-  event.preventDefault();
+  e.preventDefault();
 
-  var userName = document.getElementById('userNameInfoSignUp').value;
-  var password = document.getElementById('passwordInfoSignUp').value;
-  var result  = document.getElementById('result').value;
+  var userName = document.getElementById('userNameInfoSignIn').value;
+  var password = document.getElementById('passwordInfoSignIn').value;
+  var result  = document.getElementById('result');
 
-  var user =  localStorage.getItem(userName);
-  var json = JSON.parse(user);
-  console.log(data);
 
-  if (user = null) {
+  console.log(username, password)
+
+
+  if (user === null) {
     result.innerHTML = "wrong username";
-  } else if (userName == data.userName && pass == data.password) {
-    result.innerHTML = "logged in";
   } else {
-    result.innerHTML = "wrong password";
+    var json = JSON.parse(user);
+    console.log(json);
+    if(userName === json.userName && password === json.password) {
+      result.innerHTML = "Login successful";
+    } else {
+      result.innerHTML = "wrong password";
+      console.log("result");
   }
 };
+};
+
+document.getElementById("signInForm").addEventListener("submit", signInFunc)
+// -------------------------------  End Local Storage for  Sign up / in form    ---------------------------------------------
 
 
-// -------------------------------  Ends   Local Storage for  Sign up / in form    ---------------------------------------------
-// -------------------------------          ---------------------------------------------
+// -------------------------------  Start Local Storage for Subscription  ---------------------------------------------
+function saveData() {
+  // alert("hi")
+  let fullName, email;
+  fullNameDocument= document.getElementById("fullNameInfo").value;
+  emailDocument= document.getElementById("emailInfo").value;
+  // console.log("fullName+email")
+
+  // localStorage.setItem("fullNameInfo", fullName);
+  // localStorage.setItem("emailInfo", email);
+ 
+let userData = SubscriptionArray.create();
+userData=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+if (userData.some((v)=>{
+  return v.email==emailDocument
+})) {
+  alert("Email already exists");
+} else {
+  userData.push({
+    fullName: fullNameDocument,
+    email: emailDocument,
+  });
+  localStorage.setItem("users", JSON.stringify(userData));
+  alert("Email saved");
+}
+  
+};
