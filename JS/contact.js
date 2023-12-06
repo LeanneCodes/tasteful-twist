@@ -29,11 +29,11 @@ function sendEmail() {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      alert('Email sent successfully');
+      // alert('Email sent successfully');
     })
     .catch((error) => {
       console.error('Error:', error);
-      alert('Failed to send email');
+      // alert('Failed to send email');
     });
 }
 
@@ -41,7 +41,7 @@ function sendEmail() {
 
 // -------------------------------  Starts Local Storage for  Sign up / in form  ---------------------------------------------
 // Sign up forms
-function signUpFunc (e) {
+function signUpFunc(e) {
   e.preventDefault();
   console.log('working');
 
@@ -49,48 +49,52 @@ function signUpFunc (e) {
   var userName = document.getElementById('userNameInfoSignUp').value;
   var email = document.getElementById('emailInfoSignUp').value;
   var password = document.getElementById('passwordInfoSignUp').value;
-  // var repeatPassword = document.getElementById('repeatPasswordInfoSignUp').value;
 
   var user = {
     fullName: fullName,
     userName: userName,
     email: email,
     password: password,
-    // repeatPassword: repeatPass,
   };
   var json = JSON.stringify(user);
-  localStorage.setItem('userName', json);
-  console.log('user added');
+  localStorage.setItem(userName, json); // Storing user data with the username as the key
+  console.log('user added', user);
+  var params = 
+  {
+    from_name: document.getElementById("fullNameInfoSignUp").value,
+    email_id: document.getElementById("emailInfoSignUp").value,
+    message: document.getElementById("messageInfoSignUp").value
+  }
+  emailjs.send("service_u8kqcpb","template_b8zepg3", params);
+  console.log(params,"h");
 };
 
 // Sign in forms
-
-function signInFunc (e) {
+function signInFunc(e) {
   e.preventDefault();
 
-  var userName = document.getElementById('userNameInfoSignIn').value;
+  var userName = document.getElementById('userInfoSignIn').value;
   var password = document.getElementById('passwordInfoSignIn').value;
-  var result  = document.getElementById('result');
+  var result = document.getElementById('result');
 
-
-  console.log(username, password)
-
+  var user = localStorage.getItem(userName); // Retrieve user data using the username
 
   if (user === null) {
     result.innerHTML = "wrong username";
   } else {
     var json = JSON.parse(user);
     console.log(json);
-    if(userName === json.userName && password === json.password) {
+    if (userName === json.userName && password === json.password) {
       result.innerHTML = "Login successful";
     } else {
       result.innerHTML = "wrong password";
       console.log("result");
+    }
   }
 };
-};
 
-document.getElementById("signInForm").addEventListener("submit", signInFunc)
+document.addEventListener("submit", signInFunc);
+document.addEventListener("submit", signUpFunc);
 // -------------------------------  End Local Storage for  Sign up / in form    ---------------------------------------------
 
 
@@ -105,19 +109,63 @@ function saveData() {
   // localStorage.setItem("fullNameInfo", fullName);
   // localStorage.setItem("emailInfo", email);
  
-let userData = SubscriptionArray.create();
+let userData = SubscriptionArray();
 userData=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
 if (userData.some((v)=>{
   return v.email==emailDocument
 })) {
-  alert("Email already exists");
+  // alert("Email already exists");
 } else {
   userData.push({
     fullName: fullNameDocument,
     email: emailDocument,
   });
   localStorage.setItem("users", JSON.stringify(userData));
-  alert("Email saved");
+  // alert("Email saved");
 }
   
 };
+//--------------------------------------------------------------------    Email Confirmations    ------------------------------------------------------
+// -------------------------------  Start Email Confirmation for Subscription  ---------------------------------------------
+
+function saveData() {
+  var params ={
+    from_name: document.getElementById("fullNameInfo").value,
+    email_id: document.getElementById("emailInfo").value,
+    // message: document.getElementById("message").value
+  }
+  console.log(params);
+  emailjs.send("service_u8kqcpb","template_b8zepg3", params);
+}
+
+// -------------------------------  End Email Confirmation for Subscription  ---------------------------------------------
+
+// -------------------------------  Start Email Confirmation for Contact  ---------------------------------------------
+
+function sendEmail() {
+  var params ={
+    from_name: document.getElementById("nameInfoContact").value,
+    email_id: document.getElementById("emailInfoContact").value,
+    message: document.getElementById("messageInfoContact").value
+  }
+  emailjs.send("service_u8kqcpb","template_b8zepg3", params);
+console.log(params,"hi");
+localStorage.setItem("users", JSON.stringify(params));
+console.log("from sendEmail",params);
+
+}
+// ------------------------------- End Email Confirmation for Subscription ---------------------------------------------
+
+
+// -------------------------------  Start Email Confirmation for Sign Up ---------------------------------------------
+
+// function signUpFunc() {
+//   var params = 
+//   {
+//     from_name: document.getElementById("fullNameInfoSignUp").value,
+//     email_id: document.getElementById("emailInfoSignUp").value,
+//     message: document.getElementById("messageInfoSignUp").value
+//   }
+//   emailjs.send("service_u8kqcpb","template_b8zepg3", params);
+//   console.log(params,"h");
+// }
