@@ -80,7 +80,7 @@ function getRecipe(cuisine) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '42025b3a89msh8b63ea4c6bc8c91p192ed4jsnf26890e5742f',
+            'X-RapidAPI-Key': 'c7965e32a1mshbe160fd7fa536fap1de1ccjsn06ed08451b4a',
             'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
         }
     };
@@ -118,7 +118,6 @@ function getRecipe(cuisine) {
             }
         });
 };
-
 
 /*
     We now create a recipe card for each recipe for the cuisine html page we are on. Within that
@@ -208,12 +207,18 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     var heartClassRegular = document.querySelectorAll(".fa-regular");
     console.log(heartClassRegular);
 
-    var modalBtn = "";
+    var modalBtnText = "";
 
     if (window.location.pathname === '/favourites.html') {
-        var modalBtn = "Remove from favourites";
-    } else {
-        var modalBtn = "Add to Favourites";
+        modalBtnText = "Remove from favourites";
+    }
+
+    if (window.location.pathname === `/cuisines/${cuisine}Cuisine.html` && recipeFave.classList.contains("fa-regular")) {
+        modalBtnText = "Add to Favourites";
+    }
+
+    if (window.location.pathname === `/cuisines/${cuisine}Cuisine.html` && recipeFave.classList.contains("fa-solid")) {
+        modalBtnText = "Remove from favourites";
     }
 
     var modalHTML = `
@@ -234,7 +239,7 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
                         <p>${instructions}</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn bg-gold text-white" id="fave${title.split("+").join("")}">${modalBtn}</button>
+                        <button type="button" class="btn bg-gold text-white" id="fave${title.split("+").join("")}">${modalBtnText}</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -267,29 +272,24 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     };
 };
 
-
 /*
     This function helps with toggling the heart icon from a regular icon to a solid heart icon. If
     the class name is fa-regular, the recipe is not in local storage and if the class name is
     fa-solid, the recipe is in local storage.
 */
 function toggleFavourite(title, image, ingredients, instructions, recipeFave, cuisine) {
-    var recipeDetails = {
-        title: title.split("+").join(" "),
-        image: image,
-        ingredients: ingredients,
-        instructions: instructions,
-        cuisine: cuisine,
-        heart: true
-    };
-
-    var recipeDetailsJSON = JSON.stringify(recipeDetails);
-
     var isfavourite = recipeFave.classList.contains("fa-regular");
 
     if (isfavourite) {
         // Add to favourites
-        localStorage.setItem(title.split("+").join(" "), recipeDetailsJSON);
+        localStorage.setItem(title.split("+").join(" "), JSON.stringify({
+            title: title.split("+").join(" "),
+            image: image,
+            ingredients: ingredients,
+            instructions: instructions,
+            cuisine: cuisine,
+            heart: true
+        }));
         recipeFave.classList.remove("fa-regular");
         recipeFave.classList.add("fa-solid");
     } else {
@@ -297,8 +297,35 @@ function toggleFavourite(title, image, ingredients, instructions, recipeFave, cu
         localStorage.removeItem(title.split("+").join(" "));
         recipeFave.classList.remove("fa-solid");
         recipeFave.classList.add("fa-regular");
-    };
-};
+    }
+    
+    updateModalButtonText(title, cuisine);
+}
+
+
+function updateModalButtonText(title, cuisine) {
+    var modalBtnText = "";
+    
+    if (window.location.pathname === '/favourites.html') {
+        modalBtnText = "Remove from favourites";
+    }
+
+    var heartClassList = document.querySelector(`[data-target="${title.split("+").join(" ")}"]`).classList;
+
+    if (window.location.pathname === `/cuisines/${cuisine}Cuisine.html` && heartClassList.contains("fa-regular")) {
+        modalBtnText = "Add to Favourites";
+    }
+
+    if (window.location.pathname === `/cuisines/${cuisine}Cuisine.html` && heartClassList.contains("fa-solid")) {
+        modalBtnText = "Remove from favourites";
+    }
+
+    var modalButton = document.getElementById(`fave${title.split("+").join("")}`);
+    
+    if (modalButton) {
+        modalButton.textContent = modalBtnText;
+    }
+}
 
 
 /*
@@ -422,12 +449,6 @@ function updateNutritionInfo(title, nutritionData) {
         <span style="display: inline-flex;" class="badge text-bg-info">Serving Size: ${nutritionData.servingSize}</span>
     `;
     }
-    
-    // if (nutritionInfoDiv.innerHTML === "") {
-    //     var nutritionWarning = document.createElement("p");
-    //     nutritionWarning.innerText = "No nutrition data available for this recipe at this moment in time.";
-    //     nutritionInfoDiv.append(nutritionWarning);
-    // }
 };
 
 
@@ -494,7 +515,7 @@ function showAllFavourites(currentPageCuisine) {
         displayComment.setAttribute("class", "text-center mt-5 text-muted fs-5");
         displayComment.textContent = "No recipes have been saved yet!";
         recipeContainer.appendChild(displayComment);
-    } else {
+    } else if (!recipeContainer.childElementCount === 0 && window.location.pathname === '/favourites.html') {
         var displayComment = document.createElement("p");
         displayComment.setAttribute("class", "text-center mt-5 text-muted fs-5");
         displayComment.textContent = "";
