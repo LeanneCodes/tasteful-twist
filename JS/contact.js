@@ -143,5 +143,7 @@ function sendEmail() {
   }
   emailjs.send("service_u8kqcpb","template_b8zepg3", params);
 console.log(params,"hi");
+
+
 }
 // ------------------------------- End Email Confirmation for Subscription ---------------------------------------------
