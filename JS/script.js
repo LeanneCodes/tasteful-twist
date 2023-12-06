@@ -4,7 +4,7 @@
     Additionally, if the user has previously favourited recipes for that specific cuisine,
     it will also show on the cuisine page, as that data has been retrieved from local storage.
 */
-if (window.location.pathname === '/cuisines/mexicanCuisine.html' || window.location.pathname === '/dummy.html') {
+if (window.location.pathname === '/cuisines/mexicanCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
         var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine.html")[0].toLowerCase();
         console.log(cuisine);
@@ -303,9 +303,13 @@ function toggleFavourite(title, image, ingredients, instructions, recipeFave, cu
     }
     
     updateModalButtonText(title, cuisine);
-}
+};
 
 
+/*
+    Depending on whether the heart class list contains fa-regular or fa-solid, the modal text will change
+    to either add to favourites or remove from favourites.
+*/
 function updateModalButtonText(title, cuisine) {
     var modalBtnText = "";
     
@@ -328,7 +332,7 @@ function updateModalButtonText(title, cuisine) {
     if (modalButton) {
         modalButton.textContent = modalBtnText;
     }
-}
+};
 
 
 /*
