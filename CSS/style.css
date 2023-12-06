@@ -7,7 +7,7 @@
 /* .... Start Body Section .... */
 body {
   /* background-color: black !important; */
-  font-family: 'Mona Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* .... End Body Section .... */
@@ -16,7 +16,6 @@ body {
   margin-left: auto;
   margin-right: 0 !important;
 }
-
 
 /* Contact Section */
 /* .formContact {
@@ -30,17 +29,16 @@ body {
 /* Hex colours */
 
 .bg-grey {
-  background-color: #404146; 
-} 
+  background-color: #404146;
+}
 
 .bg-gold {
-  background-color: #C0AC7A; 
-} 
-
+  background-color: #c0ac7a;
+}
 
 .bg-light-grey {
-  background-color: #BFC3C6; 
-} 
+  background-color: #bfc3c6;
+}
 
 /* .... Start Footer Section .... */
 footer {
@@ -49,19 +47,19 @@ footer {
 
 /* .... End Footer Section .... */
 .bg-off-white {
-  background-color: #FFFAF4; 
-} 
+  background-color: #fffaf4;
+}
 
 .bg-cream {
-  background-color: #fdefdc; 
-} 
+  background-color: #fdefdc;
+}
 
 .text-cream {
-  color: #f9e6cb; 
-} 
+  color: #f9e6cb;
+}
 
 .text-gold {
-  color: #C0AC7A;
+  color: #c0ac7a;
 }
 
 /* start of recipe section */
@@ -79,7 +77,64 @@ a {
 }
 
 .text-bg-info {
-  background-color: #C0AC7A !important;
+  background-color: #c0ac7a !important;
 }
 
 /* end of recipe section */
+
+/* start of about us page */
+.about-item {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  background-color: #b3ab98;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  box-shadow: 0 0 9px rgba(0,0,0 0.6);
+}
+
+
+.about-item i {
+  font-size: 43px;;
+  margin: 0;
+
+}
+
+.about-item h3 {
+  font-size: 25px;
+  margin: 10px;
+}
+
+.about-item p {
+  margin:30px;
+  
+}
+
+
+.card-img-top {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin: auto;
+}
+
+
+.card {
+  box-shadow: rgba(0,0,0,0.2) 0px 20px 50px -12px;
+  border-radius: 0;
+  padding: 20px;
+  border: none;
+}
+
+.icon {
+  font-size: 25px;
+  color: #c0ac7a;
+}
+
+.icon:hover {
+  color: black;
+}
+
+
+
+/* end of about us page */
