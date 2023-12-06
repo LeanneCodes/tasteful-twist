@@ -227,7 +227,7 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
                     <div class="modal-body">
                         <h2>Nutritional Information<sup>*</sup></h2>
                         <div id="nutritionInfo${title.split("+").join("")}"></div><br>
-                        <p class="text-muted"><sup>*</sup>Nutritional data is based on estimates. It can vary depending on specific ingredients used.</p>
+                        <p class="text-muted"><sup>*</sup>Nutritional data is based on estimates and can vary depending on the specific ingredients used.</p>
                         <h2>Ingredients:</h2>
                         <ul>${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
                         <h2>Instructions:</h2>
@@ -250,11 +250,11 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     getNutrition(title);
 
     faveRecipeEl.addEventListener('click', function() {
-        togglefavourite(title, image, ingredients, instructions, recipeFave, cuisine);
+        toggleFavourite(title, image, ingredients, instructions, recipeFave, cuisine);
     });
 
     recipeFave.addEventListener('click', function() {
-        togglefavourite(title, image, ingredients, instructions, recipeFave, cuisine);
+        toggleFavourite(title, image, ingredients, instructions, recipeFave, cuisine);
     });
 
     return {
@@ -273,7 +273,7 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     the class name is fa-regular, the recipe is not in local storage and if the class name is
     fa-solid, the recipe is in local storage.
 */
-function togglefavourite(title, image, ingredients, instructions, recipeFave, cuisine) {
+function toggleFavourite(title, image, ingredients, instructions, recipeFave, cuisine) {
     var recipeDetails = {
         title: title.split("+").join(" "),
         image: image,
@@ -305,7 +305,7 @@ function togglefavourite(title, image, ingredients, instructions, recipeFave, cu
     Here, we are using our second API, where we are calculating the approximate nutritional value based
     on the ingredients mentioned in the recipe title. For example, if a recipe is called
     "Italian Sundaes with Nutella", the function will split each word into it's own query and calculate
-    what the approximate nutrional value would be for "Italian", "Sundaes", "with" and "Nutella". If it
+    what the approximate nutritional value would be for "Italian", "Sundaes", "with" and "Nutella". If it
     has nutritional data for that query, it will be added together and listed at the top of the modal,
     below the title.
 */
@@ -314,7 +314,7 @@ function getNutrition(recipeName) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '8dda9d9ee6msh61bc18e73875257p1cca71jsn3ba2b933a71d',
+            'X-RapidAPI-Key': '1d9e9c2c69mshd454e4259937dedp174d96jsnfd22249786f7',
             'X-RapidAPI-Host': 'nutrition-by-api-ninjas.p.rapidapi.com'
         }
     };
@@ -399,8 +399,16 @@ function getNutrition(recipeName) {
     that the data looks more appealing to the user.
 */
 function updateNutritionInfo(title, nutritionData) {
-    var nutritionInfoDiv = document.getElementById(`nutritionInfo${title.split("+").join("")}`);
-    nutritionInfoDiv.innerHTML = `
+    console.log(nutritionData);
+    if (nutritionData === undefined) {
+        var nutritionInfoDiv = document.getElementById(`nutritionInfo${title.split("+").join("")}`);
+        // nutritionInfoDiv.innerHTML = "No nutritional data is available for this recipe at this moment in time.";
+        nutritionInfoDiv.innerHTML = `
+        <div class="mt-2 p-3" style="margin-bottom: -1rem;"><span class="badge text-bg-info">Info:</span> No nutritional data is available for this recipe at this moment in time.</div>
+        `;
+    } else {
+        var nutritionInfoDiv = document.getElementById(`nutritionInfo${title.split("+").join("")}`);
+        nutritionInfoDiv.innerHTML = `
         <span style="display: inline-flex;" class="badge text-bg-info">Calories: ${nutritionData.calories}</span>
         <span style="display: inline-flex;" class="badge text-bg-info">Fat: ${nutritionData.fat}</span>
         <span style="display: inline-flex;" class="badge text-bg-info">Saturated Fat: ${nutritionData.satFat}</span>
@@ -413,6 +421,13 @@ function updateNutritionInfo(title, nutritionData) {
         <span style="display: inline-flex;" class="badge text-bg-info">Sugar: ${nutritionData.sugar}</span>
         <span style="display: inline-flex;" class="badge text-bg-info">Serving Size: ${nutritionData.servingSize}</span>
     `;
+    }
+    
+    // if (nutritionInfoDiv.innerHTML === "") {
+    //     var nutritionWarning = document.createElement("p");
+    //     nutritionWarning.innerText = "No nutrition data available for this recipe at this moment in time.";
+    //     nutritionInfoDiv.append(nutritionWarning);
+    // }
 };
 
 
@@ -476,10 +491,12 @@ function showAllFavourites(currentPageCuisine) {
     console.log(recipeContainer.childElementCount)
     if (recipeContainer.childElementCount === 0 && window.location.pathname === '/favourites.html') {
         var displayComment = document.createElement("p");
-        displayComment.setAttribute("class", "text-center mt-5 text-muted fs-5")
+        displayComment.setAttribute("class", "text-center mt-5 text-muted fs-5");
         displayComment.textContent = "No recipes have been saved yet!";
         recipeContainer.appendChild(displayComment);
     } else {
+        var displayComment = document.createElement("p");
+        displayComment.setAttribute("class", "text-center mt-5 text-muted fs-5");
         displayComment.textContent = "";
         recipeContainer.appendChild(displayComment);
     };
