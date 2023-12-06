@@ -189,7 +189,7 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     // if title is stored in local storage, it will have the class name of fa-solid
     var isFav = isFavourited(title);
     recipeFave.setAttribute("class", isFav ? "fa-solid fa-heart" : "fa-regular fa-heart");
-    recipeFave.setAttribute("style", "font-size: 1.5rem");
+    recipeFave.setAttribute("style", "font-size: 1.5rem; display: flex; align-items: center;");
     recipeFave.setAttribute("data-target", title.split("+").join(" "));
     console.log(recipeFave);
 
