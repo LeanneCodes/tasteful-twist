@@ -41,7 +41,6 @@ function sendEmail() {
 
 // -------------------------------  Starts Local Storage for  Sign up / in form  ---------------------------------------------
 // Sign up forms
-// Sign up forms
 function signUpFunc(e) {
   e.preventDefault();
   console.log('working');
@@ -59,7 +58,15 @@ function signUpFunc(e) {
   };
   var json = JSON.stringify(user);
   localStorage.setItem(userName, json); // Storing user data with the username as the key
-  console.log('user added');
+  console.log('user added', user);
+  var params = 
+  {
+    from_name: document.getElementById("fullNameInfoSignUp").value,
+    email_id: document.getElementById("emailInfoSignUp").value,
+    message: document.getElementById("messageInfoSignUp").value
+  }
+  emailjs.send("service_u8kqcpb","template_b8zepg3", params);
+  console.log(params,"h");
 };
 
 // Sign in forms
@@ -87,7 +94,7 @@ function signInFunc(e) {
 };
 
 document.addEventListener("submit", signInFunc);
-
+document.addEventListener("submit", signUpFunc);
 // -------------------------------  End Local Storage for  Sign up / in form    ---------------------------------------------
 
 
@@ -143,7 +150,8 @@ function sendEmail() {
   }
   emailjs.send("service_u8kqcpb","template_b8zepg3", params);
 console.log(params,"hi");
-
+localStorage.setItem("users", JSON.stringify(params));
+console.log("from sendEmail",params);
 
 }
 // ------------------------------- End Email Confirmation for Subscription ---------------------------------------------
@@ -151,13 +159,13 @@ console.log(params,"hi");
 
 // -------------------------------  Start Email Confirmation for Sign Up ---------------------------------------------
 
-function signUpFunc() {
-  var params = 
-  {
-    from_name: document.getElementById("fullNameInfoSignUp").value,
-    email_id: document.getElementById("emailInfoSignUp").value,
-    message: document.getElementById("messageInfoSignUp").value
-  }
-  emailjs.send("service_u8kqcpb","template_b8zepg3", params);
-  console.log(params,"hi");
-}
+// function signUpFunc() {
+//   var params = 
+//   {
+//     from_name: document.getElementById("fullNameInfoSignUp").value,
+//     email_id: document.getElementById("emailInfoSignUp").value,
+//     message: document.getElementById("messageInfoSignUp").value
+//   }
+//   emailjs.send("service_u8kqcpb","template_b8zepg3", params);
+//   console.log(params,"h");
+// }

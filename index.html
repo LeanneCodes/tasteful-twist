@@ -218,8 +218,8 @@
                         </div>
                       </div>
                       <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                        <form class="row g-3">
-                          <form>
+                        <form class="row g-3 test" onsubmit="signUpFunc()"> 
+      
                             <div class="text-center mb-3">
                               <br>
                               <p>Sign up with:</p>
@@ -252,11 +252,11 @@
                                 required>
                             </div>
                             <div class="col-md-12">
-                              <input type="password" class="form-control" id="passwordInfiSignUp" placeholder="Password"
+                              <input type="password" class="form-control" id="passwordInfoSignUp" placeholder="Password"
                                 required>
                             </div>
                             <hr />
-                            <button class="col-md-12" onclick="signUpFunc">Sign up</button>
+                            <button class="col-md-12" onsubmit="signUpFunc()">Sign up</button>
                           </form>
                       </div>
                     </div>
