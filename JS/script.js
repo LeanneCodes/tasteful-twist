@@ -184,12 +184,15 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     var recipeBtnBody = document.createElement("div");
     recipeBtnBody.setAttribute("style", "display: flex; justify-content: space-around;")
     var recipeDetailsBtn = document.createElement("button");
+
     var recipeFave = document.createElement("i");
-    recipeFave.setAttribute("class", isFavourited(title) ? "fa-solid fa-heart" : "fa-regular fa-heart");
-    recipeFave.setAttribute("class", "fa-regular fa-heart d-flex justify-content-center align-items-center");
+    // if title is stored in local storage, it will have the class name of fa-solid
+    var isFav = isFavourited(title);
+    recipeFave.setAttribute("class", isFav ? "fa-solid fa-heart" : "fa-regular fa-heart");
     recipeFave.setAttribute("style", "font-size: 1.5rem");
     recipeFave.setAttribute("data-target", title.split("+").join(" "));
     console.log(recipeFave);
+
     recipeDetailsBtn.setAttribute("class", "btn bg-gold");
     recipeDetailsBtn.setAttribute("type", "button");
     recipeDetailsBtn.setAttribute("style", "width: 75%; color: white;");
