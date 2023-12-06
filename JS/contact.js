@@ -147,3 +147,17 @@ console.log(params,"hi");
 
 }
 // ------------------------------- End Email Confirmation for Subscription ---------------------------------------------
+
+
+// -------------------------------  Start Email Confirmation for Sign Up ---------------------------------------------
+
+function signUpFunc() {
+  var params = 
+  {
+    from_name: document.getElementById("fullNameInfoSignUp").value,
+    email_id: document.getElementById("emailInfoSignUp").value,
+    message: document.getElementById("messageInfoSignUp").value
+  }
+  emailjs.send("service_u8kqcpb","template_b8zepg3", params);
+  console.log(params,"hi");
+}
