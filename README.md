@@ -1,6 +1,5 @@
 # Tasteful Twist
 
-# Tasteful Twist
 ## Project Overview
 Tasteful Twist allows users to source recipes from a wide range of cuisines from around the world in just a few simple clicks. This has been made possible by integrating data from multiple server-side API requests that have a collective database of cuisines recipes. Users are able to navigate from the home page or navigation bar to their desired cuisine recipes which they would like to browse, such as Italian, Greek and Spanish dishes. Once selected the user will then be directed to that cuisine page where a wide range of recipes with meal macros, ingredients and cooking instructions can be found. Users are also able to save their favourite recipes to a local storage using JavaScript which can be accessed in a row and list formation on the favourites page. 
 ## Challenges We Faced
@@ -105,10 +104,8 @@ As a cooking enthusiast with a desire for global culinary dishes, I want to effo
 
 
 ## License
+- 
 
-- This project is licensed under the [License Name] - see the LICENSE.md file for details.
-
-Acknowledgments
 
 ## Webpage Screenshot
 
