@@ -8,13 +8,6 @@ a {
   color: black !important;
 }
 
-/* Responsive design */
-@media (min-width: 768px) {
-  .news-input {
-    width: 50%;
-  }
-}
-
 /* .... Start Body Section .... */
 body {
   /* background-color: black !important; */
@@ -34,10 +27,6 @@ footer {
 }
 
 /* Recipe Section */
-#recipes {
-  margin-top: 100px;
-}
-
 .btn.bg-gold:hover {
   background-color: #b3ab98 !important;
 }
@@ -76,20 +65,9 @@ footer {
 }
 
 /* start of recipe section */
-#recipes {
-  margin-top: 100px;
-}
-
 a {
   text-decoration: none;
   color: black !important;
-}
-
-/* Responsive design */
-@media (min-width: 768px) {
-  .news-input {
-    width: 50%;
-  }
 }
 
 /* Navbar Section */
@@ -106,9 +84,6 @@ footer {
 }
 
 /* Recipe Section */
-#recipes {
-  margin-top: 100px;
-}
 
 .btn.bg-gold:hover {
   background-color: #b3ab98 !important;
@@ -169,3 +144,17 @@ footer {
 }
 
 /* end of about us page */
+/* Responsive design */
+@media (min-width: 768px) {
+  .news-input {
+    width: 50%;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 320px) {
+  .logo {
+    width: 100%;
+    height: auto;
+  }
+}
