@@ -29,7 +29,7 @@
 
 <body class="m-0 border-0 bd-example m-0 border-0">
   <div>
-    <button type="button" data-theme-toggle aria-label="Change to light theme">Change to light theme</button>
+    <button type="button" class="button" data-theme-toggle aria-label="Change to light theme">Change to light theme</button>
   </div>
   <!-- <div>
     <input type="checkbox" class="checkbox" id="chk" />
@@ -53,11 +53,12 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">About</a>
           </li>
-          <li class="nav-item dropdown data-bs-theme= Light">
+          <li class="nav-item dropdown"> 
+            <!-- data-bs-theme= Light -->
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Recipes
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" id="navDropdown">
               <li><a class="dropdown-item" href="../cuisines/asianCuisine.html">Asian</a></li>
               <hr class="dropdown-divider" />
               <li><a class="dropdown-item" href="../cuisines/frenchCuisine.html">French</a></li>
@@ -84,7 +85,7 @@
             <form id="contact_form">
               <li class="nav-item contact" id="contactTab" role="tablist">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#contactModal">
+                <button type="button" class="btn nav-link" data-bs-toggle="modal" data-bs-target="#contactModal">
                   Contact
                 </button>
 
