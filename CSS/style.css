@@ -15,7 +15,14 @@ a {
   }
 }
 
-/* Navbar Section */
+/* .... Start Body Section .... */
+body {
+  /* background-color: black !important; */
+  font-family: 'Mona Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* .... End Body Section .... */
+/* .... Start Navbar Section .... */
 .navbar-nav {
   margin-left: auto;
   margin-right: 0 !important;
@@ -67,3 +74,103 @@ footer {
 .text-gold {
   color: #c0ac7a;
 }
+
+/* start of recipe section */
+#recipes {
+  margin-top: 100px;
+}
+
+a {
+  text-decoration: none;
+  color: black !important;
+}
+
+/* Responsive design */
+@media (min-width: 768px) {
+  .news-input {
+    width: 50%;
+  }
+}
+
+/* Navbar Section */
+.navbar-nav {
+  margin-left: auto;
+  margin-right: 0 !important;
+}
+
+/* Footer Section */
+footer {
+  margin-top: 100px;
+}
+
+/* Recipe Section */
+#recipes {
+  margin-top: 100px;
+}
+
+.btn.bg-gold:hover {
+  background-color: #b3ab98 !important;
+}
+
+.text-bg-info {
+  background-color: #c0ac7a !important;
+}
+
+/* end of recipe section */
+
+/* start of about us page */
+.about-item {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  background-color: #b3ab98;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  box-shadow: 0 0 9px rgba(0,0,0 0.6);
+}
+
+
+.about-item i {
+  font-size: 43px;;
+  margin: 0;
+
+}
+
+.about-item h3 {
+  font-size: 25px;
+  margin: 10px;
+}
+
+.about-item p {
+  margin:30px;
+  
+}
+
+
+.card-img-top {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin: auto;
+}
+
+
+.card {
+  box-shadow: rgba(0,0,0,0.2) 0px 20px 50px -12px;
+  border-radius: 0;
+  padding: 20px;
+  border: none;
+}
+
+.icon {
+  font-size: 25px;
+  color: #c0ac7a;
+}
+
+.icon:hover {
+  color: black;
+}
+
+
+
+/* end of about us page */
