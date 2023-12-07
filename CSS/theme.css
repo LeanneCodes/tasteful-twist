@@ -1,0 +1,35 @@
+:root {
+  --grid-unit: 1rem;
+  --border-radius-base: 0.5rem;
+}
+
+[data-theme='light'] {
+  --color-bg: #ffffff;
+  --color-fg: #000000;
+}
+
+[data-theme='dark'] {
+  --color-bg: #100909e0;
+  --color-fg: #ffffff;
+}
+
+/* example use of CSS custom properties */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
+.light-theme {
+  background-color: var(--color-bg-light);
+  color: var(--color-fg-light);
+}
+.dark-theme {
+  background-color: var(--color-bg-dark);
+  color: var(--color-fg-dark);
+}
+.bg-off-white {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
+.nav-link {
+  color: #404146;
+}
