@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href='../index.html'><img src="../images/LogoDesign1-LM.png" width=400px height=85px
-        alt="logo"></a>
+    <a class="navbar-brand" href='../index.html'><img class="logo" src="../images/LogoDesign1-LM.png" width=400px
+        height=85px alt="logo"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">About</a>
+          <a class="nav-link active" aria-current="page" href="../about.html">About</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -39,7 +39,7 @@
         </li>
         <!-------------------- Contact Page -------------------->
         <div class="formContact">
-          <form>
+          <form id="contact_form">
             <li class="nav-item contact" id="contactTab" role="tablist">
               <!-- Button trigger modal -->
               <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#contactModal">
@@ -133,7 +133,7 @@
                           <div class="row g-3">
                             <form id="signInForm">
                               <div class="text-center mb-3">
-                                <!-- <br>
+                                <br>
                                 <p>Sign in with:</p>
                                 <br>
                                 <button data-mdb-ripple-init type="button" class="btn  btn-floating mx-1">
@@ -150,10 +150,10 @@
 
                                 <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
                                   <i class="fab fa-tiktok"></i>
-                                </button> -->
+                                </button>
                               </div>
 
-                              <!-- <p class="text-center">or</p> -->
+                              <p class="text-center">or</p>
 
                               <div class="col-md-12">
                                 <input type="userName" class="form-control" id="userInfoSignIn" placeholder="Username"
@@ -184,65 +184,49 @@
                           </br>
 
                           <h3 id="result" class="col-md-12 text-center mb-3"> Welcome, Log in ... </h3>
-
-
                         </div>
                       </div>
                     </div>
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                      <form class="row g-3">
-                        <form>
-                          <div class="text-center mb-3">
-                            <!-- <br>
-                            <p>Sign up with:</p>
-                            <br>
-                            <button data-mdb-ripple-init type="button" class="btn  btn-floating mx-1">
-                              <i class="fab fa-facebook-f"></i>
-                            </button>
+                      <form class="row g-3 test" onsubmit="signUpFunc()">
 
-                            <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
-                              <i class="fab fa-instagram"></i>
-                            </button>
+                        <div class="text-center mb-3">
+                          <br>
+                          <p>Sign up with:</p>
+                          <br>
+                          <button data-mdb-ripple-init type="button" class="btn  btn-floating mx-1">
+                            <i class="fab fa-facebook-f"></i>
+                          </button>
 
-                            <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
-                              <i class="fab fa-twitter"></i>
-                            </button>
+                          <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
+                            <i class="fab fa-instagram"></i>
+                          </button>
 
-                            <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
-                              <i class="fab fa-tiktok"></i>
-                            </button> -->
-                          </div>
+                          <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
+                            <i class="fab fa-twitter"></i>
+                          </button>
 
-                          <!-- <p class="text-center">or</p> -->
-                          <div class="col-md-12">
-                            <input type="text" class="form-control" id="fullNameInfoSignUp" placeholder="Full Name"
-                              required>
-                          </div>
-                          <div class="col-md-12">
-                            <input type="text" class="form-control" id="userNameInfoSignUp" placeholder="Username"
-                              required>
-                          </div>
-                          <div class="col-md-12">
-                            <input type="email" class="form-control" id="emailInfoSignUp" placeholder="Email" required>
-                          </div>
-                          <div class="col-md-12">
-                            <input type="password" class="form-control" id="passwordInfiSignUp" placeholder="Password"
-                              required>
-                          </div>
-                          <div class="col-md-12">
-                            <input type="password" class="form-control" id="repeatPasswordInfoSignUp"
-                              placeholder=" Repeat Password" required>
-                          </div>
-                          <div class="col-12">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required />
-                              <label class="form-check-label" for="invalidCheck2">Agree to terms and
-                                conditions</label>
-                            </div>
-                          </div>
-                          <hr />
-                          <button class="col-md-12">Sign up</button>
-                        </form>
+                          <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
+                            <i class="fab fa-tiktok"></i>
+                          </button>
+                        </div>
+
+                        <p class="text-center">or</p>
+
+                        <div class="col-md-12">
+                          <input type="text" class="form-control" id="userNameInfoSignUp" placeholder="Username"
+                            required>
+                        </div>
+                        <div class="col-md-12">
+                          <input type="email" class="form-control" id="emailInfoSignUp" placeholder="Email" required>
+                        </div>
+                        <div class="col-md-12">
+                          <input type="password" class="form-control" id="passwordInfoSignUp" placeholder="Password"
+                            required>
+                        </div>
+                        <hr />
+                        <button class="col-md-12" onsubmit="signUpFunc()">Sign up</button>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -253,82 +237,4 @@
   </li>
   </div>
   </div>
-  <!-- ................. Start Subscribe Section ................. -->
-  <section class="text-light p-1">
-    <div class="container">
-      <!-- Button trigger modal -->
-      <div class="input-group news-input d-md-flex align-items-center">
-        <button class="btn  btn-light text-dark btn-md text-center fw-bolder fs-4" type="button" data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"> Subscribe </button>
-        <!-- <h5 class="mb-3 mb-md-0 text-black col-md-6">     for yummy recipes to your inbox! </h5> -->
-      </div>
-    </div>
-
-  </section>
-  <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel"> Subscription for Email Digestion!</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-              aria-hidden="true"></span>&times;</span></button>
-        </div>
-        <form class="row g-3">
-          <div class="col-md-12">
-            <!-- <label for="FullName" class="form-label"> Full Name</label> -->
-            <input type="text" class="form-control" id="fullNameInfo" placeholder="Full Name" required>
-          </div>
-
-          <div class="col-md-12">
-            <!-- <label for="emailInfo" class="form-label">Email</label> -->
-            <input type="email" class="form-control" id="emailInfo" placeholder="Email" required>
-          </div>
-
-          <!-- <h5 col-md-6 class="form-title"> By Time </h5> -->
-          <div class="timeDropdown col-md-6">
-            <button class="btn   col-md-6" type="button"> Time </button>
-            <ul class="timeDropdown-menu" aria-labelledby="multiSelectTimeDropdown">
-              <li><label><input type="checkbox" value="15min"> 15 minutes </label></li>
-              <li><label><input type="checkbox" value="30min"> 30 minutes </label></li>
-              <li><label><input type="checkbox" value="60min"> 60 minutes </label></li>
-            </ul>
-          </div>
-
-          <div class="CuisineDropdown col-md-6">
-            <button class="btn  col-md-6" type="button"> Cuisine </button>
-            <ul class="cuisineDropdown-menu" aria-labelledby="multiSelectCuisineDropdown">
-              <li> <label> <input type="checkbox" value="italian"> Italian Cuisine</label></li>
-              <li><label><input type="checkbox" value="greek"> Greek Cuisine </label></li>
-              <li><label> <input type="checkbox" value="spain"> Spanish Cuisine </label></li>
-            </ul>
-          </div>
-
-          <!-- <h4 col-md-6 class="form-check"> Frequency </h4> -->
-          <div class="frequencyDropdown col-md-12">
-            <button class="btn  col-md-6" type="button"> Frequency of Email Digestion </button>
-            <ul class="frequencyDropdown-menu" aria-labelledby="radioButtonFrequencyDropdown">
-              <div class="time ">
-                <input class="form-check-input" type="radio" name="flexRadioDefault">
-                <label> Daily</label>
-              </div>
-              <div class="time ">
-                <input class="form-check-input" type="radio" name="flexRadioDefault">
-                <label> Weekly </label>
-              </div>
-              <div class="time">
-                <input class="form-check-input" type="radio" name="flexRadioDefault">
-                <label> Monthly </label>
-            </ul>
-          </div>
-        </form>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
-          <button type="submit" onclick="saveData()" id="subBtn" class="btn btn-primary"> Subscribe! </button>
-        </div>
-      </div>
-    </div>
-    <!-- ................. End Subscribe Section ................. -->
 </nav>
