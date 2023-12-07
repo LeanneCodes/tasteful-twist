@@ -8,20 +8,13 @@ a {
   color: black !important;
 }
 
-/* Responsive design */
-@media (min-width: 768px) {
-  .news-input {
-    width: 50%;
-  }
-}
-
 /* .... Start Body Section .... */
 body {
   /* background-color: black !important; */
   font-family: 'Mona Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-
 /* .... End Body Section .... */
+
 /* .... Start Navbar Section .... */
 .navbar-nav {
   margin-left: auto;
@@ -34,10 +27,6 @@ footer {
 }
 
 /* Recipe Section */
-#recipes {
-  margin-top: 100px;
-}
-
 .btn.bg-gold:hover {
   background-color: #b3ab98 !important;
 }
@@ -76,20 +65,9 @@ footer {
 }
 
 /* start of recipe section */
-#recipes {
-  margin-top: 100px;
-}
-
 a {
   text-decoration: none;
   color: black !important;
-}
-
-/* Responsive design */
-@media (min-width: 768px) {
-  .news-input {
-    width: 50%;
-  }
 }
 
 /* Navbar Section */
@@ -100,13 +78,12 @@ a {
 
 /* Footer Section */
 footer {
-  margin-top: 100px;
+  height: 300px;
+  bottom: 0;
+  width: 100% !important;
 }
 
 /* Recipe Section */
-#recipes {
-  margin-top: 100px;
-}
 
 .btn.bg-gold:hover {
   background-color: #b3ab98 !important;
@@ -125,14 +102,12 @@ footer {
   background-color: #b3ab98;
   padding-top: 40px;
   padding-bottom: 20px;
-  box-shadow: 0 0 9px rgba(0,0,0 0.6);
+  box-shadow: 0 0 9px rgba(0, 0, 0 0.6);
 }
 
-
 .about-item i {
-  font-size: 43px;;
+  font-size: 43px;
   margin: 0;
-
 }
 
 .about-item h3 {
@@ -141,12 +116,10 @@ footer {
 }
 
 .about-item p {
-  margin:30px;
-  
+  margin: 30px;
 }
 
-
-.card-img-top {
+.team-images {
   border-radius: 50%;
   width: 100px;
   height: 100px;
@@ -154,9 +127,8 @@ footer {
   margin: auto;
 }
 
-
 .card {
-  box-shadow: rgba(0,0,0,0.2) 0px 20px 50px -12px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 50px -12px;
   border-radius: 0;
   padding: 20px;
   border: none;
@@ -171,6 +143,18 @@ footer {
   color: black;
 }
 
-
-
 /* end of about us page */
+/* Responsive design */
+@media (min-width: 768px) {
+  .news-input {
+    width: 50%;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 320px) {
+  .logo {
+    width: 100%;
+    height: auto;
+  }
+}
