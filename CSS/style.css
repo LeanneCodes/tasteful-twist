@@ -125,14 +125,12 @@ footer {
   background-color: #b3ab98;
   padding-top: 40px;
   padding-bottom: 20px;
-  box-shadow: 0 0 9px rgba(0,0,0 0.6);
+  box-shadow: 0 0 9px rgba(0, 0, 0 0.6);
 }
 
-
 .about-item i {
-  font-size: 43px;;
+  font-size: 43px;
   margin: 0;
-
 }
 
 .about-item h3 {
@@ -141,12 +139,10 @@ footer {
 }
 
 .about-item p {
-  margin:30px;
-  
+  margin: 30px;
 }
 
-
-.card-img-top {
+.team-images {
   border-radius: 50%;
   width: 100px;
   height: 100px;
@@ -154,9 +150,8 @@ footer {
   margin: auto;
 }
 
-
 .card {
-  box-shadow: rgba(0,0,0,0.2) 0px 20px 50px -12px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 50px -12px;
   border-radius: 0;
   padding: 20px;
   border: none;
@@ -170,7 +165,5 @@ footer {
 .icon:hover {
   color: black;
 }
-
-
 
 /* end of about us page */
