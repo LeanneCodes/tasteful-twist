@@ -100,7 +100,9 @@ a {
 
 /* Footer Section */
 footer {
-  margin-top: 100px;
+  height: 300px;
+  bottom: 0;
+  width: 100% !important;
 }
 
 /* Recipe Section */
