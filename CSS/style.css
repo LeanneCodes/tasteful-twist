@@ -1,3 +1,14 @@
+/* Base styles */
+body {
+  font-family: 'Mona Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black !important;
+}
+
+/* Responsive design */
 @media (min-width: 768px) {
   .news-input {
     width: 50%;
@@ -7,7 +18,7 @@
 /* .... Start Body Section .... */
 body {
   /* background-color: black !important; */
-  font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Mona Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 /* .... End Body Section .... */
@@ -17,17 +28,25 @@ body {
   margin-right: 0 !important;
 }
 
-/* Contact Section */
-/* .formContact {
-  background-color: linear-gradient(--light-grey; ) max-width: 500px;
-  width: 100%;
-  padding: 30px;
-} */
+/* Footer Section */
+footer {
+  margin-top: 100px;
+}
 
-/* .... End Navbar Section .... */
+/* Recipe Section */
+#recipes {
+  margin-top: 100px;
+}
 
-/* Hex colours */
+.btn.bg-gold:hover {
+  background-color: #b3ab98 !important;
+}
 
+.text-bg-info {
+  background-color: #c0ac7a !important;
+}
+
+/* Color styles */
 .bg-grey {
   background-color: #404146;
 }
@@ -40,12 +59,6 @@ body {
   background-color: #bfc3c6;
 }
 
-/* .... Start Footer Section .... */
-footer {
-  margin-top: 100px;
-}
-
-/* .... End Footer Section .... */
 .bg-off-white {
   background-color: #fffaf4;
 }
@@ -72,8 +85,31 @@ a {
   color: black !important;
 }
 
-.bg-gold:hover {
-  background-color: #b3ab98;
+/* Responsive design */
+@media (min-width: 768px) {
+  .news-input {
+    width: 50%;
+  }
+}
+
+/* Navbar Section */
+.navbar-nav {
+  margin-left: auto;
+  margin-right: 0 !important;
+}
+
+/* Footer Section */
+footer {
+  margin-top: 100px;
+}
+
+/* Recipe Section */
+#recipes {
+  margin-top: 100px;
+}
+
+.btn.bg-gold:hover {
+  background-color: #b3ab98 !important;
 }
 
 .text-bg-info {

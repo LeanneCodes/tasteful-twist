@@ -1,48 +1,10 @@
-function getRecipe(cuisine) {
-    const cuisineURL = `https://food-recipes-with-images.p.rapidapi.com/?q=${cuisine}`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': 'c7965e32a1mshbe160fd7fa536fap1de1ccjsn06ed08451b4a',
-            'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
-        }
-    };
-
-    fetch(cuisineURL, options)
-        .then(function(response) {
-            return response.json();
-        }).then(function(data) {
-            console.log(cuisine + " recipes", data);
-            console.log(data.d.length);
-
-            for (var j = 0; j < data.d.length; j++) {
-                
-                var dataTitle = data.d[j].Title;
-                console.log(dataTitle);
-                var titleClean = dataTitle.replace("(", "").replace(")", "");
-                console.log(titleClean);
-                var titleSplit = titleClean.split(" ");
-                console.log(titleSplit); 
-                var title = titleSplit.join("+");
-                console.log(title);
-
-                var ingredients = Object.values(data.d[j].Ingredients);
-                console.log(ingredients.length);
-                for (var k = 0; k < ingredients.length; k++) {
-                    console.log(ingredients[k]);
-                }
-                console.log(ingredients);
-                var instructions = data.d[j].Instructions.split(".").join(".<br><br>");
-                console.log(instructions);
-                var image = data.d[j].Image;
-                console.log(image);
-
-                createRecipeCard(title, image, ingredients, instructions, cuisine);
-            }
-        });
-};
-
-if (window.location.pathname === '/cuisines/mexicanCuisine.html' || window.location.pathname === '/dummy.html') {
+/*
+    This if statement will load recipes from the API, for a specific cuisine, only when
+    the user is on a pathname that matches the cuisine and when the page has fully loaded.
+    Additionally, if the user has previously favourited recipes for that specific cuisine,
+    it will also show on the cuisine page, as that data has been retrieved from local storage.
+*/
+if (window.location.pathname === '/cuisines/mexicanCuisine.html') {
     document.addEventListener("DOMContentLoaded", function() {
         var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine.html")[0].toLowerCase();
         console.log(cuisine);
@@ -102,23 +64,76 @@ if (window.location.pathname === '/cuisines/mexicanCuisine.html' || window.locat
     document.addEventListener("DOMContentLoaded", function() {
         showAllFavourites();
     });
-    var recipeContainer = document.getElementById("recipe-container");
-    console.log(recipeContainer.childElementCount)
-    if (recipeContainer.childElementCount === 0 || null) {
-        var displayComment = document.createElement("h3");
-        displayComment.textContent = "No recipes have been favourited yet!";
-        recipeContainer.appendChild(displayComment);
-    }
-    
-    if (recipeContainer.childElementCount > 0) {
-        displayComment.textContent = "";
-        recipeContainer.appendChild(displayComment);
-    }
 } else {
     console.log("No page exists");
-}
+};
 
 
+/*
+    Here, we are calling the food recipes API and passing in the cuisine name. This is dynamic,
+    so depending on the html page the user is on, the cuisine name changes. We iterate through
+    the API data and create variables for title, ingredients, images, instructions and cuisine.
+    We then call the createRecipeCard function, which passes through the variables as arguments.
+*/
+function getRecipe(cuisine) {
+    const cuisineURL = `https://food-recipes-with-images.p.rapidapi.com/?q=${cuisine}`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'c7965e32a1mshbe160fd7fa536fap1de1ccjsn06ed08451b4a',
+            'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
+        }
+    };
+
+    fetch(cuisineURL, options)
+        .then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            console.log(cuisine + " recipes", data);
+            console.log(data.d.length);
+
+            for (var j = 0; j < data.d.length; j++) {
+                
+                var dataTitle = data.d[j].Title;
+                console.log(dataTitle);
+                var titleClean = dataTitle.replace("(", "").replace(")", "");
+                console.log(titleClean);
+                var titleSplit = titleClean.split(" ");
+                console.log(titleSplit); 
+                var title = titleSplit.join("+");
+                console.log(title);
+
+                var ingredients = Object.values(data.d[j].Ingredients);
+                console.log(ingredients.length);
+                for (var k = 0; k < ingredients.length; k++) {
+                    console.log(ingredients[k]);
+                }
+                console.log(ingredients);
+                var instructions = data.d[j].Instructions.split(".").join(".<br><br>");
+                console.log(instructions);
+                var image = data.d[j].Image;
+                console.log(image);
+
+                createRecipeCard(title, image, ingredients, instructions, cuisine);
+            }
+        });
+};
+
+/*
+    We now create a recipe card for each recipe for the cuisine html page we are on. Within that
+    recipe card, a bootstrap card is built and it contains a title, image, a view recipe button
+    and a heart icon, so that the user can favourite the recipe, which is stored in local storage.
+    When the user clicks on the view recipe button, a modal opens and it is specific to the recipe
+    the user clicked on. Here you will see the title, nutritional information, ingredients,
+    instructions and an option to add to favourites from the modal and a close button. If the user
+    clicks to "add to favourites", the heart icon changes to a solid heart and the recipe is stored
+    in local storage.
+
+    If the user is on the favourites html page, and they want to view the recipe, the modal opens
+    again, but this time with the option to remove from favourites. If they click to remove, the
+    recipe is removed from local storage, the card is removed from the page and the heart icon on
+    the individual cuisine page return to a regular heart icon.
+*/
 function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     // remove duplicate cards from the cuisine page if the user has already add them to their favourites
     var existingRecipeCards = document.querySelectorAll(`.card-title`);
@@ -141,22 +156,18 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
         return;
     }
 
+    console.log("recipe container")
     var recipeContainer = document.getElementById("recipe-container");
-    console.log(recipeContainer.childElementCount)
+    console.log(typeof recipeContainer.childElementCount)
     
-    recipeContainer.setAttribute("class", "row");
-    if (window.location.pathname === '/favourites.html') {
-        recipeContainer.setAttribute("style", "justify-content: flex-start; margin: 50px;")
-    } else {
-        recipeContainer.setAttribute("style", "justify-content: space-around; margin: 50px;")
-    }
+    
+    recipeContainer.setAttribute("class", "row justify-content-center");
+    recipeContainer.setAttribute("style", "margin: 50px auto;")
+
     var recipeCard = document.createElement("div");
-    recipeCard.setAttribute("class", "card col-sm-12 col-md-4 col-lg-3 p-3 text-center justify-content-between mb-3");
-    if (window.location.pathname === '/favourites.html') {
-        recipeCard.setAttribute("style", "width: 18rem; height: 380px; background-color: #fdefdc; border: 1px solid #fdefdc; color: #404146; margin-right: 30px;");
-    } else {
-        recipeCard.setAttribute("style", "width: 18rem; height: 380px; background-color: #fdefdc; border: 1px solid #fdefdc; color: #404146;");
-    }
+    recipeCard.setAttribute("class", "card col-sm-12 col-md-6 col-lg-4 p-3 m-4 text-center justify-content-between");
+    recipeCard.setAttribute("style", "max-width: 21rem; height: 400px; background-color: #fdefdc; border: 1px solid #fdefdc; color: #404146;");
+
     var recipeImage = document.createElement("img")
     if (!image) {
         console.log("no image available")
@@ -173,12 +184,15 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     var recipeBtnBody = document.createElement("div");
     recipeBtnBody.setAttribute("style", "display: flex; justify-content: space-around;")
     var recipeDetailsBtn = document.createElement("button");
+
     var recipeFave = document.createElement("i");
-    recipeFave.setAttribute("class", isFavourited(title) ? "fa-solid fa-heart" : "fa-regular fa-heart");
-    recipeFave.setAttribute("class", "fa-regular fa-heart d-flex justify-content-center align-items-center");
-    recipeFave.setAttribute("style", "font-size: 1.5rem");
+    // if title is stored in local storage, it will have the class name of fa-solid
+    var isFav = isFavourited(title);
+    recipeFave.setAttribute("class", isFav ? "fa-solid fa-heart" : "fa-regular fa-heart");
+    recipeFave.setAttribute("style", "font-size: 1.5rem; display: flex; align-items: center;");
     recipeFave.setAttribute("data-target", title.split("+").join(" "));
     console.log(recipeFave);
+
     recipeDetailsBtn.setAttribute("class", "btn bg-gold");
     recipeDetailsBtn.setAttribute("type", "button");
     recipeDetailsBtn.setAttribute("style", "width: 75%; color: white;");
@@ -196,12 +210,18 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     var heartClassRegular = document.querySelectorAll(".fa-regular");
     console.log(heartClassRegular);
 
-    var modalBtn = "";
+    var modalBtnText = "";
 
     if (window.location.pathname === '/favourites.html') {
-        var modalBtn = "Remove from favourites";
-    } else {
-        var modalBtn = "Add to Favourites";
+        modalBtnText = "Remove from favourites";
+    }
+
+    if (window.location.pathname === `/cuisines/${cuisine}Cuisine.html` && recipeFave.classList.contains("fa-regular")) {
+        modalBtnText = "Add to Favourites";
+    }
+
+    if (window.location.pathname === `/cuisines/${cuisine}Cuisine.html` && recipeFave.classList.contains("fa-solid")) {
+        modalBtnText = "Remove from favourites";
     }
 
     var modalHTML = `
@@ -215,14 +235,14 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
                     <div class="modal-body">
                         <h2>Nutritional Information<sup>*</sup></h2>
                         <div id="nutritionInfo${title.split("+").join("")}"></div><br>
-                        <p class="text-muted"><sup>*</sup>Nutritional data is based on estimates. It can vary depending on specific ingredients used.</p>
+                        <p class="text-muted"><sup>*</sup>Nutritional data is based on estimates and can vary depending on the specific ingredients used.</p>
                         <h2>Ingredients:</h2>
                         <ul>${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
                         <h2>Instructions:</h2>
                         <p>${instructions}</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn bg-gold text-white" id="fave${title.split("+").join("")}">${modalBtn}</button>
+                        <button type="button" class="btn bg-gold text-white" id="fave${title.split("+").join("")}">${modalBtnText}</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -238,11 +258,11 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     getNutrition(title);
 
     faveRecipeEl.addEventListener('click', function() {
-        togglefavourite(title, image, ingredients, instructions, recipeFave, cuisine);
+        toggleFavourite(title, image, ingredients, instructions, recipeFave, cuisine);
     });
 
     recipeFave.addEventListener('click', function() {
-        togglefavourite(title, image, ingredients, instructions, recipeFave, cuisine);
+        toggleFavourite(title, image, ingredients, instructions, recipeFave, cuisine);
     });
 
     return {
@@ -255,24 +275,24 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     };
 };
 
-
-function togglefavourite(title, image, ingredients, instructions, recipeFave, cuisine) {
-    var recipeDetails = {
-        title: title.split("+").join(" "),
-        image: image,
-        ingredients: ingredients,
-        instructions: instructions,
-        cuisine: cuisine,
-        heart: true
-    };
-
-    var recipeDetailsJSON = JSON.stringify(recipeDetails);
-
+/*
+    This function helps with toggling the heart icon from a regular icon to a solid heart icon. If
+    the class name is fa-regular, the recipe is not in local storage and if the class name is
+    fa-solid, the recipe is in local storage.
+*/
+function toggleFavourite(title, image, ingredients, instructions, recipeFave, cuisine) {
     var isfavourite = recipeFave.classList.contains("fa-regular");
 
     if (isfavourite) {
         // Add to favourites
-        localStorage.setItem(title.split("+").join(" "), recipeDetailsJSON);
+        localStorage.setItem(title.split("+").join(" "), JSON.stringify({
+            title: title.split("+").join(" "),
+            image: image,
+            ingredients: ingredients,
+            instructions: instructions,
+            cuisine: cuisine,
+            heart: true
+        }));
         recipeFave.classList.remove("fa-regular");
         recipeFave.classList.add("fa-solid");
     } else {
@@ -280,16 +300,55 @@ function togglefavourite(title, image, ingredients, instructions, recipeFave, cu
         localStorage.removeItem(title.split("+").join(" "));
         recipeFave.classList.remove("fa-solid");
         recipeFave.classList.add("fa-regular");
-    };
+    }
+    
+    updateModalButtonText(title, cuisine);
 };
 
 
+/*
+    Depending on whether the heart class list contains fa-regular or fa-solid, the modal text will change
+    to either add to favourites or remove from favourites.
+*/
+function updateModalButtonText(title, cuisine) {
+    var modalBtnText = "";
+    
+    if (window.location.pathname === '/favourites.html') {
+        modalBtnText = "Remove from favourites";
+    }
+
+    var heartClassList = document.querySelector(`[data-target="${title.split("+").join(" ")}"]`).classList;
+
+    if (window.location.pathname === `/cuisines/${cuisine}Cuisine.html` && heartClassList.contains("fa-regular")) {
+        modalBtnText = "Add to Favourites";
+    }
+
+    if (window.location.pathname === `/cuisines/${cuisine}Cuisine.html` && heartClassList.contains("fa-solid")) {
+        modalBtnText = "Remove from favourites";
+    }
+
+    var modalButton = document.getElementById(`fave${title.split("+").join("")}`);
+    
+    if (modalButton) {
+        modalButton.textContent = modalBtnText;
+    }
+};
+
+
+/*
+    Here, we are using our second API, where we are calculating the approximate nutritional value based
+    on the ingredients mentioned in the recipe title. For example, if a recipe is called
+    "Italian Sundaes with Nutella", the function will split each word into it's own query and calculate
+    what the approximate nutritional value would be for "Italian", "Sundaes", "with" and "Nutella". If it
+    has nutritional data for that query, it will be added together and listed at the top of the modal,
+    below the title.
+*/
 function getNutrition(recipeName) {
     const nutritionURL = `https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition?query=${recipeName}`;
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '8dda9d9ee6msh61bc18e73875257p1cca71jsn3ba2b933a71d',
+            'X-RapidAPI-Key': '1d9e9c2c69mshd454e4259937dedp174d96jsnfd22249786f7',
             'X-RapidAPI-Host': 'nutrition-by-api-ninjas.p.rapidapi.com'
         }
     };
@@ -369,9 +428,21 @@ function getNutrition(recipeName) {
 };
 
 
+/*
+    To display the nutritional value for each recipe, we have created a span using bootstrap classes, so
+    that the data looks more appealing to the user.
+*/
 function updateNutritionInfo(title, nutritionData) {
-    var nutritionInfoDiv = document.getElementById(`nutritionInfo${title.split("+").join("")}`);
-    nutritionInfoDiv.innerHTML = `
+    console.log(nutritionData);
+    if (nutritionData === undefined) {
+        var nutritionInfoDiv = document.getElementById(`nutritionInfo${title.split("+").join("")}`);
+        // nutritionInfoDiv.innerHTML = "No nutritional data is available for this recipe at this moment in time.";
+        nutritionInfoDiv.innerHTML = `
+        <div class="mt-2 p-3" style="margin-bottom: -1rem;"><span class="badge text-bg-info">Info:</span> No nutritional data is available for this recipe at this moment in time.</div>
+        `;
+    } else {
+        var nutritionInfoDiv = document.getElementById(`nutritionInfo${title.split("+").join("")}`);
+        nutritionInfoDiv.innerHTML = `
         <span style="display: inline-flex;" class="badge text-bg-info">Calories: ${nutritionData.calories}</span>
         <span style="display: inline-flex;" class="badge text-bg-info">Fat: ${nutritionData.fat}</span>
         <span style="display: inline-flex;" class="badge text-bg-info">Saturated Fat: ${nutritionData.satFat}</span>
@@ -384,9 +455,18 @@ function updateNutritionInfo(title, nutritionData) {
         <span style="display: inline-flex;" class="badge text-bg-info">Sugar: ${nutritionData.sugar}</span>
         <span style="display: inline-flex;" class="badge text-bg-info">Serving Size: ${nutritionData.servingSize}</span>
     `;
+    }
 };
 
 
+/*
+    For each cuisine page, we are displaying the saved recipes the user chose. If the user saved recipes from
+    the French page, the Mexican page and the Italian page, each page will only show the saved recipes for that
+    cuisine and the remaining unsaved recipes.
+
+    For the favourites page, this will show all the saved recipes across all cuisines. And if a user removes a
+    saved recipe from the favourites page, that same recipe will also be unsaved from the individual cuisine page.
+*/
 function showAllFavourites(currentPageCuisine) {
     // Get the recipe container
     var recipeContainer = document.getElementById("recipe-container");
@@ -429,13 +509,33 @@ function showAllFavourites(currentPageCuisine) {
                     localStorage.removeItem(recipeDetails.title.split(" ").join(""));
                     location.reload();
                 });
+
             }
+            
         }
     }
-}
+
+    var recipeContainer = document.getElementById("recipe-container");
+    console.log(recipeContainer.childElementCount)
+    if (recipeContainer.childElementCount === 0 && window.location.pathname === '/favourites.html') {
+        var displayComment = document.createElement("p");
+        displayComment.setAttribute("class", "text-center mt-5 text-muted fs-5");
+        displayComment.textContent = "No recipes have been saved yet!";
+        recipeContainer.appendChild(displayComment);
+    } else if (!recipeContainer.childElementCount === 0 && window.location.pathname === '/favourites.html') {
+        var displayComment = document.createElement("p");
+        displayComment.setAttribute("class", "text-center mt-5 text-muted fs-5");
+        displayComment.textContent = "";
+        recipeContainer.appendChild(displayComment);
+    };
+};
 
 
-
+/*
+    If the recipe card does exist in local storage, the recipe details is checked that it is an object,
+    and if it is, the function is called within the showAllFavourites function and the data from the
+    recipe is then extracted.
+*/
 function isRecipe(value) {
     try {
         var parsedValue = JSON.parse(value);
@@ -445,30 +545,8 @@ function isRecipe(value) {
     }
 };
 
-function getAllfavourites() {
-    var favourites = [];
 
-    for (var i = 0; i < localStorage.length; i++) {
-        var key = localStorage.key(i);
-        var storedValue = localStorage.getItem(key);
-
-        if (isRecipe(storedValue)) {
-            var recipeDetails = JSON.parse(storedValue);
-
-            favourites.push({
-                title: recipeDetails.title,
-                image: recipeDetails.image,
-                ingredients: recipeDetails.ingredients,
-                instructions: recipeDetails.instructions,
-                cuisine: recipeDetails.cuisine
-            });
-        }
-    }
-
-    return favourites;
-};
-
+// Checks if the recipe is favourited in localStorage.
 function isFavourited(title) {
-    // Check if the recipe is favourited in localStorage
     return localStorage.getItem(title) !== null;
-}
+};

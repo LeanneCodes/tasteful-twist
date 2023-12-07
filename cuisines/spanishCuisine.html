@@ -1,359 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <script src="https://kit.fontawesome.com/7ac16726b9.js" crossorigin="anonymous"></script>
-    <!-- local CSS -->
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Tasteful Twist | Spanish Cuisine</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/7ac16726b9.js" crossorigin="anonymous"></script>
+  <!-- local CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Tasteful Twist | Spanish Cuisine</title>
 </head>
+
 <body>
 
-        <!-- start of navbar -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <di class="container-fluid">
-            <a class="navbar-brand" href='#'><img src="../images/LogoDesign1-LM.png" width=400px height=85px alt="logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Popular</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Recipes
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="../cuisines/asianCuisine.html">Asian</a></li>
-                    <hr class="dropdown-divider" />
-                    <li><a class="dropdown-item" href="../cuisines/frenchCuisine.html">French</a></li>
-                    <hr class="dropdown-divider" />
-                    <li><a class="dropdown-item" href="../cuisines/greekCuisine.html">Greek</a></li>
-                      <hr class="dropdown-divider" />
-                    <li><a class="dropdown-item" href="../cuisines/indianCuisine.html">Indian</a></li>
-                    <hr class="dropdown-divider" />
-                    <li><a class="dropdown-item" href="../cuisines/italianCuisine.html">Italian</a></li>
-                    <hr class="dropdown-divider" />
-                    <li><a class="dropdown-item" href="../cuisines/mexicanCuisine.html">Mexican</a></li>
-                    <hr class="dropdown-divider" />
-                    <li><a class="dropdown-item" href="../cuisines/morocanCuisine.html">Moroccan</a></li>
-                    <hr class="dropdown-divider" />
-                    <li><a class="dropdown-item" href="../cuisines/spanishCuisine.html">Spanish</a></li>
-                    <li class="nav-item dropdown"></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Contact</a>
-                </li>
-                <div class="formContact">
-                  <form>
-                    <li class="nav-item" id="nav-tab" role="tablist">
-                      <!-------------------- Contact Page -------------------->
-                      <!-- Button trigger modal -->
-                      <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#contactModal"> <i
-                          class="fa-regular fa-user" style="color: #000000;"></i> </button>
-      
-                      <!-- Modal -->
-                      <div class="modal fade" id="contactModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <!-- Add a close button -->
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link active col-md-6" id="nav-home-tab" data-bs-toggle="tab"
-                                  href="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
-                                  <h4>Welcome</h4>
-                                </button>
-                                <button class="nav-link col-md-6" id="nav-profile-tab" data-bs-toggle="tab"
-                                  href="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
-                                  aria-selected="false">
-                                  <h4>Sign Up</h4>
-                                </button>
-                              </div>
-                              <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-                                  aria-labelledby="nav-home-tab">
-                                  <br>
-                                  <div class="row g-3">
-                                    <form>
-                                      <div class="text-center mb-3">
-                                        <br>
-                                        <p>Sign in with:</p>
-                                        <br>
-                                        <button data-mdb-ripple-init type="button" class="btn  btn-floating mx-1">
-                                          <i class="fab fa-facebook-f"></i>
-                                        </button>
-      
-                                        <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
-                                          <i class="fab fa-instagram"></i>
-                                        </button>
-      
-                                        <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
-                                          <i class="fab fa-twitter"></i>
-                                        </button>
-      
-                                        <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
-                                          <i class="fab fa-tiktok"></i>
-                                        </button>
-                                      </div>
-      
-                                      <p class="text-center">or</p>
-                                      <div class="col-md-12">
-                                        <input type="email" class="form-control" id="emailInfoSignIn" placeholder="Email"
-                                          required>
-                                      </div>
-                                      <div class="col-md-12">
-                                        <input type="password" class="form-control" id="passwordInfoSignIn"
-                                          placeholder="Password" required>
-                                        <hr />
-                                        <!-- 2 column grid layout for inline styling -->
-                                        <div class="row mb-4">
-                                          <div class="col d-flex justify-content-center">
-                                            <!-- Checkbox -->
-                                            <div class="formCheck">
-                                              <input class="formCheckInput" type="checkbox" value="" id="rememberForm" />
-                                              <label class="formCheckLabel" for="rememberForm"> Remember me </label>
-                                            </div>
-                                          </div>
-                                    </form>
-                                    <div class="col">
-                                      <!-- Simple link -->
-                                      <a href="#!">Forgot password?</a>
-                                    </div>
-                                  </div>
-                                  <hr />
-                                  <button class="col-md-12">Login</button>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                              <form class="row g-3">
-                                <form>
-                                  <div class="text-center mb-3">
-                                    <br>
-                                    <p>Sign up with:</p>
-                                    <br>
-                                    <button data-mdb-ripple-init type="button" class="btn  btn-floating mx-1">
-                                      <i class="fab fa-facebook-f"></i>
-                                    </button>
-      
-                                    <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
-                                      <i class="fab fa-instagram"></i>
-                                    </button>
-      
-                                    <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
-                                      <i class="fab fa-twitter"></i>
-                                    </button>
-      
-                                    <button data-mdb-ripple-init type="button" class="btn btn-floating mx-1">
-                                      <i class="fab fa-tiktok"></i>
-                                    </button>
-                                  </div>
-      
-                                  <p class="text-center">or</p>
-                                  <div class="col-md-12">
-                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
-                                  </div>
-                                  <div class="col-md-12">
-                                    <input type="email" class="form-control" id="emailInfo" placeholder="Email" required>
-                                  </div>
-                                  <div class="col-md-12">
-                                    <input type="password" class="form-control" id="passwordInfo" placeholder="Password"
-                                      required>
-                                  </div>
-                                  <div class="col-md-12">
-                                    <input type="repeatPassword" class="form-control" id="repeatPasswordInfo"
-                                      placeholder=" Repeat Password" required>
-                                  </div>
-                                  <div class="col-12">
-                                    <div class="form-check">
-                                      <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required />
-                                      <label class="form-check-label" for="invalidCheck2">Agree to terms and
-                                        conditions</label>
-                                    </div>
-                                  </div>
-                                  <hr />
-                                  <button class="col-md-12">Sign up</button>
-                                </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                </div>
-            </div>
-            </div>
-            </li>
-            </div>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button class="btn btn-outline-success" type="submit" fdprocessedid="y5alsi">
-                Search
-              </button>
-            </form>
-            </div>
-            <!-- ................. Start Subscribe Section ................. -->
-            <section class="text-light p-5 ">
-              <div class="container">
-                <!-- Button trigger modal -->
-                <div class="input-group news-input d-md-flex align-items-center">
-                  <button class="btn  btn-light text-dark btn-md text-center fw-bolder fs-4" type="button"
-                    data-bs-toggle="modal" data-bs-target="#staticBackdrop"> Subscribe </button>
-                  <!-- <h5 class="mb-3 mb-md-0 text-black col-md-6">     for yummy recipes to your inbox! </h5> -->
-                </div>
-              </div>
-      
-            </section>
-            <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-              aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel"> Subscription for Email Digestion!</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true"></span>&times;</span></button>
-                  </div>
-                  <form class="row g-3">
-                    <div class="col-md-6">
-                      <label for="FirstName" class="form-label"> First Name</label>
-                      <input type="text" class="form-control" id="firstName" required>
-                    </div>
-                    <div class="col-md-6">
-                      <label for="LastName" class="form-label"> Last Name</label>
-                      <input type="text" class="form-control" id="lastName" required>
-                    </div>
-      
-                    <div class="col-md-8">
-                      <label for="emailInfo" class="form-label">Email</label>
-                      <input type="email" class="form-control" id="emailInfo" required>
-                    </div>
-      
-                    <!-- <h5 col-md-6 class="form-title"> By Time </h5> -->
-                    <div class="timeDropdown col-md-6">
-                      <button class="btn   col-md-6" type="button"> Time </button>
-                      <ul class="timeDropdown-menu" aria-labelledby="multiSelectTimeDropdown">
-                        <li><label><input type="checkbox" value="15min"> 15 minutes </label></li>
-                        <li><label><input type="checkbox" value="30min"> 30 minutes </label></li>
-                        <li><label><input type="checkbox" value="60min"> 60 minutes </label></li>
-                      </ul>
-                    </div>
-      
-                    <div class="CuisineDropdown col-md-6">
-                      <button class="btn  col-md-6" type="button"> Cuisine </button>
-                      <ul class="cuisineDropdown-menu" aria-labelledby="multiSelectCuisineDropdown">
-                        <li> <label> <input type="checkbox" value="italian"> Italian Cuisine</label></li>
-                        <li><label><input type="checkbox" value="greek"> Greek Cuisine </label></li>
-                        <li><label> <input type="checkbox" value="spain"> Spanish Cuisine </label></li>
-                      </ul>
-                    </div>
-      
-                    <!-- <h4 col-md-6 class="form-check"> Frequency </h4> -->
-                    <div class="frequencyDropdown col-md-12">
-                      <button class="btn  col-md-6" type="button"> Frequency of Email Digestion </button>
-                      <ul class="frequencyDropdown-menu" aria-labelledby="radioButtonFrequencyDropdown">
-                        <div class="time ">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault">
-                          <label> Daily</label>
-                        </div>
-                        <div class="time ">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault">
-                          <label> Weekly </label>
-                        </div>
-                        <div class="time">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault">
-                          <label> Monthly </label>
-                      </ul>
-                    </div>
-                  </form>
-      
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
-                    <button type="submit" class="btn btn-primary"> Subscribe! </button>
-                  </div>
-                </div>
-              </div>
-              <!-- ................. End Subscribe Section ................. -->
-        </nav>
-        <!-- end of navbar -->
+  <!-- start of navbar -->
+  <div id="navbar-placeholder"></div>
+  <!-- end of navbar -->
 
-        <!-- start hero section -->
-        <section class="bg-off-white bg-gradient text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start ">
-            <div class="container">
-              <div class="d-sm-flex align-items-center justify-content-between">
-                <div>
-                  <h1 class="text-black"><strong>A Little Taste <span class="text-gold">Of Italy</span></strong></h1>
-                  <p class="lead my-4 text-black">
-                    Discover the art of Italian cuisine, where every recipe is a culinary masterpiece designed to transport your
-                    taste buds to the heart of Italy
-                  </p>
-                  <a href="#recipes"><button class="btn bg-gold btn-lg">View Recipes >> </button></a>
-                </div>
-                <img class="img-fluid w-50 d-none d-sm-block" src="../images/italian-cuisine.png" alt="">
-              </div>
-            </div>
-        </section>
-        <!-- end hero section -->
+  <!-- start hero section -->
+  <section class="bg-off-white bg-gradient text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start ">
+    <div class="container">
+      <div class="d-sm-flex align-items-center justify-content-between">
+        <div>
+          <h1 class="text-black"><strong>A Little Taste <span class="text-gold">Of Spain</span></strong></h1>
+          <p class="lead my-4 text-black">
+            Discover the art of the Spanish cuisine, where every recipe is a culinary masterpiece designed to transport
+            your
+            taste buds to the heart of Spain!
+          </p>
+          <a href="#recipes"><button class="btn bg-gold btn-lg">View Recipes&nbsp;&nbsp;>> </button></a>
+        </div>
+        <img class="img-fluid w-50 d-none d-sm-block p-5" src="/Images/spanish1.png" alt=" Picture of Asian Cuisine">
+      </div>
+    </div>
+  </section>
+  <!-- end hero section -->
 
-        <!-- start recipe section -->
-        <section id="recipes">
-          <h1 class="text-center"><span class="text-gold">Spanish </span>Cuisine</h1>
-          <div id="recipe-container">
+  <!-- start recipe section -->
+  <section id="recipes">
+    <h1 class="text-center bg-gold p-2">Spanish Cuisine</h1>
+    <div class="container-fluid">
+      <div id="recipe-container"></div>
+    </div>
+  </section>
+  <!-- end recipe section -->
 
-          </div>
-      </section>
-        <!-- end recipe section -->
-
-        <!--start of footer -->
-        <footer>
-          <div class="d-flex flex-sm-row flex-column text-center justify-content-between py-4 m-5 border-top">
-              <p>© 2023 TastefulTwists, Inc. All rights reserved.</p>
-              <ul class="list-unstyled d-flex justify-content-center">
-                <li class="ms-3">
-                  <a class="link-body-emphasis" href="https://twitter.com">
-                    <img src="../images/twitter-logo.png" alt="Twitter" width="24" height="24">
-                  </a>
-                </li>
-                <li class="ms-3">
-                  <a class="link-body-emphasis" href="https://www.instagram.com/">
-                    <img src="../images/instagram-logo.png" alt="Instagram" width="24" height="24">
-                  </a>
-                </li>
-                <li class="ms-3">
-                  <a class="link-body-emphasis" href="https://www.facebook.com/home">
-                    <img src="../images/facebook-logo.png" alt="Facebook" width="24" height="24">
-                  </a>
-                </li>
-                <li class="ms-3">
-                  <a class="link-body-emphasis" href="https://www.tiktok.com/en/">
-                    <img src="../images/tiktok-logo.png" alt="TikTok" width="24" height="24">
-                  </a>
-                </li>
-              </ul>
-          </div>
-      </footer>
-        <!-- end of footer -->
+  <!--start of footer -->
+  <div id="footer-placeholder"></div>
+  <!-- end of footer -->
 
 
-    <!-- Bootstrap JS and Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/script.js"></script>
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../js/headerandfooter.js"></script>
 </body>
+
 </html>
