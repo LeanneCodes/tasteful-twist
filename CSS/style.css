@@ -126,7 +126,9 @@ footer {
   object-fit: cover;
   margin: auto;
 }
-
+.info-box {
+  height: 480px !important;
+}
 .card {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 50px -12px;
   border-radius: 0;
