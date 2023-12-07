@@ -1,72 +1,6 @@
-@media (min-width: 768px) {
-  .news-input {
-    width: 50%;
-  }
-}
-
-/* .... Start Body Section .... */
+/* Base styles */
 body {
-  /* background-color: black !important; */
   font-family: 'Mona Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-/* .... End Body Section .... */
-/* .... Start Navbar Section .... */
-.navbar-nav {
-  margin-left: auto;
-  margin-right: 0 !important;
-}
-
-
-/* Contact Section */
-/* .formContact {
-  background-color: linear-gradient(--light-grey; ) max-width: 500px;
-  width: 100%;
-  padding: 30px;
-} */
-
-/* .... End Navbar Section .... */
-
-/* Hex colours */
-
-.bg-grey {
-  background-color: #404146; 
-} 
-
-.bg-gold {
-  background-color: #C0AC7A; 
-} 
-
-
-.bg-light-grey {
-  background-color: #BFC3C6; 
-} 
-
-/* .... Start Footer Section .... */
-footer {
-  margin-top: 100px;
-}
-
-/* .... End Footer Section .... */
-.bg-off-white {
-  background-color: #FFFAF4; 
-} 
-
-.bg-cream {
-  background-color: #fdefdc; 
-} 
-
-.text-cream {
-  color: #f9e6cb; 
-} 
-
-.text-gold {
-  color: #C0AC7A;
-}
-
-/* start of recipe section */
-#recipes {
-  margin-top: 100px;
 }
 
 a {
@@ -74,12 +8,62 @@ a {
   color: black !important;
 }
 
-.bg-gold:hover {
-  background-color: #b3ab98;
+/* Responsive design */
+@media (min-width: 768px) {
+  .news-input {
+    width: 50%;
+  }
+}
+
+/* Navbar Section */
+.navbar-nav {
+  margin-left: auto;
+  margin-right: 0 !important;
+}
+
+/* Footer Section */
+footer {
+  margin-top: 100px;
+}
+
+/* Recipe Section */
+#recipes {
+  margin-top: 100px;
+}
+
+.btn.bg-gold:hover {
+  background-color: #b3ab98 !important;
 }
 
 .text-bg-info {
-  background-color: #C0AC7A !important;
+  background-color: #c0ac7a !important;
 }
 
-/* end of recipe section */
+/* Color styles */
+.bg-grey {
+  background-color: #404146;
+}
+
+.bg-gold {
+  background-color: #c0ac7a;
+}
+
+.bg-light-grey {
+  background-color: #bfc3c6;
+}
+
+.bg-off-white {
+  background-color: #fffaf4;
+}
+
+.bg-cream {
+  background-color: #fdefdc;
+}
+
+.text-cream {
+  color: #f9e6cb;
+}
+
+.text-gold {
+  color: #c0ac7a;
+}

@@ -17,7 +17,7 @@
         <!-- start of navbar -->
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <di class="container-fluid">
-            <a class="navbar-brand" href='#'><img src="../images/LogoDesign1-LM.png" width=400px height=85px alt="logo"></a>
+            <a class="navbar-brand" href='../index.html'><img src="../images/LogoDesign1-LM.png" width=400px height=85px alt="logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -26,9 +26,6 @@
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Popular</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -47,14 +44,14 @@
                     <hr class="dropdown-divider" />
                     <li><a class="dropdown-item" href="../cuisines/mexicanCuisine.html">Mexican</a></li>
                     <hr class="dropdown-divider" />
-                    <li><a class="dropdown-item" href="../cuisines/morocanCuisine.html">Moroccan</a></li>
+                    <li><a class="dropdown-item" href="../cuisines/moroccanCuisine.html">Moroccan</a></li>
                     <hr class="dropdown-divider" />
                     <li><a class="dropdown-item" href="../cuisines/spanishCuisine.html">Spanish</a></li>
                     <li class="nav-item dropdown"></li>
                   </ul>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Blog</a>
+                  <a class="nav-link" href="./favourites.html">Saved Recipes</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Contact</a>
@@ -202,15 +199,9 @@
             </div>
             </li>
             </div>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button class="btn btn-outline-success" type="submit" fdprocessedid="y5alsi">
-                Search
-              </button>
-            </form>
             </div>
             <!-- ................. Start Subscribe Section ................. -->
-            <section class="text-light p-5 ">
+            <section class="text-light p-1">
               <div class="container">
                 <!-- Button trigger modal -->
                 <div class="input-group news-input d-md-flex align-items-center">
@@ -296,9 +287,9 @@
 
         <!-- start recipe section -->
         <section class="mt-5">
-            <h1 class="text-center"><span class="text-gold">Favourited </span>Recipes</h1>
-            <div id="recipe-container">
-
+            <h1 class="text-center"><span class="text-gold">Saved </span>Recipes</h1>
+            <div class="container-fluid">
+              <div id="recipe-container"></div>
             </div>
         </section>
         <!-- end recipe section -->
