@@ -1,5 +1,7 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="Light">
+
+</html>
 
 <head>
   <meta charset="utf-8">
@@ -11,6 +13,7 @@
 
   <!-- Custom CSS -->
   <link href="./css/style.css" rel="stylesheet" />
+  <link href="./css/theme.css" rel="stylesheet" />
 
   <!-- Email.js for confirmation emails-->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"> </script>
@@ -27,6 +30,10 @@
 </head>
 
 <body class="m-0 border-0 bd-example m-0 border-0">
+  <div>
+    <button type="button" class="button" data-theme-toggle aria-label="Change to light theme">Change to light
+      theme</button>
+  </div>
   <!-- ................. Start Navbar Section ................. -->
   <div id="navbar-placeholder"></div>
   <!-- ................. End Navbar Section ................. -->
@@ -221,6 +228,7 @@
   <!-- Contact.js for API -->
   <script src="./js/contact.js"></script>
   <script src="./js/headerandfooter.js"></script>
+  <script src='./js/theme.js'></script>
 </body>
 
 </html>
