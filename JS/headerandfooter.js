@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-  fetch('../navbar.html')
+  fetch('../nav-foot/navbar.html')
     .then((response) => response.text())
     .then((data) => {
       document.getElementById('navbar-placeholder').innerHTML = data;
     });
 
-  fetch('../footer.html')
+  fetch('../nav-foot/footer.html')
     .then((response) => response.text())
     .then((data) => {
       document.getElementById('footer-placeholder').innerHTML = data;
