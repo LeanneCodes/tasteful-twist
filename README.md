@@ -143,8 +143,8 @@ As a cooking enthusiast with a desire for global culinary dishes, I want to effo
 
 ## Webpage Screenshot
 
-![Light Mode](path/to/screenshot.png)
-![Dark Mode](path/to/screenshot.png)
+![Darkmode](./Images/image.png)
+![LightMode](./Images/image-1.png)
 
 ## Setup
 
@@ -157,4 +157,3 @@ To run this project locally, follow these steps:
 ## Webpage Link
 
 - [Live Link](https://leannecodes.github.io/tasteful-twist/)
-- [GitHub Repository](https://link-to-github-repo)
