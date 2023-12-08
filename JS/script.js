@@ -80,7 +80,7 @@ function getRecipe(cuisine) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'c7965e32a1mshbe160fd7fa536fap1de1ccjsn06ed08451b4a',
+            'X-RapidAPI-Key': '16aadf142cmshabed6aa7856fda0p1e2ffajsn381e6669c8f7',
             'X-RapidAPI-Host': 'food-recipes-with-images.p.rapidapi.com'
         }
     };
@@ -227,9 +227,9 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
     var modalHTML = `
         <div class="modal fade" id="${title.split(" ").join("")}" tabindex="-1" aria-labelledby="${title.split(" ").join("")}label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content" id="Modal-${title.split("+").join("")}">
+                <div class="modal-content theme-element" id="Modal-${title.split("+").join("")}">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-3" style="width: 90%;" id="${title.split("+").join("")}label">${title.split("+").join(" ")}</h1>
+                        <h1 class="modal-title theme-text fs-3" style="width: 90%;" id="${title.split("+").join("")}label">${title.split("+").join(" ")}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -348,7 +348,7 @@ function getNutrition(recipeName) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '1d9e9c2c69mshd454e4259937dedp174d96jsnfd22249786f7',
+            'X-RapidAPI-Key': '16aadf142cmshabed6aa7856fda0p1e2ffajsn381e6669c8f7',
             'X-RapidAPI-Host': 'nutrition-by-api-ninjas.p.rapidapi.com'
         }
     };

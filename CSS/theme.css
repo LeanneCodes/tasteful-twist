@@ -30,6 +30,34 @@ body {
   background-color: var(--color-bg);
   color: var(--color-fg);
 }
-.nav-link {
-  color: #404146;
+.nav-link, .fa-user {
+  color: #c0ac7a !important;
 }
+
+.button {
+  border-radius: 12px; 
+  flex-wrap: var(--color-bg);
+  background-color: rgb(223, 223, 223);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  float: right;
+  font-size: small;
+  text-decoration: solid;
+  
+  }
+  
+  .light-theme-dropdown{
+      background-color: white;
+    }
+    .dark-theme-dropdown{
+      background-color: rgb(0, 0, 0);
+    }
+
+    .theme-element {
+      background-color: var(--color-bg);
+      color: var(--color-fg);
+    }
+    
+    .theme-text {
+      color: var(--color-fg);
+    }
+  
