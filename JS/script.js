@@ -4,63 +4,63 @@
     Additionally, if the user has previously favourited recipes for that specific cuisine,
     it will also show on the cuisine page, as that data has been retrieved from local storage.
 */
-if (window.location.pathname === '/cuisines/mexicanCuisine') {
+if (window.location.pathname === '/cuisines/mexicancuisine') {
     document.addEventListener("DOMContentLoaded", function() {
-        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine")[0].toLowerCase();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("cuisine")[0];
         console.log(cuisine);
         getRecipe(cuisine);
         showAllFavourites(cuisine);
     });
-} else if (window.location.pathname === '/cuisines/italianCuisine') {
+} else if (window.location.pathname === '/cuisines/italiancuisine') {
     document.addEventListener("DOMContentLoaded", function() {
-        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine")[0].toLowerCase();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("cuisine")[0];
         console.log(cuisine);
         getRecipe(cuisine);
         showAllFavourites(cuisine);
     });
-} else if (window.location.pathname === '/cuisines/greekCuisine') {
+} else if (window.location.pathname === '/cuisines/greekcuisine') {
     document.addEventListener("DOMContentLoaded", function() {
-        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine")[0].toLowerCase();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("cuisine")[0];
         console.log(cuisine);
         getRecipe(cuisine);
         showAllFavourites(cuisine);
     });
-} else if (window.location.pathname === '/cuisines/asianCuisine') {
+} else if (window.location.pathname === '/cuisines/asiancuisine') {
     document.addEventListener("DOMContentLoaded", function() {
-        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine")[0].toLowerCase();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("cuisine")[0];
         console.log(cuisine);
         getRecipe(cuisine);
         showAllFavourites(cuisine);
     });
-} else if (window.location.pathname === '/cuisines/indianCuisine') {
+} else if (window.location.pathname === '/cuisines/indiancuisine') {
     document.addEventListener("DOMContentLoaded", function() {
-        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine")[0].toLowerCase();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("cuisine")[0];
         console.log(cuisine);
         getRecipe(cuisine);
         showAllFavourites(cuisine);
     });
-} else if (window.location.pathname === '/cuisines/frenchCuisine') {
+} else if (window.location.pathname === '/cuisines/frenchcuisine') {
     document.addEventListener("DOMContentLoaded", function() {
-        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine")[0].toLowerCase();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("cuisine")[0];
         console.log(cuisine);
         getRecipe(cuisine);
         showAllFavourites(cuisine);
     });
-} else if (window.location.pathname === '/cuisines/spanishCuisine') {
+} else if (window.location.pathname === '/cuisines/spanishcuisine') {
     document.addEventListener("DOMContentLoaded", function() {
-        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine")[0].toLowerCase();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("cuisine")[0];
         console.log(cuisine);
         getRecipe(cuisine);
         showAllFavourites(cuisine);
     });
-} else if (window.location.pathname === '/cuisines/moroccanCuisine') {
+} else if (window.location.pathname === '/cuisines/moroccancuisine') {
     document.addEventListener("DOMContentLoaded", function() {
-        var cuisine = window.location.pathname.split("/cuisines/")[1].split("Cuisine")[0].toLowerCase();
+        var cuisine = window.location.pathname.split("/cuisines/")[1].split("cuisine")[0];
         console.log(cuisine);
         getRecipe(cuisine);
         showAllFavourites(cuisine);
     });
-} else if (window.location.pathname === '/favourites') {
+} else if (window.location.pathname === '/nav-foot/favourites') {
     document.addEventListener("DOMContentLoaded", function() {
         showAllFavourites();
     });
