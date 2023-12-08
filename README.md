@@ -156,5 +156,4 @@ To run this project locally, follow these steps:
 
 ## Webpage Link
 
-- [Live Demo](https://leannecodes.github.io/tasteful-twist)
-- [GitHub Repository](https://link-to-github-repo)
+- [Live Link](https://leannecodes.github.io/tasteful-twist/)
