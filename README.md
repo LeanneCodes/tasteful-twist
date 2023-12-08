@@ -100,6 +100,7 @@ As a cooking enthusiast with a desire for global culinary dishes, I want to effo
 - [toFixed()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed)
 - [Try and catch errors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch)
 - [Return keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return)
+- [Dark and light mode](https://whitep4nth3r.com/blog/best-light-dark-mode-theme-toggle-javascript/)
 
 ### Bootstrap
 
@@ -119,6 +120,7 @@ As a cooking enthusiast with a desire for global culinary dishes, I want to effo
 - [HTML About Us Card Section](https://www.youtube.com/watch?v=IdVECN9-D1Y)
 - [HTML Team Section](https://www.youtube.com/watch?v=BLgkEUHWrFg&t=610s)
 - [HTML Bootstrap 5 Crash Course](https://www.youtube.com/watch?v=4sosXZsdy-s&t=1364s)
+- [JavaScript Dark/Light Mode](https://www.youtube.com/watch?v=Y_78SuOkXHk&t=15s&ab_channel=CodeComplete)
 
 ## Technologies Used
 
