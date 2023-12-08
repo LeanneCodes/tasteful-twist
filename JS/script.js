@@ -212,15 +212,15 @@ function createRecipeCard(title, image, ingredients, instructions, cuisine) {
 
     var modalBtnText = "";
 
-    if (window.location.pathname === '/favourites.html') {
+    if (window.location.pathname === '/nav-foot/favourites') {
         modalBtnText = "Remove from favourites";
     }
 
-    if (window.location.pathname === `/cuisines/${cuisine}Cuisine.html` && recipeFave.classList.contains("fa-regular")) {
+    if (window.location.pathname === `/cuisines/${cuisine}cuisine` && recipeFave.classList.contains("fa-regular")) {
         modalBtnText = "Add to Favourites";
     }
 
-    if (window.location.pathname === `/cuisines/${cuisine}Cuisine.html` && recipeFave.classList.contains("fa-solid")) {
+    if (window.location.pathname === `/cuisines/${cuisine}cuisine` && recipeFave.classList.contains("fa-solid")) {
         modalBtnText = "Remove from favourites";
     }
 
@@ -313,17 +313,17 @@ function toggleFavourite(title, image, ingredients, instructions, recipeFave, cu
 function updateModalButtonText(title, cuisine) {
     var modalBtnText = "";
     
-    if (window.location.pathname === '/favourites.html') {
+    if (window.location.pathname === '/nav-foot/favourites') {
         modalBtnText = "Remove from favourites";
     }
 
     var heartClassList = document.querySelector(`[data-target="${title.split("+").join(" ")}"]`).classList;
 
-    if (window.location.pathname === `/cuisines/${cuisine}Cuisine.html` && heartClassList.contains("fa-regular")) {
+    if (window.location.pathname === `/cuisines/${cuisine}cuisine` && heartClassList.contains("fa-regular")) {
         modalBtnText = "Add to Favourites";
     }
 
-    if (window.location.pathname === `/cuisines/${cuisine}Cuisine.html` && heartClassList.contains("fa-solid")) {
+    if (window.location.pathname === `/cuisines/${cuisine}cuisine` && heartClassList.contains("fa-solid")) {
         modalBtnText = "Remove from favourites";
     }
 
@@ -488,7 +488,7 @@ function showAllFavourites(currentPageCuisine) {
                 console.log(recipeDetails.title);
             }
 
-            if (window.location.pathname === '/favourites.html') {
+            if (window.location.pathname === '/nav-foot/favourites') {
                 var heart = document.querySelector(`[data-target="${recipeDetails.title}"]`);
                 if (heart) {
                     // Toggle the class for the specific heart icon
@@ -517,12 +517,12 @@ function showAllFavourites(currentPageCuisine) {
 
     var recipeContainer = document.getElementById("recipe-container");
     console.log(recipeContainer.childElementCount)
-    if (recipeContainer.childElementCount === 0 && window.location.pathname === '/favourites.html') {
+    if (recipeContainer.childElementCount === 0 && window.location.pathname === '/nav-foot/favourites') {
         var displayComment = document.createElement("p");
         displayComment.setAttribute("class", "text-center mt-5 text-muted fs-5");
         displayComment.textContent = "No recipes have been saved yet!";
         recipeContainer.appendChild(displayComment);
-    } else if (!recipeContainer.childElementCount === 0 && window.location.pathname === '/favourites.html') {
+    } else if (!recipeContainer.childElementCount === 0 && window.location.pathname === '/nav-foot/favourites') {
         var displayComment = document.createElement("p");
         displayComment.setAttribute("class", "text-center mt-5 text-muted fs-5");
         displayComment.textContent = "";
